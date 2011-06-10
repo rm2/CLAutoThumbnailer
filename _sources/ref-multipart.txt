@@ -27,7 +27,7 @@ with the each page restarting at time 0:0:0, if you do::
 
 or::
 
-   clatn -outdir . d:\VIDEO_TS\VTS_01_*.VOB
+   clatn --outdir . d:\VIDEO_TS\VTS_01_*.VOB
 
 you'll get just a single Overview page with the timestamps showing the
 time from the real start. The first thumbnail from each part will have

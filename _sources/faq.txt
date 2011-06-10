@@ -50,6 +50,11 @@ General
 
    It can be found on github at: https://github.com/rm2/CLAutoThumbnailer
 
+#. Where do I report bugs?
+
+   Report bugs or suggestions for improvements at
+   https://github.com/rm2/CLAutoThumbnailer/issues\ .
+
 
 Downloading & Installation
 ==========================
