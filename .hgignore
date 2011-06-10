@@ -1,0 +1,17 @@
+.git/
+.ropeproject/
+_eric4project/
+bin/
+obj/
+Sphinx/_build/
+sphinx/githtml/
+Sandcastle/Help/
+doxygen/
+Setup/Release/
+Setup/Debug/
+~$
+\.ncb$
+\.suo$
+\.user$
+\.trx$
+\.dll$

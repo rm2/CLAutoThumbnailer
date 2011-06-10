@@ -1,0 +1,132 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CLAutoThumbnailer.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="StartTime" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:05</Value>
+    </Setting>
+    <Setting Name="EndTime" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">-00:00:05</Value>
+    </Setting>
+    <Setting Name="CreateOverview" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="OverviewThumbs" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">12</Value>
+    </Setting>
+    <Setting Name="OverviewColumns" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">12</Value>
+    </Setting>
+    <Setting Name="OverviewRows" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">12</Value>
+    </Setting>
+    <Setting Name="OverviewThreshold" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="ThumbnailInterval" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:10</Value>
+    </Setting>
+    <Setting Name="AutoInterval" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Intervals" Type="System.String" Scope="User">
+      <Value Profile="(Default)">&lt;15=5, &lt;30=10, &lt;60=15, &lt;90=30, 60</Value>
+    </Setting>
+    <Setting Name="DetailThumbs" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">4</Value>
+    </Setting>
+    <Setting Name="DetailColumns" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">4</Value>
+    </Setting>
+    <Setting Name="DetailRows" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">4</Value>
+    </Setting>
+    <Setting Name="DetailThreshold" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="LayoutMode" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="RCOptimization" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MaxOptimizationSteps" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="WidthThreshold" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0.6</Value>
+    </Setting>
+    <Setting Name="HeightThreshold" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0.6</Value>
+    </Setting>
+    <Setting Name="LayoutThresholdAdjustment" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">1.02</Value>
+    </Setting>
+    <Setting Name="MinColumns" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="MinRows" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="SubDirectory" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="LabelPosition" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="ScaleFactor" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="PageWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1280</Value>
+    </Setting>
+    <Setting Name="PageHeight" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1024</Value>
+    </Setting>
+    <Setting Name="ThumbnailMargin" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="ThumbnailBorder" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="AutoAspectRatio" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MinFileSize" Type="System.Int64" Scope="User">
+      <Value Profile="(Default)">104857600</Value>
+    </Setting>
+    <Setting Name="VideoFileExts" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;3gp&lt;/string&gt;
+  &lt;string&gt;asf&lt;/string&gt;
+  &lt;string&gt;avi&lt;/string&gt;
+  &lt;string&gt;divx&lt;/string&gt;
+  &lt;string&gt;flv&lt;/string&gt;
+  &lt;string&gt;m2v&lt;/string&gt;
+  &lt;string&gt;m2p&lt;/string&gt;
+  &lt;string&gt;m2ts&lt;/string&gt;
+  &lt;string&gt;mkv&lt;/string&gt;
+  &lt;string&gt;mov&lt;/string&gt;
+  &lt;string&gt;mpeg&lt;/string&gt;
+  &lt;string&gt;mpg&lt;/string&gt;
+  &lt;string&gt;mp2&lt;/string&gt;
+  &lt;string&gt;mp4&lt;/string&gt;
+  &lt;string&gt;mts&lt;/string&gt;
+  &lt;string&gt;ogm&lt;/string&gt;
+  &lt;string&gt;rmvb&lt;/string&gt;
+  &lt;string&gt;vob&lt;/string&gt;
+  &lt;string&gt;wmv&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="DetailFileTimestamps" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="AlwaysShowMilliseconds" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="AutoIntervals" Type="System.String" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
