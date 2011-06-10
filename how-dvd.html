@@ -1,0 +1,238 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Thumbnail an unencrypted DVD &mdash; CLAutoThumbnailer v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/mydefault.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="top" title="CLAutoThumbnailer v1.0 documentation" href="index.html" />
+    <link rel="up" title="How To" href="howto.html" />
+    <link rel="next" title="Create screenshots" href="how-createscreenshots.html" />
+    <link rel="prev" title="Thumbnail a multi-part video" href="how-multipart.html" />
+ 
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23896923-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="how-createscreenshots.html" title="Create screenshots"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="how-multipart.html" title="Thumbnail a multi-part video"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li>
+          <li><a href="howto.html" accesskey="U">How To</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="thumbnail-an-unencrypted-dvd">
+<h1>Thumbnail an unencrypted DVD<a class="headerlink" href="#thumbnail-an-unencrypted-dvd" title="Permalink to this headline">¶</a></h1>
+<p>Thumbnailing an unencrypted <a class="reference internal" href="ref-mpeg2.html"><em>DVD</em></a> is conceptually no
+different than <a class="reference internal" href="how-multipart.html"><em>Thumbnail a multi-part video</em></a> but since it might be a popular
+thing to do this section will discuss some additional details.</p>
+<div class="section" id="basic-operation">
+<h2>Basic operation<a class="headerlink" href="#basic-operation" title="Permalink to this headline">¶</a></h2>
+<p>To demonstrate thumbnailing a DVD I used <a class="reference external" href="http://www.dvdstyler.de/en/">DVDStyler</a> on <span class="filename">his_girl_friday.mpeg</span> to create a
+single title DVD. It created the following files in a <span class="filename">VIDEO_TS</span>
+directory:</p>
+<div class="highlight-python"><pre>C:\His Girl Friday (1940)\dvd\VIDEO_TS\
+   VIDEO_TS.BUP
+   VIDEO_TS.IFO
+   VIDEO_TS.VOB
+   VTS_01_0.BUP
+   VTS_01_0.IFO
+   VTS_01_0.VOB
+   VTS_01_1.VOB
+   VTS_01_2.VOB
+   VTS_01_3.VOB
+   VTS_01_4.VOB</pre>
+</div>
+<p>You can find the <a class="reference external" href="http://mediainfo.sourceforge.net/en">MediaInfo</a> info on the <span class="filename">VTS_01_*.VOB</span> files <a class="reference internal" href="samplefile.html#sample-dvd"><em>here</em></a>.</p>
+<p>By default, thumbnails for a video are written to the original directory of
+that video. If you are generating thumbnails directly from <span class="filename">VOB</span> files
+that reside on a DVDROM drive, you have to use the <a class="reference internal" href="ref-options.html#cmdoption-o"><em class="xref std std-option">-o, --outdir</em></a> option to tell <strong class="command">CLAutoThumbnailer</strong> where to write the thumbnail pages.</p>
+<p>In addition, you have to figure out which &#8220;title set&#8221; you want to
+thumbnail. Title sets look like <tt class="docutils literal"><span class="pre">VTS_TT_NN.VOB</span></tt> where <tt class="docutils literal"><span class="pre">TT</span></tt> is the
+title number and <tt class="docutils literal"><span class="pre">NN</span></tt> is the part within that title. Normally you&#8217;ll
+want to do the largest title set and it is also normally the first one,
+so you&#8217;ll specify <tt class="docutils literal"><span class="pre">VTS_01_*,VOB</span></tt>. If you are unsure, with an
+unencrypted DVD, you can just watch the first few seconds of each title
+set (skip the <tt class="docutils literal"><span class="pre">00</span></tt> parts since those are for the DVD menu), to figure
+out what title you want.</p>
+<p>Finally, in the special case of VOB files only, since the actual file
+names aren&#8217;t very informative, <strong class="command">CLAutoThumbnailer</strong> will add the output directory name
+to the filenames.</p>
+<p>If the above <tt class="docutils literal"><span class="pre">VIDEO_TS</span></tt> had been written to a DVD+R/DVD-R disc, you
+would therefore have to do something like:</p>
+<div class="highlight-python"><pre>cd "C:\His Girl Friday (1940)"
+clatn -o . e:\VIDEO_TS\VTS_01_*.VOB"</pre>
+</div>
+<p>Even when the <span class="filename">VOB</span>s reside on a hard drive (a much faster operation),
+you&#8217;ll still probably want to put the thumbs in a different directory,
+so do:</p>
+<div class="highlight-python"><pre>cd "C:\His Girl Friday (1940)"
+clatn -o . "C:\His Girl Friday (1940)\dvd\VIDEO_TS\VTS_01_*.VOB"</pre>
+</div>
+<p>which will tell you:</p>
+<div class="highlight-python"><pre>Processing C:\His Girl Friday (1940)\dvd\VIDEO_TS\VTS_01_1.VOB ...
+Processing C:\His Girl Friday (1940)\dvd\VIDEO_TS\VTS_01_2.VOB ...
+Processing C:\His Girl Friday (1940)\dvd\VIDEO_TS\VTS_01_3.VOB ...
+Processing C:\His Girl Friday (1940)\dvd\VIDEO_TS\VTS_01_4.VOB ...
+0:03:59 Total time to create AVFileSet.
+Thumbnails Range   0:00:05.000 -&gt; 1:31:39.298
+Thumbnail Duration 1:31:34.298 (Total 1:31:44.298)
+OutputDirectory is "."
+Auto adjusting aspect ratio from 1.500 to 1.333
+Generating 144 104x78 thumbnails on a 12x12 Overview page.
+0:01:18 to create Overview thumbnails.
+144 thumbnails created. 0.55 seconds / thumbnail.
+Generating 552 325x244 thumbnails every 10 seconds on 35 4x4 Detail pages.
+0:04:04 to generate Detail page thumbnails.
+551 thumbnails created. 0.44 seconds / thumbnail.
+0:09:23 overall time to process thumbs - vts_01.dvd.
+
+0:09:26 Total time.</pre>
+</div>
+<p>Notice that <strong class="command">CLAutoThumbnailer</strong> automatically skips <span class="filename">VTS_01_00.VOB</span> which is just
+the menu page for the title and not part of the movie. Here&#8217;s a sample
+of the generated thumbnail pages:</p>
+<div class="figure align-center">
+<a class="reference external image-reference" href="_images/His_Girl_Friday_(1940)_-_vts_01_overview.jpg"><img alt="his_girl_friday dvd Overview Thumbnail Page" src="_images/His_Girl_Friday_(1940)_-_vts_01_overview.jpg" style="width: 649.0px; height: 506.5px;" /></a>
+<p class="caption">&#8220;His Girl Friday&#8221; DVD Overview Thumbnail Page</p>
+</div>
+<div class="figure align-center">
+<a class="reference external image-reference" href="_images/His_Girl_Friday_(1940)_-_vts_01_page0001_00_00_05.jpg"><img alt="his_girl_friday dvd First Detail Thumbnail Page" src="_images/His_Girl_Friday_(1940)_-_vts_01_page0001_00_00_05.jpg" style="width: 659.0px; height: 510.5px;" /></a>
+<p class="caption">&#8220;His Girl Friday&#8221; DVD First Detail Thumbnail Page</p>
+</div>
+<div class="figure align-center">
+<a class="reference external image-reference" href="_images/His_Girl_Friday_(1940)_-_vts_01_page0035_01_30_40.jpg"><img alt="his_girl_friday dvd Last Detail Thumbnail Page" src="_images/His_Girl_Friday_(1940)_-_vts_01_page0035_01_30_40.jpg" style="width: 659.0px; height: 510.5px;" /></a>
+<p class="caption">&#8220;His Girl Friday&#8221; DVD Last Detail Thumbnail Page</p>
+</div>
+<p>The information added to the thumbnail pages of multi-part files is
+discussed in <a class="reference internal" href="how-multipart.html"><em>Thumbnail a multi-part video</em></a>. However, since media players are
+either not able to jump to a specific time, or are able to jump to the
+time within a DVD title (rather than the time from the start of a <span class="filename">VOB</span>
+file within a DVD title) this additional information isn&#8217;t particularly
+useful for DVDs.</p>
+</div>
+<div class="section" id="skipping-the-credits-of-a-dvd-title">
+<h2>Skipping the credits of a DVD title<a class="headerlink" href="#skipping-the-credits-of-a-dvd-title" title="Permalink to this headline">¶</a></h2>
+<p>Of course, it&#8217;s possible to use <a class="reference internal" href="ref-options.html"><em>Command-Line Options</em></a> to customize the thumbnail generation of DVDs. For
+example, here&#8217;s how you would skip the credits on the Overview thumbnail
+page:</p>
+<div class="highlight-python"><pre>clatn -o . -i 0 -s 0:0:48 -e 1:31:07.184 "C:\His Girl Friday (1940)\dvd\VIDEO_TS\VTS_01_*.VOB"</pre>
+</div>
+<p>with this result:</p>
+<div class="figure align-center">
+<a class="reference external image-reference" href="_images/His_Girl_Friday_(1940)_-_nocredits_vts_01_overview.jpg"><img alt="&quot;No Credits&quot; Overview Thumbnail Page for &quot;His Girl Friday&quot; DVD" src="_images/His_Girl_Friday_(1940)_-_nocredits_vts_01_overview.jpg" style="width: 649.0px; height: 506.5px;" /></a>
+<p class="caption">&#8220;No Credits&#8221; Overview Thumbnail Page for &#8220;His Girl Friday&#8221; DVD</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="howto.html">How To</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="how-skipcredits.html">Skip the video credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-changelayout.html">Change the thumbnail page layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-resizepage.html">Resize the thumbnail page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-thumbnaildir.html">Thumbnail an entire directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-skipcreditscf.html">Skip thumbnailing the credits in lots of movies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-blackbars.html">Remove the black bars from the edges of thumbnails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-distortion.html">Fix distorted thumbnails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-multipart.html">Thumbnail a multi-part video</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Thumbnail an unencrypted DVD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-createscreenshots.html">Create screenshots</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trouble.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html"><strong class="command">CLAutoThumbnailer</strong> Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samplefile.html">Sample Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">To Do List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="how-createscreenshots.html" title="Create screenshots"
+             >next</a></li>
+        <li class="right" >
+          <a href="how-multipart.html" title="Thumbnail a multi-part video"
+             >previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li>
+          <li><a href="howto.html" >How To</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

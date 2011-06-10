@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>FAQ – Frequently Asked Questions &mdash; CLAutoThumbnailer v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/mydefault.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="top" title="CLAutoThumbnailer v1.0 documentation" href="index.html" />
+    <link rel="next" title="Troubleshooting" href="trouble.html" />
+    <link rel="prev" title="Create screenshots" href="how-createscreenshots.html" />
+ 
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23896923-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="trouble.html" title="Troubleshooting"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="how-createscreenshots.html" title="Create screenshots"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="faq-frequently-asked-questions">
+<h1>FAQ &#8211; Frequently Asked Questions<a class="headerlink" href="#faq-frequently-asked-questions" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul>
+<li><p class="first"><a class="reference internal" href="#general" id="id1">General</a></p>
+</li>
+<li><p class="first"><a class="reference internal" href="#downloading-installation" id="id2">Downloading &amp; Installation</a></p>
+</li>
+<li><p class="first"><a class="reference internal" href="#operation" id="id3">Operation</a></p>
+</li>
+<li><p class="first"><a class="reference internal" href="#performance" id="id4">Performance</a></p>
+</li>
+</ul>
+</div>
+<div class="section" id="general">
+<h2><a class="toc-backref" href="#id1">General</a><a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Do I need to buy the <a class="reference external" href="http://www.microsoft.com/expression/products/EncoderPro_Overview.aspx">Pro</a> version of Microsoft Expression Encoder to
+run <strong class="command">CLAutoThumbnailer</strong>?</p>
+<p>If you&#8217;re just going to be generating thumbnails (and not encoding
+videos), then you only need to install the <a class="reference external" href="http://www.microsoft.com/Expression/try-it/">free version</a> of Expression
+Encoder. You will also probably need some sort of supplemental codec
+package (like the <a class="reference external" href="http://www.codecguide.com/about_kl.htm">K-Lite Codec Pack</a>) to thumbnail more video file types.</p>
+</li>
+<li><p class="first">Why doesn&#8217;t <strong class="command">CLAutoThumbnailer</strong> display the video codec name in the thumbnail
+page header?</p>
+<p>I haven&#8217;t found any way yet to get that information using the
+<a class="reference external" href="http://expression.microsoft.com/en-us/library/ff728356">Microsoft Expression Encoder 4 SP1 SDK</a>. I may at some future time use some other technique to get
+this information.</p>
+</li>
+<li><p class="first">Why doesn&#8217;t <strong class="command">CLAutoThumbnailer</strong> display the number of audio channels in the
+thumbnail page header?</p>
+<p>The information returned by the <a class="reference external" href="http://expression.microsoft.com/en-us/library/ff728356">Microsoft Expression Encoder 4 SP1 SDK</a> seems to be usually wrong so
+I just skip it. It usually reports <tt class="docutils literal"><span class="pre">6</span></tt> channels even when there are
+only <tt class="docutils literal"><span class="pre">2</span></tt>. I may at some future time use some other technique to get
+this information.</p>
+</li>
+<li><p class="first">How I determine which codecs/filters <strong class="command">CLAutoThumbnailer</strong> is using to generate
+thumbnails for a particular video file?</p>
+<p>Unfortunately, the <a class="reference external" href="http://expression.microsoft.com/en-us/library/ff728356">Microsoft Expression Encoder 4 SP1 SDK</a> gives no way of determining this
+information &#8212; since <strong class="command">CLAutoThumbnailer</strong> intimately depends on the SDK there is
+no other way to figure this out.</p>
+<p>The only possible solution is to use the Microsoft Expression Encoder
+user interface to reduce the number of enabled filters until there is
+only a single filter it <em class="bolditalic">can</em> be using. See
+<a class="reference internal" href="trouble.html#ee-video-filters"><em>Microsoft Expression Encoder 4’s Video Filter List</em></a> for more information.</p>
+</li>
+<li><p class="first">Where&#8217;s the source code for <strong class="command">CLAutoThumbnailer</strong>?</p>
+<p>It can be found on github at: <a class="reference external" href="https://github.com/rm2/CLAutoThumbnailer">https://github.com/rm2/CLAutoThumbnailer</a></p>
+</li>
+</ol>
+</div>
+<div class="section" id="downloading-installation">
+<h2><a class="toc-backref" href="#id2">Downloading &amp; Installation</a><a class="headerlink" href="#downloading-installation" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Where can I download <strong class="command">CLAutoThumbnailer</strong>?</p>
+<p>The installer is at:
+<a class="reference external" href="https://github.com/downloads/rm2/CLAutoThumbnailer/CLAutoThumbnailerSetup-v1.0-20110610.msi">https://github.com/downloads/rm2/CLAutoThumbnailer/CLAutoThumbnailerSetup-v1.0-20110610.msi</a></p>
+<p>A zip file archive is at:
+<a class="reference external" href="https://github.com/downloads/rm2/CLAutoThumbnailer/CLAutoThumbnailerSetup-v1.0-20110610.zip">https://github.com/downloads/rm2/CLAutoThumbnailer/CLAutoThumbnailerSetup-v1.0-20110610.zip</a></p>
+</li>
+<li><p class="first">How do I install <strong class="command">CLAutoThumbnailer</strong>?</p>
+<p>See <a class="reference internal" href="intro.html#installation-instructions"><em>Installation</em></a>.</p>
+<p>If you&#8217;ve already installed <strong class="command">CLAutoThumbnailer</strong> by executing
+<span class="filename">CLAutoThumbnailerSetup.msi</span>, you might see a <em>&#8220;Another version of
+this product is already installed. Installation of this version
+cannot continue. To configure or remove the existing version of this
+product, use Add/Remove Programs on the Control Panel.&#8221;</em> message. You
+can either do what it says or run the following from a Command Prompt
+window:</p>
+<div class="highlight-python"><pre>rename CLAutoThumbnailerSetup-v1.0-20110611.msi CLAutoThumbnailerSetup.msi
+msiexec /fav CLAutoThumbnailerSetup.msi</pre>
+</div>
+</li>
+<li><p class="first">How do I tell what version of <strong class="command">CLAutoThumbnailer</strong> I&#8217;m running?</p>
+<p>Run the following command:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">clatn</span> <span class="o">--</span><span class="n">version</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">How do I uninstall <strong class="command">CLAutoThumbnailer</strong>?</p>
+<p>Just use the Control Panel and uninstall like any other program.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="operation">
+<h2><a class="toc-backref" href="#id3">Operation</a><a class="headerlink" href="#operation" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">How do I see what <strong class="command">CLAutoThumbnailer</strong>’s default settings are?</p>
+<p>Just enter <strong class="command">clatn</strong> without any arguments or use the the
+<a class="reference internal" href="ref-options.html#cmdoption--help"><em class="xref std std-option">-?, --help</em></a> option. The default settings are shown
+within square brackets (<tt class="docutils literal"><span class="pre">[]</span></tt>).</p>
+</li>
+<li><p class="first">How do I generate just a standard Overview thumbnail page?</p>
+<p>Use the <a class="reference internal" href="ref-options.html#cmdoption-i"><em class="xref std std-option">-i, --interval</em></a> option with an
+<span class="optionarg">interval</span> of <tt class="docutils literal"><span class="pre">0</span></tt> to avoid generating the Detail
+thumbnails.</p>
+</li>
+<li><p class="first">How do I <em class="bolditalic">not</em> generate an Overview thumbnail page?</p>
+<p>Use the <a class="reference internal" href="ref-options.html#cmdoption-v"><em class="xref std std-option">-v, --overview</em></a> option by specifying <tt class="docutils literal"><span class="pre">-v-</span></tt> or
+<tt class="docutils literal"><span class="pre">--overview-</span></tt>.</p>
+</li>
+<li><p class="first">Why don&#8217;t any of my video files get processed when using the
+<a class="reference internal" href="ref-options.html#cmdoption-d"><em class="xref std std-option">-d, --directory</em></a> option?</p>
+<p>Make sure that your video file extensions are in the list of valid
+extensions that follow the <a class="reference internal" href="ref-options.html#cmdoption-d"><em class="xref std std-option">-d, --directory</em></a> option
+shown using <a class="reference internal" href="ref-options.html#cmdoption--help"><em class="xref std std-option">-?, --help</em></a>. Add any missing extensions
+using the <a class="reference internal" href="ref-options.html#cmdoption--exts"><em class="xref std std-option">--exts</em></a> and <a class="reference internal" href="ref-options.html#cmdoption--save"><em class="xref std std-option">--save</em></a>
+options.</p>
+<p>Make sure the <a class="reference internal" href="ref-options.html#cmdoption--minsize"><em class="xref std std-option">--minsize</em></a> option is set correctly for
+your video file sizes.</p>
+<p>The presence of files that look like <span class="filename">*_overview.jpg</span>,
+<span class="filename">*_pageNNNN.jpg</span>, or <span class="filename">*_pageNNNN_NN_NN_NN.jpg</span> in a directory will
+make the <a class="reference internal" href="ref-options.html#cmdoption-d"><em class="xref std std-option">-d, --directory</em></a> option think that thumbnails
+have already been generated for that directory and it will be
+skipped. Similarly, if the <a class="reference internal" href="ref-options.html#cmdoption--subdir"><em class="xref std std-option">--subdir</em></a> option is a non-empty
+string then the presence of a sub-directory with that name will
+indicate that the parent directory should be skipped.</p>
+<p><a class="reference internal" href="how-thumbnaildir.html"><em>Thumbnail an entire directory</em></a> contains a detailed example of the use of the
+<a class="reference internal" href="ref-options.html#cmdoption-d"><em class="xref std std-option">-d, --directory</em></a> option.</p>
+</li>
+<li><p class="first">Why do I see black bars on the sides of my thumbnails?</p>
+<p>See the <a class="reference internal" href="ref-options.html#cmdoption-p"><em class="xref std std-option">-p, --crop</em></a> option to manually set the cropping
+aspect ratio. <a class="reference internal" href="how-blackbars.html"><em>Remove the black bars from the edges of thumbnails</em></a> contains a detailed example.</p>
+</li>
+<li><p class="first">Why are my thumbnails squished/stretched?</p>
+<p>See the <a class="reference internal" href="ref-options.html#cmdoption-t"><em class="xref std std-option">-t, --stretch</em></a> option to manually set the
+stretching aspect ratio. <a class="reference internal" href="how-distortion.html"><em>Fix distorted thumbnails</em></a> contains a detailed
+example.</p>
+</li>
+<li><p class="first">How do I change the location of the thumbnail timestamps?</p>
+<p>See the <a class="reference internal" href="ref-options.html#cmdoption-l"><em class="xref std std-option">-l, --label</em></a> option to change the location of
+the timestamps from their default position in the lower-right corner.</p>
+</li>
+<li><p class="first">How do I figure out the exact starting/ending thumbnailing times?</p>
+<p>Unfortunately, most video players don&#8217;t seem to be able to jump to a
+particular time &#8212; and when they are able to do this, they aren&#8217;t
+able to do it while the video is paused.</p>
+<p>Luckily, <a class="reference external" href="http://www.bsplayer.org">BS.Player</a> works pretty well for this:</p>
+<ol class="arabic">
+<li><p class="first">Pause the video.</p>
+</li>
+<li><p class="first">Type <tt class="kbd docutils literal"><span class="pre">Control+J</span></tt> to bring up the <em class="guilabel">Jump to time</em>
+dialog box or right-click on the video and choose
+<em class="menuselection">Playback ‣ Jump to time</em> from the popup menu.</p>
+</li>
+<li><p class="first">Enter in the time you want to jump to and press the <tt class="kbd docutils literal"><span class="pre">Enter</span></tt>
+key or click the <em class="guilabel">Jump</em> button.</p>
+</li>
+</ol>
+<p>Alternatively, you can use Microsoft Expression Encoder:</p>
+<ol class="arabic">
+<li><p class="first">Import the video to view.</p>
+</li>
+<li><p class="first">Change the position using the text box below the timeline.</p>
+</li>
+</ol>
+<p>Also, <span class="mono">MPEG2</span> (aka <span class="mono">.vob</span>) files sometimes have problems
+when determining video times. First of all make sure that the video
+codec used to generate the thumbnails is the same as that used by
+your player. If in doubt just use Microsoft Expression Encoder to
+view your video.</p>
+<p>Microsoft Expression Encoder doesn&#8217;t seem to be able to accurately
+determine video positions when importing multiple <span class="mono">MPEG2</span>s
+into a single timeline (by using the <em class="guilabel">Insert a media item
+at the end of the timeline</em> button which is underneath the right side
+of the timeline). However, it will accurately show times within a
+single <span class="mono">MPEG2</span> so the workaround is to only add the final
+<span class="mono">MPEG2</span>/<span class="mono">.vob</span> and manually figure out the translation
+to/from single file time and total video time.</p>
+<p><a class="reference external" href="http://www.bsplayer.org">BS.Player</a> has a similar problem and again the workaround is to just view
+the final <span class="mono">MPEG2</span>/<span class="mono">.vob</span> instead of trying to jump to an
+actual time in the video.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="performance">
+<h2><a class="toc-backref" href="#id4">Performance</a><a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Why does it take so long to generate thumbnails?</p>
+<p><strong class="command">CLAutoThumbnailer</strong> uses the <a class="reference external" href="http://expression.microsoft.com/en-us/library/ff728356">Microsoft Expression Encoder 4 SP1 SDK</a> to generate thumbnails and thus is dependent
+on its processing speed. In particular, the SDK can take some seconds
+to open the first video file.</p>
+<p>The upside is that the SDK is typically more accurate at grabbing
+thumbnails at a particular time and can grab thumbnails more
+frequently (down to every fraction of a second if desired). Other
+thumbnail tools can have difficulty grabbing frames more often than
+once every 15 or so seconds.</p>
+</li>
+<li><p class="first">Why isn&#8217;t there a nice fancy user interface for <strong class="command">CLAutoThumbnailer</strong>?</p>
+<p><strong class="command">CLAutoThumbnailer</strong> is a <strong>Command Line</strong> program. However, it&#8217;s been written to
+make it possible to bolt on a user interface at a later time since
+the command-line option processing is done separately from the
+actually thumbnail generation stuff. (Don&#8217;t hold your breathe
+though).</p>
+</li>
+<li><p class="first">Why doesn&#8217;t <strong class="command">CLAutoThumbnailer</strong> use my fancy NVIDIA GPU to speed up thumbnail
+generation?</p>
+<p>The <a class="reference external" href="http://expression.microsoft.com/en-us/library/ff728356">Microsoft Expression Encoder 4 SP1 SDK</a> currently uses NVIDIA GPUs when encoding videos but not
+when decoding them.</p>
+</li>
+<li><p class="first">Is <strong class="command">CLAutoThumbnailer</strong> able to use multiple CPU cores?</p>
+<p>No. If there ever is a GUI version of AutoThumbnailer then it will
+probably be able to use multiple cores. OTOH, you can open up
+multiple Command Prompt windows and run a separate instance of
+<strong class="command">CLAutoThumbnailer</strong> in each one.</p>
+</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">How To</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#general">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#downloading-installation">Downloading &amp; Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#operation">Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#performance">Performance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="trouble.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html"><strong class="command">CLAutoThumbnailer</strong> Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samplefile.html">Sample Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">To Do List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="trouble.html" title="Troubleshooting"
+             >next</a></li>
+        <li class="right" >
+          <a href="how-createscreenshots.html" title="Create screenshots"
+             >previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

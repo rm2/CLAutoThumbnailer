@@ -1,0 +1,160 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>MPEG2 Encoded Videos &mdash; CLAutoThumbnailer v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/mydefault.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="top" title="CLAutoThumbnailer v1.0 documentation" href="index.html" />
+    <link rel="up" title="CLAutoThumbnailer Reference" href="reference.html" />
+    <link rel="next" title="Auto Aspect Ratio Adjustment" href="ref-aar.html" />
+    <link rel="prev" title="Multi-Part Video Files" href="ref-multipart.html" />
+ 
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23896923-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="ref-aar.html" title="Auto Aspect Ratio Adjustment"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="ref-multipart.html" title="Multi-Part Video Files"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li>
+          <li><a href="reference.html" accesskey="U"><strong class="command">CLAutoThumbnailer</strong> Reference</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="mpeg2-encoded-videos">
+<h1>MPEG2 Encoded Videos<a class="headerlink" href="#mpeg2-encoded-videos" title="Permalink to this headline">¶</a></h1>
+<p>The <span class="mono">MPEG2</span> format, which is used in DVD <span class="mono">.VOB</span> files, has a
+number of peculiarities worth mentioning.</p>
+<p>The Microsoft Expression Encoder 4 SP1 SDK &#8212; which <strong class="command">CLAutoThumbnailer</strong> uses to actually generate thumbnails &#8212;
+needs to do something it calls &#8220;Indexing&#8221; before it can fully open
+<span class="mono">MPEG2</span> encoded video files. This adds an extra step that can be
+pretty long. This is reported in <span class="filename">CLAutoThumbnailer.log</span> (or
+<a class="reference internal" href="ref-options.html#cmdoption--debug"><em class="xref std std-option">--debug</em></a> option output) as the time <tt class="docutils literal"><span class="pre">to</span> <span class="pre">run</span>
+<span class="pre">CalculateDuration</span></tt> line.</p>
+<p><span class="mono">MPEG2</span> doesn&#8217;t seem to be as good at exact time positioning as
+other video formats. In particular you will see small errors in the
+timestamps of multi-part <span class="mono">MPEG2</span> encoded video files (like DVD
+title sets, <span class="filename">VTS_NN_*.VOB</span>).</p>
+<p><span class="mono">MPEG2</span> videos can have a &#8220;Display aspect ratio&#8221; specified for
+them that is different than their typical 720x480 (1.50:1) video frame
+size. This is how DVDs support the display of widescreen movies. The
+<a class="reference internal" href="ref-options.html#cmdoption--aar"><em class="xref std std-option">--aar</em></a> option controls whether the &#8220;Display aspect ratio&#8221; is
+used to automatically crop thumbnails.</p>
+<p>Thumbnailing directly from an unencypted DVDROM is <em class="bolditalic">much</em> slower
+than thumbnailing from a copy on your hard drive (because of the vastly
+slower speed of DVDROM drives). If you plan on processing files that are
+on a DVDROM more than once or twice, it&#8217;s probably worthwhile to make a
+copy if you have the room. Also some DVDROM drives will automatically
+run slower to make them quieter while watching movies. You might want to
+search the Internet for free utility programs that can force your DVDROM
+drive to run at its maximum speed.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">How To</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trouble.html">Troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="reference.html"><strong class="command">CLAutoThumbnailer</strong> Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ref-overview.html">Overview Thumbnail Page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref-detail.html">Detail Thumbnail Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref-commandfile.html">Command Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref-multipart.html">Multi-Part Video Files</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">MPEG2 Encoded Videos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref-aar.html">Auto Aspect Ratio Adjustment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref-layout.html">Thumbnail Page Layout Modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref-options.html">Command-line Options Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="samplefile.html">Sample Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">To Do List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="ref-aar.html" title="Auto Aspect Ratio Adjustment"
+             >next</a></li>
+        <li class="right" >
+          <a href="ref-multipart.html" title="Multi-Part Video Files"
+             >previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li>
+          <li><a href="reference.html" ><strong class="command">CLAutoThumbnailer</strong> Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,178 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>How To &mdash; CLAutoThumbnailer v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/mydefault.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="top" title="CLAutoThumbnailer v1.0 documentation" href="index.html" />
+    <link rel="next" title="Skip the video credits" href="how-skipcredits.html" />
+    <link rel="prev" title="Quick Start" href="quickstart.html" />
+ 
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23896923-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="how-skipcredits.html" title="Skip the video credits"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="quickstart.html" title="Quick Start"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="how-to">
+<h1>How To<a class="headerlink" href="#how-to" title="Permalink to this headline">¶</a></h1>
+<p>This section uses the public domain <span class="filename">his_girl_friday_512kb.mp4</span> and
+<span class="filename">McLintock_512kb.mp4</span> videos from the <a class="reference internal" href="quickstart.html"><em>Quick Start</em></a>. The details for
+downloading these are in the <a class="reference internal" href="samplefile.html"><em>Sample Files</em></a> section but you can
+substitute any other video files.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="how-skipcredits.html">Skip the video credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-changelayout.html">Change the thumbnail page layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-resizepage.html">Resize the thumbnail page</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="how-resizepage.html#landscape-thumbnail-pages">&#8220;Landscape&#8221; thumbnail pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-resizepage.html#portrait-thumbnail-pages">&#8220;Portrait&#8221; thumbnail pages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="how-thumbnaildir.html">Thumbnail an entire directory</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="how-thumbnaildir.html#basic-operation">Basic operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-thumbnaildir.html#summarizing-video-directories">Summarizing video directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-thumbnaildir.html#what-s-a-video-file">What&#8217;s a video file?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="how-skipcreditscf.html">Skip thumbnailing the credits in lots of movies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-blackbars.html">Remove the black bars from the edges of thumbnails</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="how-blackbars.html#cropping-letterboxed-videos">Cropping letterboxed videos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-blackbars.html#cropping-pillarboxed-videos">Cropping pillarboxed videos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-blackbars.html#cropping-windowboxed-videos">Cropping windowboxed videos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="how-distortion.html">Fix distorted thumbnails</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="how-distortion.html#squished-thumbnails">Squished Thumbnails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-distortion.html#stretched-thumbnails">Stretched Thumbnails</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="how-multipart.html">Thumbnail a multi-part video</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="how-multipart.html#basic-operation">Basic operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-multipart.html#skipping-the-credits-of-a-multi-part-video">Skipping the credits of a multi-part video</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="how-dvd.html">Thumbnail an unencrypted DVD</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="how-dvd.html#basic-operation">Basic operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-dvd.html#skipping-the-credits-of-a-dvd-title">Skipping the credits of a DVD title</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="how-createscreenshots.html">Create screenshots</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">How To</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="how-skipcredits.html">Skip the video credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-changelayout.html">Change the thumbnail page layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-resizepage.html">Resize the thumbnail page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-thumbnaildir.html">Thumbnail an entire directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-skipcreditscf.html">Skip thumbnailing the credits in lots of movies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-blackbars.html">Remove the black bars from the edges of thumbnails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-distortion.html">Fix distorted thumbnails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-multipart.html">Thumbnail a multi-part video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-dvd.html">Thumbnail an unencrypted DVD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-createscreenshots.html">Create screenshots</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trouble.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html"><strong class="command">CLAutoThumbnailer</strong> Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samplefile.html">Sample Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">To Do List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="how-skipcredits.html" title="Skip the video credits"
+             >next</a></li>
+        <li class="right" >
+          <a href="quickstart.html" title="Quick Start"
+             >previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

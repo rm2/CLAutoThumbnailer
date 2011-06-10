@@ -1,0 +1,308 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Remove the black bars from the edges of thumbnails &mdash; CLAutoThumbnailer v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/mydefault.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="top" title="CLAutoThumbnailer v1.0 documentation" href="index.html" />
+    <link rel="up" title="How To" href="howto.html" />
+    <link rel="next" title="Fix distorted thumbnails" href="how-distortion.html" />
+    <link rel="prev" title="Skip thumbnailing the credits in lots of movies" href="how-skipcreditscf.html" />
+ 
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23896923-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="how-distortion.html" title="Fix distorted thumbnails"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="how-skipcreditscf.html" title="Skip thumbnailing the credits in lots of movies"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li>
+          <li><a href="howto.html" accesskey="U">How To</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="remove-the-black-bars-from-the-edges-of-thumbnails">
+<h1>Remove the black bars from the edges of thumbnails<a class="headerlink" href="#remove-the-black-bars-from-the-edges-of-thumbnails" title="Permalink to this headline">¶</a></h1>
+<p>Occassionally after you finish thumbnailing a video you&#8217;ll see annoying
+black bars at the edges of your thumbnails. Videos that have black bars
+on their top and bottom are <a class="reference external" href="http://en.wikipedia.org/wiki/Letterbox">letterboxed</a>, those with the bars on the
+left and right are <a class="reference external" href="http://en.wikipedia.org/wiki/Pillarbox">pillarboxed</a> , and those rare ones with
+bars on all sides are <a class="reference external" href="http://en.wikipedia.org/wiki/Windowbox_(film)">windowboxed</a>. Clearly we want to
+remove these bars from the thumbnails since they are wasting valuable
+image space.</p>
+<div class="section" id="cropping-letterboxed-videos">
+<h2>Cropping letterboxed videos<a class="headerlink" href="#cropping-letterboxed-videos" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center">
+<a class="reference external image-reference" href="_images/McLintock_512kb_letterboxed_page0002_00_02_40.jpg"><img alt="&quot;Letterboxed&quot; Thumbnails" src="_images/McLintock_512kb_letterboxed_page0002_00_02_40.jpg" style="width: 329.5px; height: 255.25px;" /></a>
+<p class="caption">&#8220;Letterboxed&#8221; Thumbnails</p>
+</div>
+<p>In order to crop a letterboxed video you specify an aspect ratio to the
+<a class="reference internal" href="ref-options.html#cmdoption-p"><em class="xref std std-option">-p, --crop</em></a> option that is <em class="bolditalic">larger</em> (wider) than the
+actual video frame&#8217;s aspect ratio. This chops off parts of the top and
+bottom of the video.</p>
+<p>If you look at the full-size image of the above thumbnail page by
+clicking on it, you&#8217;ll see that it says <tt class="docutils literal"><span class="pre">320x240</span> <span class="pre">(1.33:1)</span></tt> in the
+upper-right corner, which is the video frame size and its aspect ratio.</p>
+<p>You have to use trial and error to determine the correct cropping aspect
+ratio, but in general you should first try one of the ratios suggested
+<a class="reference internal" href="ref-options.html#letterbox-crop-values"><em>here</em></a>. A good place to start is to assume
+that the video really has an 1.85 aspect ratio.  To keep a little bit of
+the black border &#8212; and make sure we haven&#8217;t overcropped &#8212; we should
+therefore use <tt class="docutils literal"><span class="pre">1.81</span></tt> (about 98% of 1.85) as the argument to the
+<a class="reference internal" href="ref-options.html#cmdoption-p"><em class="xref std std-option">-p, --crop</em></a> option:</p>
+<div class="highlight-python"><pre>cd "C:\McLintock (1963)\letterboxed"
+clatn -v- --crop 1.81 McLintock_512kb_letterboxed.wmv</pre>
+</div>
+<p>During the testing phase you don&#8217;t need to thumbnail the entire
+movie. Just type <tt class="kbd docutils literal"><span class="pre">Ctrl+C</span></tt> to abort <strong class="command">CLAutoThumbnailer</strong> after the first few
+Detail thumbnail pages have been created.</p>
+<div class="figure align-center">
+<a class="reference external image-reference" href="_images/McLintock_512kb_letterboxed_ar181_page0002_00_02_00.jpg"><img alt="Letterboxed Video Cropped to 1.83 Aspect Ratio" src="_images/McLintock_512kb_letterboxed_ar181_page0002_00_02_00.jpg" style="width: 334.25px; height: 255.25px;" /></a>
+<p class="caption">Letterboxed Video Cropped to 1.81 Aspect Ratio</p>
+</div>
+<p>While this is better the black bars are still there. So try again
+assuming that the video&#8217;s aspect ratio is really 2.35. Again we adjust
+it down a little bit to avoid overcropping:</p>
+<div class="highlight-python"><pre>clatn -v- --crop 2.30 McLintock_512kb_letterboxed.wmv</pre>
+</div>
+<div class="figure align-center">
+<a class="reference external image-reference" href="_images/McLintock_512kb_letterboxed_ar230_page0002_00_02_30.jpg"><img alt="Letterboxed Video Cropped to 2.30 Aspect Ratio" src="_images/McLintock_512kb_letterboxed_ar230_page0002_00_02_30.jpg" style="width: 340.25px; height: 256.0px;" /></a>
+<p class="caption">Letterboxed Video Cropped to 2.30 Aspect Ratio</p>
+</div>
+<p>If you view the full-size image, you&#8217;ll see that there is just a tiny
+bit of black now showing at the top of each thumbnail so <tt class="docutils literal"><span class="pre">2.30</span></tt> is the
+correct cropping aspect ratio to use.</p>
+<p>Also notice that the upper right of the thumbnail page now says
+<tt class="docutils literal"><span class="pre">320x139</span> <span class="pre">(2.30:1)</span> <span class="pre">[320x240</span> <span class="pre">(1.33:1)]</span></tt>. When you have two values for
+the frame size and aspect ratio &#8212; one inside square brackets &#8212; it
+means the thumbnails are created from something other than the original
+video frames. The dimensions inside the square brackets are the original
+dimensions and aspect ratio, while the other numbers are the actual
+frame and aspect ratio used to create the thumbnails. While these
+thumbnails use the entire <tt class="docutils literal"><span class="pre">320</span></tt> pixel width, they only use <tt class="docutils literal"><span class="pre">139</span></tt> of
+the total <tt class="docutils literal"><span class="pre">240</span></tt> pixel height (thus indicating that the top and bottom
+of the video have been cropped out to make the thumbnails).</p>
+</div>
+<div class="section" id="cropping-pillarboxed-videos">
+<h2>Cropping pillarboxed videos<a class="headerlink" href="#cropping-pillarboxed-videos" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center">
+<a class="reference external image-reference" href="_images/his_girl_friday_512kb_pillarboxed_page0001_00_00_05.jpg"><img alt="&quot;Pillarboxed&quot; Thumbnails" src="_images/his_girl_friday_512kb_pillarboxed_page0001_00_00_05.jpg" style="width: 329.0px; height: 255.25px;" /></a>
+<p class="caption">&#8220;Pillarboxed&#8221; Thumbnails</p>
+</div>
+<p>In order to crop a pillarboxed video you specify an aspect ratio to the
+<a class="reference internal" href="ref-options.html#cmdoption-p"><em class="xref std std-option">-p, --crop</em></a> option that is <em class="bolditalic">smaller</em> (narrower) than
+the actual video frame&#8217;s aspect ratio. This chops off the sides of the
+video.</p>
+<p>If you look at the full-size image of the above thumbnail page by
+clicking on it, you&#8217;ll see that it says <tt class="docutils literal"><span class="pre">320x180</span> <span class="pre">(1.78:1)</span></tt> in the
+upper-right corner, which is the video frame size and its aspect ratio.</p>
+<p>Again using trial and error to determine the correct cropping aspect
+ratio, you should first try one of the ratios suggested <a class="reference internal" href="ref-options.html#pillarbox-crop-values"><em>here</em></a>. Since the only recommended aspect ratio listed
+that is smaller than <tt class="docutils literal"><span class="pre">1.78</span></tt> is <tt class="docutils literal"><span class="pre">1.33</span></tt> let&#8217;s try that. When cropping
+pillarboxed videos you have to adjust this <em class="bolditalic">up</em> a bit to keep a
+little bit of the black border &#8212; and make sure we haven&#8217;t
+overcropped. We should therefore use <tt class="docutils literal"><span class="pre">1.36</span></tt> (about 102% of 1.33) as
+the argument to the <a class="reference internal" href="ref-options.html#cmdoption-p"><em class="xref std std-option">-p, --crop</em></a> option:</p>
+<div class="highlight-python"><pre>cd "C:\His Girl Friday (1940)\pillarboxed"
+clatn -v- --crop 1.36 his_girl_friday_512kb_pillarboxed.wmv</pre>
+</div>
+<div class="figure align-center">
+<a class="reference external image-reference" href="_images/his_girl_friday_512kb_pillarboxed_ar136_page0001_00_00_05.jpg"><img alt="Pillarboxed Video Cropped to 1.36 Aspect Ratio" src="_images/his_girl_friday_512kb_pillarboxed_ar136_page0001_00_00_05.jpg" style="width: 336.5px; height: 255.25px;" /></a>
+<p class="caption">Pillarboxed Video Cropped to 1.36 Aspect Ratio</p>
+</div>
+<p>If you view the full-size image, you&#8217;ll see that there is just a small
+amount of black now remaining on the sides of each thumbnail so <tt class="docutils literal"><span class="pre">1.36</span></tt>
+is the correct cropping aspect ratio to use.</p>
+<p>Also notice that the upper right of the thumbnail page now says
+<tt class="docutils literal"><span class="pre">245x180</span> <span class="pre">(1.36:1)</span> <span class="pre">[320x180</span> <span class="pre">(1.78:1)]</span></tt>. While these thumbnails use the
+entire <tt class="docutils literal"><span class="pre">180</span></tt> pixel height, they only use <tt class="docutils literal"><span class="pre">245</span></tt> of the total <tt class="docutils literal"><span class="pre">320</span></tt>
+pixel width (thus indicating the sides of the video have been cropped
+out to make the thumbnails).</p>
+</div>
+<div class="section" id="cropping-windowboxed-videos">
+<span id="id1"></span><h2>Cropping windowboxed videos<a class="headerlink" href="#cropping-windowboxed-videos" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center">
+<a class="reference external image-reference" href="_images/his_girl_friday_512kb_windowboxed_page0001_00_00_05.jpg"><img alt="&quot;Windowboxed&quot; Thumbnails" src="_images/his_girl_friday_512kb_windowboxed_page0001_00_00_05.jpg" style="width: 329.5px; height: 255.25px;" /></a>
+<p class="caption">&#8220;Windowboxed&#8221; Thumbnails</p>
+</div>
+<p>In order to crop a windowboxed video you have to specify the exact
+rectangle you want to use for thumbnails with the <a class="reference internal" href="ref-options.html#cmdoption--rect"><em class="xref std std-option">--rect</em></a>
+option. The <a class="reference internal" href="ref-options.html#cmdoption-p"><em class="xref std std-option">-p, --crop</em></a> option automatically calculates
+this rectangle for you given the desired aspect ratio. Using
+<a class="reference internal" href="ref-options.html#cmdoption--rect"><em class="xref std std-option">--rect</em></a> gives you complete flexibility for specifying the
+location of this rectangle at the expense of having to figure out what
+that rectangle should be.</p>
+<p>The easiest way to determine this rectangle is to first use some program
+to take a screenshot from the video, being sure it&#8217;s the same size as
+the original. Using <a class="reference external" href="http://www.bsplayer.org">BS.Player</a>, you right-click the video, choose
+<em class="menuselection">Capture frame (screenshot) ‣ Original size</em>
+(<tt class="kbd docutils literal"><span class="pre">P</span></tt>). For example:</p>
+<div class="figure align-center">
+<img alt="Windowboxed Screenshot (320x240 pixels)" src="_images/his_girl_friday_512kb_windowboxed_frame_capture.jpg" />
+<p class="caption">Windowboxed Screenshot (320x240 pixels)</p>
+</div>
+<p>Then you need to somehow determine the position of the upper-left corner
+and the width and height of the actual Video Region. Some programs will
+tell you the coordinates of the current position of the cursor. You can
+use that information to also calculate the Video Region&#8217;s width and
+height.</p>
+<p>Another techniques is to load up the screenshot in any image editing
+program, select just the actual video frame (ignoring the black
+borders), and copy/paste the video region into a new file. You&#8217;ll now
+have something like this:</p>
+<div class="figure align-center">
+<img alt="Video Region of Windowboxed Screenshot (238x183 pixels)" src="_images/his_girl_friday_512kb_windowboxed_only_video.jpg" />
+<p class="caption">Video Region of Windowboxed Screenshot (238x183 pixels)</p>
+</div>
+<p>and it&#8217;s easy to determine the width and height.</p>
+<p>Next, you have to do a tiny bit of math. First we need to make sure that
+the Video Region still has the same aspect ratio as the original video:</p>
+<div class="highlight-python"><pre>Video Region Width = Video Region Height * Screenshot Aspect Ratio
+Video Region Width = 183 * (320 / 240)
+Video Region Width = 244</pre>
+</div>
+<p>so <tt class="docutils literal"><span class="pre">Video</span> <span class="pre">Region</span> <span class="pre">Width</span> <span class="pre">=</span> <span class="pre">244</span></tt>. Assuming that the Video Region is
+centered within the full video frame (it almost always is), the X
+location of the upper-left corner of the cropping rectangle is:</p>
+<div class="highlight-python"><pre>x = (Screenshot Width - Video Region Width) / 2
+x = (320 - 244) / 2
+x = 38</pre>
+</div>
+<p>so <tt class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">38</span></tt>. The Y location of the upper-left corner of the cropping
+rectangle is:</p>
+<div class="highlight-python"><pre>y = (Screenshot Height - Video Region Height) / 2
+y = (240 - 183) / 2
+y = 28.5</pre>
+</div>
+<p>so <tt class="docutils literal"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">28.5</span></tt> which rounds to <tt class="docutils literal"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">29</span></tt>.</p>
+<p>The <a class="reference internal" href="ref-options.html#cmdoption--rect"><em class="xref std std-option">--rect</em></a> option takes its argument in the form of
+<tt class="docutils literal"><span class="pre">X,Y+WIDTHxHEIGHT</span></tt>, therefore to thumbnail this windowboxed video we
+need to do the following:</p>
+<div class="highlight-python"><pre>cd "C:\His Girl Friday (1940)\windowboxed"
+clatn -v- --rect "38,29+244x183" his_girl_friday_512kb_windowboxed.wmv</pre>
+</div>
+<div class="figure align-center">
+<a class="reference external image-reference" href="_images/his_girl_friday_512kb_windowboxed_rect_page0001_00_00_05.jpg"><img alt="Fixed &quot;Windowboxed&quot; Thumbnails" src="_images/his_girl_friday_512kb_windowboxed_rect_page0001_00_00_05.jpg" style="width: 329.5px; height: 255.25px;" /></a>
+<p class="caption">Fixed &#8220;Windowboxed&#8221; Thumbnails</p>
+</div>
+<p>If you view the full-size image, you&#8217;ll see that there is just a small
+amount of black remaining around each thumbnail.</p>
+<p>Also notice that the upper right of the corrected thumbnail page says
+<tt class="docutils literal"><span class="pre">244x183</span> <span class="pre">(1.33:1)</span> <span class="pre">[320x240</span> <span class="pre">(1.33:1)]</span></tt>. So these thumbnails use only
+<tt class="docutils literal"><span class="pre">244</span></tt> of the total <tt class="docutils literal"><span class="pre">320</span></tt> pixel width, and only <tt class="docutils literal"><span class="pre">183</span></tt> of the total
+<tt class="docutils literal"><span class="pre">240</span></tt> pixel height (thus indicating that parts of the video have been
+cropped out while making the thumbnails). The aspect ratio has correctly
+not been changed from <tt class="docutils literal"><span class="pre">1.33</span></tt>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="howto.html">How To</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="how-skipcredits.html">Skip the video credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-changelayout.html">Change the thumbnail page layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-resizepage.html">Resize the thumbnail page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-thumbnaildir.html">Thumbnail an entire directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-skipcreditscf.html">Skip thumbnailing the credits in lots of movies</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Remove the black bars from the edges of thumbnails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-distortion.html">Fix distorted thumbnails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-multipart.html">Thumbnail a multi-part video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-dvd.html">Thumbnail an unencrypted DVD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-createscreenshots.html">Create screenshots</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trouble.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html"><strong class="command">CLAutoThumbnailer</strong> Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samplefile.html">Sample Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">To Do List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="how-distortion.html" title="Fix distorted thumbnails"
+             >next</a></li>
+        <li class="right" >
+          <a href="how-skipcreditscf.html" title="Skip thumbnailing the credits in lots of movies"
+             >previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li>
+          <li><a href="howto.html" >How To</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

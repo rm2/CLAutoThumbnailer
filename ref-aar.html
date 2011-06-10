@@ -1,0 +1,194 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Auto Aspect Ratio Adjustment &mdash; CLAutoThumbnailer v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/mydefault.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="top" title="CLAutoThumbnailer v1.0 documentation" href="index.html" />
+    <link rel="up" title="CLAutoThumbnailer Reference" href="reference.html" />
+    <link rel="next" title="Thumbnail Page Layout Modes" href="ref-layout.html" />
+    <link rel="prev" title="MPEG2 Encoded Videos" href="ref-mpeg2.html" />
+ 
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23896923-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="ref-layout.html" title="Thumbnail Page Layout Modes"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="ref-mpeg2.html" title="MPEG2 Encoded Videos"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li>
+          <li><a href="reference.html" accesskey="U"><strong class="command">CLAutoThumbnailer</strong> Reference</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="auto-aspect-ratio-adjustment">
+<h1>Auto Aspect Ratio Adjustment<a class="headerlink" href="#auto-aspect-ratio-adjustment" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference internal" href="ref-options.html#cmdoption--aar"><em class="xref std std-option">--aar</em></a> Auto Aspect Ratio adjustment option might already be
+removing the bars on a video for you. Some video files (usually
+<a class="reference internal" href="ref-mpeg2.html"><em>MPEG2 Encoded Videos</em></a>) have their “Display aspect ratio” property set to
+something different than the aspect ratio of their video frames.</p>
+<p>You can see this, for example, in the <a class="reference external" href="http://mediainfo.sourceforge.net/en">MediaInfo</a> report for the <span class="mono">MPEG2</span>
+version of <a class="reference internal" href="samplefile.html#mediainfo-his-girl-friday-mpeg"><em>His Girl Friday</em></a>:</p>
+<div class="highlight-python"><pre>Width                            : 720 pixels
+Height                           : 480 pixels
+Display aspect ratio             : 4:3</pre>
+</div>
+<p>where the video frame aspect ratio is 1.5 (720 / 480) and the Display
+aspect ratio is 1.33 (4 / 3). Compare this to the report for the
+<a class="reference internal" href="samplefile.html#mediainfo-his-girl-friday-512kb-mp4"><em>MPEG4 version</em></a>:</p>
+<div class="highlight-python"><pre>Width                            : 320 pixels
+Height                           : 240 pixels
+Display aspect ratio             : 4:3</pre>
+</div>
+<p>where the video frame aspect ratio is 1.33 (320 / 240) is the same as
+the Display aspect ratio.</p>
+<p>To see the <a class="reference internal" href="ref-options.html#cmdoption--aar"><em class="xref std std-option">--aar</em></a> option in action look at the following
+thumbnails that were generated with <tt class="docutils literal"><span class="pre">aar</span></tt> Off and On:</p>
+<table border="1" class="centered centercells noborders docutils">
+<colgroup>
+<col width="54%" />
+<col width="46%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><a class="reference external" href="_images/his_girl_friday_page0001_00_00_05_noaar.jpg"><img alt="``--aar-`` Off" src="_images/his_girl_friday_page0001_00_00_05_noaar.jpg" style="width: 278.0px; height: 255.25px;" /></a></td>
+<td><a class="reference external" href="_images/his_girl_friday_page0001_00_00_05_aar.jpg"><img alt="``--aar`` On" src="_images/his_girl_friday_page0001_00_00_05_aar.jpg" style="width: 329.5px; height: 255.25px;" /></a></td>
+</tr>
+<tr><td><strong>aar Off</strong></td>
+<td><strong>aar On</strong></td>
+</tr>
+</tbody>
+</table>
+<p>With <tt class="docutils literal"><span class="pre">aar</span></tt> Off you can see that the <span class="mono">MPEG2</span> version of &#8220;His Girl
+Friday&#8221; is indeed pillarboxed, as we expect from its MediaInfo
+report. You don&#8217;t normally notice this since most media players honor
+the display aspect ratio property and will automatically crop the video
+during playback. <strong class="command">CLAutoThumbnailer</strong> emulates this same behavior by normally running
+with <tt class="docutils literal"><span class="pre">aar</span></tt> enabled.</p>
+<p>If you look at the full-size images by clicking on the above thumbnails,
+you&#8217;ll see that the &#8220;aar Off&#8221; version says in the upper-right corner
+<tt class="docutils literal"><span class="pre">720x480</span> <span class="pre">(1.50:1)</span></tt>, which is the video frame size and its aspect
+ratio.</p>
+<p>The &#8220;aar On&#8221; version has <tt class="docutils literal"><span class="pre">640x480</span> <span class="pre">(1.33:1)</span> <span class="pre">[720x480</span> <span class="pre">(1.50:1)]</span></tt>. When
+you have two values for the frame size and aspect ratio, one inside
+square brackets, it means the thumbnail frames are taken from something
+other than the full original video frames. The dimensions inside the
+square brackets are the original dimensions, while the other numbers are
+the actual frame and aspect ratio used to create the thumbnails. Notice
+that the black bars have been removed.</p>
+<p>Basically the way the <a class="reference internal" href="ref-options.html#cmdoption--aar"><em class="xref std std-option">--aar</em></a> option works is by automatically
+calling the <a class="reference internal" href="ref-options.html#cmdoption-p"><em class="xref std std-option">-p, --crop</em></a> option for you with the video&#8217;s
+display aspect ratio.</p>
+<p>Letterboxing or pillarboxing usually occurs when the display aspect
+ratio isn&#8217;t set or is set incorrectly. Luckily, as <a class="reference internal" href="how-blackbars.html"><em>Remove the black bars from the edges of thumbnails</em></a>
+shows, it&#8217;s a (mostly) simple matter to fix this problem by using the
+<a class="reference internal" href="ref-options.html#cmdoption-p"><em class="xref std std-option">-p, --crop</em></a> option explicitly.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">How To</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trouble.html">Troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="reference.html"><strong class="command">CLAutoThumbnailer</strong> Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ref-overview.html">Overview Thumbnail Page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref-detail.html">Detail Thumbnail Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref-commandfile.html">Command Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref-multipart.html">Multi-Part Video Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref-mpeg2.html">MPEG2 Encoded Videos</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Auto Aspect Ratio Adjustment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref-layout.html">Thumbnail Page Layout Modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref-options.html">Command-line Options Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="samplefile.html">Sample Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">To Do List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="ref-layout.html" title="Thumbnail Page Layout Modes"
+             >next</a></li>
+        <li class="right" >
+          <a href="ref-mpeg2.html" title="MPEG2 Encoded Videos"
+             >previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li>
+          <li><a href="reference.html" ><strong class="command">CLAutoThumbnailer</strong> Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

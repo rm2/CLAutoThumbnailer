@@ -1,0 +1,228 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Fix distorted thumbnails &mdash; CLAutoThumbnailer v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/mydefault.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="top" title="CLAutoThumbnailer v1.0 documentation" href="index.html" />
+    <link rel="up" title="How To" href="howto.html" />
+    <link rel="next" title="Thumbnail a multi-part video" href="how-multipart.html" />
+    <link rel="prev" title="Remove the black bars from the edges of thumbnails" href="how-blackbars.html" />
+ 
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23896923-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="how-multipart.html" title="Thumbnail a multi-part video"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="how-blackbars.html" title="Remove the black bars from the edges of thumbnails"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li>
+          <li><a href="howto.html" accesskey="U">How To</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="fix-distorted-thumbnails">
+<h1>Fix distorted thumbnails<a class="headerlink" href="#fix-distorted-thumbnails" title="Permalink to this headline">¶</a></h1>
+<p>Distorted thumbnails that are squished or stretched are the result of
+videos that have the wrong <a class="reference internal" href="glossary.html#term-aspect-ratio"><em class="xref std std-term">aspect ratio</em></a>. In order to fix these
+videos you have to either know the correct aspect ratio (by looking it
+up somewhere) or try various values until you get something that looks
+right. If you&#8217;re guessing, first use one of the ratios suggested
+<a class="reference internal" href="ref-options.html#common-aspect-ratios"><em>here</em></a>.</p>
+<div class="section" id="squished-thumbnails">
+<h2>Squished Thumbnails<a class="headerlink" href="#squished-thumbnails" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center">
+<a class="reference external image-reference" href="_images/McLintock_512kb_squished_page0002_00_02_40.jpg"><img alt="&quot;Squished&quot; Thumbnails" src="_images/McLintock_512kb_squished_page0002_00_02_40.jpg" style="width: 329.5px; height: 255.25px;" /></a>
+<p class="caption">&#8220;Squished&#8221; Thumbnails</p>
+</div>
+<p>If the people in your thumbnails look too tall and skinny, in all
+likelihood your video has been been &#8220;squished&#8221;. In order to fix a
+squished video you specify an aspect ratio to the <a class="reference internal" href="ref-options.html#cmdoption-t"><em class="xref std std-option">-t, --stretch</em></a> option that is <em class="bolditalic">larger</em> (wider) than the actual video frame&#8217;s
+aspect ratio. This will stretch the thumbnails back out to give them
+their correct appearance.</p>
+<p>If you look at the full-size image of the above thumbnail page by
+clicking on it, you&#8217;ll see that it says <tt class="docutils literal"><span class="pre">320x240</span> <span class="pre">(1.33:1)</span></tt> in the
+upper-right corner, which is the video frame size and its aspect ratio.</p>
+<p>Since we need an aspect ratio that&#8217;s larger than <tt class="docutils literal"><span class="pre">1.33</span></tt>, a reasonable
+place to start is to assume that the video really has an 1.85 aspect
+ratio:</p>
+<div class="highlight-python"><pre>cd "C:\McLintock (1963)\squished"
+clatn -v- --stretch 1.85 McLintock_512kb_squished.wmv</pre>
+</div>
+<p>During the testing phase you don&#8217;t need to thumbnail the entire
+movie. Just type <tt class="kbd docutils literal"><span class="pre">Ctrl+C</span></tt> to abort <strong class="command">CLAutoThumbnailer</strong> after the first few
+Detail thumbnail pages have been created.</p>
+<div class="figure align-center">
+<a class="reference external image-reference" href="_images/McLintock_512kb_squished_ar185_page0002_00_02_00.jpg"><img alt="Squished Video Stretched to 1.85 Aspect Ratio" src="_images/McLintock_512kb_squished_ar185_page0002_00_02_00.jpg" style="width: 341.75px; height: 255.25px;" /></a>
+<p class="caption">Squished Video Stretched to 1.85 Aspect Ratio</p>
+</div>
+<p>While this is better, it still doesn&#8217;t seem quite right. If you look at
+&#8220;McLintock! (1963)&#8221;s <a class="reference external" href="http://www.imdb.com/title/tt0057298/technical">technical specifications</a> page at <a class="reference external" href="www.imdb.com">IMDB</a>, you&#8217;ll see that the Aspect Ratio is specified as
+<tt class="docutils literal"><span class="pre">2.35</span> <span class="pre">:</span> <span class="pre">1</span></tt>.</p>
+<p>Now that we know that the video&#8217;s aspect ratio is really
+2.35, use that:</p>
+<div class="highlight-python"><pre>clatn -v- --stretch 2.35 McLintock_512kb_squished.wmv</pre>
+</div>
+<div class="figure align-center">
+<a class="reference external image-reference" href="_images/McLintock_512kb_squished_ar235_page0002_00_02_30.jpg"><img alt="Squished Video Stretched to 2.35 Aspect Ratio" src="_images/McLintock_512kb_squished_ar235_page0002_00_02_30.jpg" style="width: 347.0px; height: 256.0px;" /></a>
+<p class="caption">Squished Video Stretched to 2.35 Aspect Ratio</p>
+</div>
+<p>This indeed looks much better.</p>
+<p>Also notice that the upper right of the thumbnail page now says
+<tt class="docutils literal"><span class="pre">320x240</span> <span class="pre">(2.35:1)</span> <span class="pre">[320x240</span> <span class="pre">(1.33:1)]</span></tt>. When you have two values for
+the frame size and aspect ratio &#8212; one inside square brackets &#8212; it
+means the thumbnails are created from something other than the original
+video frames. The dimensions inside the square brackets are the original
+dimensions, while the other numbers are the actual frame and aspect
+ratio used to create the thumbnails. While these thumbnails use the
+entire video frame, the aspect ratio is <tt class="docutils literal"><span class="pre">2.35</span></tt> instead of the original
+<tt class="docutils literal"><span class="pre">1.33</span></tt> (thus indicating that the video has been stretched to make the
+thumbnails).</p>
+</div>
+<div class="section" id="stretched-thumbnails">
+<h2>Stretched Thumbnails<a class="headerlink" href="#stretched-thumbnails" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center">
+<a class="reference external image-reference" href="_images/his_girl_friday_512kb_stretched_page0001_00_00_05.jpg"><img alt="&quot;Stretched&quot; Thumbnails" src="_images/his_girl_friday_512kb_stretched_page0001_00_00_05.jpg" style="width: 329.0px; height: 255.25px;" /></a>
+<p class="caption">&#8220;Stretched&#8221; Thumbnails</p>
+</div>
+<p>If the people in your thumbnails look short and fat, in all likelihood
+your video has been been &#8220;stretched&#8221;. In order to fix a stretched video
+you specify an aspect ratio to the <a class="reference internal" href="ref-options.html#cmdoption-t"><em class="xref std std-option">-t, --stretch</em></a> option
+that is <em class="bolditalic">smaller</em> (narrower) than the actual video frame&#8217;s aspect
+ratio. This will squeeze the thumbnails to give them their correct
+appearance.</p>
+<p>If you look at the full-size image of the above thumbnail page by
+clicking on it, you&#8217;ll see that it says <tt class="docutils literal"><span class="pre">320x180</span> <span class="pre">(1.78:1)</span></tt> in the
+upper-right corner, which is the video frame size and its aspect ratio.</p>
+<p>Looking at &#8220;His Girl Friday (1940)&#8221;s <a class="reference external" href="http://www.imdb.com/title/tt0032599/technical">technical specifications</a> at <a class="reference external" href="www.imdb.com">IMDB</a>, the Aspect Ratio is actually supposed to be <tt class="docutils literal"><span class="pre">1.37</span></tt>
+not <tt class="docutils literal"><span class="pre">1.78</span></tt>, so use that:</p>
+<div class="highlight-python"><pre>cd "C:\His Girl Friday (1940)\stretched"
+clatn -v- --stretch 1.37 his_girl_friday_512kb_stretched.wmv</pre>
+</div>
+<div class="figure align-center">
+<a class="reference external image-reference" href="_images/his_girl_friday_512kb_stretched_ar137_page0001_00_00_05.jpg"><img alt="Stretched Video Squeezed to 1.37 Aspect Ratio" src="_images/his_girl_friday_512kb_stretched_ar137_page0001_00_00_05.jpg" style="width: 338.5px; height: 255.25px;" /></a>
+<p class="caption">Stretched Video Squeezed to 1.37 Aspect Ratio</p>
+</div>
+<p>This looks fine, but since I made this distorted video myself using
+Microsoft Expression Encoder 4, I know that the original video&#8217;s aspect ratio was in fact,
+<tt class="docutils literal"><span class="pre">1.33</span></tt>. This just shows that you shouldn&#8217;t necessarily expect
+perfection when correcting thumbnail distortion &#8212; be satisfied with
+anything that looks good <em class="bolditalic">to you</em>.</p>
+<p>Notice that the upper right of the thumbnail page now says <tt class="docutils literal"><span class="pre">320x180</span>
+<span class="pre">(1.37:1)</span> <span class="pre">[320x180</span> <span class="pre">(1.78:1)]</span></tt>. While these thumbnails use the entire
+video frame, the aspect ratio is <tt class="docutils literal"><span class="pre">1.37</span></tt> instead of the original
+<tt class="docutils literal"><span class="pre">1.78</span></tt> (thus indicating that the video has been squeezed to make the
+thumbnails).</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="howto.html">How To</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="how-skipcredits.html">Skip the video credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-changelayout.html">Change the thumbnail page layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-resizepage.html">Resize the thumbnail page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-thumbnaildir.html">Thumbnail an entire directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-skipcreditscf.html">Skip thumbnailing the credits in lots of movies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-blackbars.html">Remove the black bars from the edges of thumbnails</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Fix distorted thumbnails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-multipart.html">Thumbnail a multi-part video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-dvd.html">Thumbnail an unencrypted DVD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-createscreenshots.html">Create screenshots</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trouble.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html"><strong class="command">CLAutoThumbnailer</strong> Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samplefile.html">Sample Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">To Do List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="how-multipart.html" title="Thumbnail a multi-part video"
+             >next</a></li>
+        <li class="right" >
+          <a href="how-blackbars.html" title="Remove the black bars from the edges of thumbnails"
+             >previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li>
+          <li><a href="howto.html" >How To</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,178 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Change the thumbnail page layout &mdash; CLAutoThumbnailer v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/mydefault.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="top" title="CLAutoThumbnailer v1.0 documentation" href="index.html" />
+    <link rel="up" title="How To" href="howto.html" />
+    <link rel="next" title="Resize the thumbnail page" href="how-resizepage.html" />
+    <link rel="prev" title="Skip the video credits" href="how-skipcredits.html" />
+ 
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23896923-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="how-resizepage.html" title="Resize the thumbnail page"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="how-skipcredits.html" title="Skip the video credits"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li>
+          <li><a href="howto.html" accesskey="U">How To</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="change-the-thumbnail-page-layout">
+<h1>Change the thumbnail page layout<a class="headerlink" href="#change-the-thumbnail-page-layout" title="Permalink to this headline">¶</a></h1>
+<p>What if you don&#8217;t like the number of rows and columns that <strong class="command">CLAutoThumbnailer</strong>
+automatically decides to create? For example, the thumbnails are a bit
+too tiny for your tastes &#8212; though personally, I like to see
+<em class="bolditalic">lot&#8217;s</em> of overview thumbs.</p>
+<p><strong class="command">CLAutoThumbnailer</strong> uses the video aspect ratio to determine whether to give
+priority to the number of rows or number of columns on a page. Normally
+Row Priority is used to specify the number of rows desired. Squarish
+videos (whose aspect ratio is less than the aspect ratio of the desired
+thumbnail page) will instead use Column Priority.</p>
+<p>Run the following command to say we want either <tt class="docutils literal"><span class="pre">9</span></tt> columns or <tt class="docutils literal"><span class="pre">9</span></tt>
+rows instead of the default <tt class="docutils literal"><span class="pre">12</span></tt>:</p>
+<div class="highlight-python"><pre>clatn -i 0 -s 0:0:59 -e 1:31:07 -n 9 "his_girl_friday_512kb.mp4"</pre>
+</div>
+<p>By examining <span class="filename">CLAutoThumbnailer.log</span> (or turning on more verbose output
+by using the <a class="reference internal" href="ref-options.html#cmdoption--debug"><em class="xref std std-option">--debug</em></a> option) we can see what <strong class="command">CLAutoThumbnailer</strong> looks at
+when determing the final layout:</p>
+<div class="highlight-python"><pre>Auto Row Priority Layout (aspect ratio 1.33 &gt;= 1.275), using 9 rows
+  1.33 aspect ratio
+  Wasted width 0.793 &gt; 0.600, increased columns:  9x9 0.000x0.251
+Generating 81 141x106 thumbnails on a 9x9 Overview page.</pre>
+</div>
+<p>Here&#8217;s the new thumbnail page:</p>
+<div class="figure align-center">
+<a class="reference external image-reference" href="_images/his_girl_friday_512kb_9col_overview.jpg"><img alt="his_girl_friday_512kb_.mpeg 9 Row Overview Thumbnail Page" src="_images/his_girl_friday_512kb_9col_overview.jpg" style="width: 653.5px; height: 509.5px;" /></a>
+<p class="caption">9 Row Overview Thumbnail Page for &#8220;His Girl Friday&#8221;</p>
+</div>
+<p>Do the same for &#8220;McLintock!&#8221; with:</p>
+<div class="highlight-python"><pre>clatn -i 0 -s 0:1:59 -e 2:06:39 -n 9 McLintock_512kb.mp4</pre>
+</div>
+<p>and <strong class="command">CLAutoThumbnailer</strong> reports:</p>
+<div class="highlight-python"><pre>Auto Row Priority Layout (aspect ratio 2.32 &gt;= 1.275), using 9 rows
+  2.32 aspect ratio
+  5 columns is good enough, wasted width 0.088 &lt;= 0.600
+  5x9 0.088x0.000
+Generating 45 246x106 thumbnails on a 5x9 Overview page.</pre>
+</div>
+<p>which results in:</p>
+<div class="figure align-center">
+<a class="reference external image-reference" href="_images/McLintock_512kb_overview_nocredits.jpg"><img alt="McLintock_512kb.mp4 9 Row Overview Thumbnail Page" src="_images/McLintock_512kb_9col_overview.jpg" style="width: 626.0px; height: 509.5px;" /></a>
+<p class="caption">9 Row Overview Thumbnail Page for &#8220;McLintock!&#8221;</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="howto.html">How To</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="how-skipcredits.html">Skip the video credits</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Change the thumbnail page layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-resizepage.html">Resize the thumbnail page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-thumbnaildir.html">Thumbnail an entire directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-skipcreditscf.html">Skip thumbnailing the credits in lots of movies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-blackbars.html">Remove the black bars from the edges of thumbnails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-distortion.html">Fix distorted thumbnails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-multipart.html">Thumbnail a multi-part video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-dvd.html">Thumbnail an unencrypted DVD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-createscreenshots.html">Create screenshots</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trouble.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html"><strong class="command">CLAutoThumbnailer</strong> Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samplefile.html">Sample Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">To Do List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="how-resizepage.html" title="Resize the thumbnail page"
+             >next</a></li>
+        <li class="right" >
+          <a href="how-skipcredits.html" title="Skip the video credits"
+             >previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li>
+          <li><a href="howto.html" >How To</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Skip thumbnailing the credits in lots of movies &mdash; CLAutoThumbnailer v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/mydefault.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="top" title="CLAutoThumbnailer v1.0 documentation" href="index.html" />
+    <link rel="up" title="How To" href="howto.html" />
+    <link rel="next" title="Remove the black bars from the edges of thumbnails" href="how-blackbars.html" />
+    <link rel="prev" title="Thumbnail an entire directory" href="how-thumbnaildir.html" />
+ 
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23896923-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="how-blackbars.html" title="Remove the black bars from the edges of thumbnails"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="how-thumbnaildir.html" title="Thumbnail an entire directory"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li>
+          <li><a href="howto.html" accesskey="U">How To</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="skip-thumbnailing-the-credits-in-lots-of-movies">
+<h1>Skip thumbnailing the credits in lots of movies<a class="headerlink" href="#skip-thumbnailing-the-credits-in-lots-of-movies" title="Permalink to this headline">¶</a></h1>
+<p>While the technique described in <a class="reference internal" href="how-thumbnaildir.html"><em>Thumbnail an entire directory</em></a> works well for
+Detail thumbnail pages, it&#8217;s not ideal for Overview pages. Without
+custom start and end thumbnailing times the Overview thumbnails will
+invariably be wasted on unneeded credit sequences &#8212; sometimes quite a
+few in these days of 10 minute long credits.</p>
+<p>The solution is to create a <a class="reference internal" href="ref-commandfile.html"><em>Command File</em></a> that
+specifies the exact thumbnailing times you want to use for each file it
+contains. The <a class="reference internal" href="ref-options.html#cmdoption-m"><em class="xref std std-option">-m, --cmddir</em></a> option helps you in this task
+by creating a starting Command File that contains entries for all video
+files that are found in a directory. It is used like so:</p>
+<div class="highlight-python"><pre>cd C:\His Girl Friday (1940)
+clatn -m .</pre>
+</div>
+<p>which reports:</p>
+<div class="highlight-python"><pre>Generating command file entries for C:\His Girl Friday (1940)\mp4
+Generating command file entries for C:\His Girl Friday (1940)\mpeg2
+Generating command file entries for C:\His Girl Friday (1940)\pillarboxed
+Generating command file entries for C:\His Girl Friday (1940)\stretched
+Command File 'C:\His Girl Friday (1940)\CLAutotn-temp.txt' created.</pre>
+</div>
+<p>and the generated <span class="filename">CLAutotn-temp.txt</span> contains:</p>
+<div class="highlight-python"><pre>#-i 0 -s 0:0:0 -e "mp4\his_girl_friday_512kb.mp4"
+-i 0 -s 0:0:0 -e "mpeg2\his_girl_friday.mpeg"
+-i 0 -s 0:0:0 -e "pillarboxed\his_girl_friday_512kb pillarboxed.wmv"
+-i 0 -s 0:0:0 -e "stretched\his_girl_friday_512kb stretched.wmv"</pre>
+</div>
+<p>The <a class="reference internal" href="ref-options.html#cmdoption-m"><em class="xref std std-option">-m, --cmddir</em></a> option creates initial entries that only
+make Overview pages because in practical terms you rarely want to
+specify custom settings for Detail pages. The exceptions are the special
+cases of letterboxed, pillarboxed, and distorted videos &#8212; discussed in
+<a class="reference internal" href="how-blackbars.html"><em>Remove the black bars from the edges of thumbnails</em></a> and <a class="reference internal" href="how-distortion.html"><em>Fix distorted thumbnails</em></a> &#8212; which typically need
+to be handled individually anyway.</p>
+<p>Notice that one line starts with a <tt class="docutils literal"><span class="pre">#</span></tt> &#8212; it will be ignored when
+processing the Command File. When generating Command Files, this is done
+for any file in a directory that seems to already have thumbnail pages
+in it.</p>
+<p>Do the same thing in the <span class="filename">C:\McLintock (1963)</span> directory:</p>
+<div class="highlight-python"><pre>cd C:\McLintock (1963)
+clatn --cmddir .
+
+Generating command file entries for C:\McLintock (1963)\letterboxed
+Generating command file entries for C:\McLintock (1963)\mp4
+Generating command file entries for C:\McLintock (1963)\mp4 512kb
+Generating command file entries for C:\McLintock (1963)\multipart
+Generating command file entries for C:\McLintock (1963)\squished
+Command File 'C:\McLintock (1963)\CLAutotn-temp.txt' created.</pre>
+</div>
+<p>and that <span class="filename">CLAutotn-temp.txt</span> will contain:</p>
+<div class="highlight-python"><pre>-i 0 -s 0:0:0 -e "letterboxed\McLintock_512kb letterboxed.wmv"
+-i 0 -s 0:0:0 -e "mp4\McLintock.mp4"
+#-i 0 -s 0:0:0 -e "mp4 512kb\McLintock_512kb.mp4"
+-i 0 -s 0:0:0 -e "multipart\McLintock part01.mp4"
+-i 0 -s 0:0:0 -e "multipart\McLintock part02.mp4"
+-i 0 -s 0:0:0 -e "multipart\McLintock part03.mp4"
+-i 0 -s 0:0:0 -e "squished\McLintock_512kb squished.wmv"</pre>
+</div>
+<p>Let&#8217;s take lines from these two files for the videos we want to process
+and merge them into a single Command File called
+<span class="filename">clautotn.txt</span>. Generated Command Files will always have video filenames
+with paths relative to the location of the Command File &#8212; this is
+normally exactly what we want (to keep the file paths smaller). For this
+particular example, however, we&#8217;ll change those to absolute paths so we
+can use the Command File from any directory.</p>
+<p>Initially, <span class="filename">clautotn.txt</span> will look like this after switching to
+absolute filepaths:</p>
+<div class="highlight-python"><pre>-i 0 -s 0:0:0 -e "C:\His Girl Friday (1940)\mp4\his_girl_friday_512kb.mp4"
+-i 0 -s 0:0:0 -e "C:\His Girl Friday (1940)\mpeg2\his_girl_friday.mpeg"
+-i 0 -s 0:0:0 -e "C:\McLintock (1963)\mp4\McLintock.mp4"
+-i 0 -s 0:0:0 -e "C:\McLintock (1963)\mp4 512kb\McLintock_512kb.mp4"</pre>
+</div>
+<p>and after adding the starting and ending times of the main part of each
+video, <span class="filename">clautotn.txt</span> contains:</p>
+<div class="highlight-python"><pre>-i 0 -s 0:0:59 -e 1:31:07 "C:\His Girl Friday (1940)\mp4\his_girl_friday_512kb.mp4"
+-i 0 -s 0:0:48 -e 1:30:57 "C:\His Girl Friday (1940)\mpeg2\his_girl_friday.mpeg"
+-i 0 -s 0:1:59 -e 2:06:39 "C:\McLintock (1963)\mp4\McLintock.mp4"
+-i 0 -s 0:1:59 -e 2:06:39 "C:\McLintock (1963)\mp4 512kb\McLintock_512kb.mp4"</pre>
+</div>
+<p>Using our Command File can be as simple as doing:</p>
+<div class="highlight-python"><pre>clatn clautotn.txt</pre>
+</div>
+<p>where the Overview thumbnails will be written to the original directory
+of each video. In this case, we want to put all the thumbnails generated
+by the Command File in the same directory, so we do:</p>
+<div class="highlight-python"><pre>mkdir MyThumbs
+clatn -o MyThumbs clautotn.txt</pre>
+</div>
+<p>Notice that the directory specified by the <a class="reference internal" href="ref-options.html#cmdoption-o"><em class="xref std std-option">-o, --outdir</em></a>
+must already exist &#8212; it will not be automatically created.</p>
+<p>The processing of our <span class="filename">clautotn.txt</span> Command File results in the
+following messages:</p>
+<div class="highlight-python"><pre>Processing command file: clautotn.txt
+Processing C:\His Girl Friday (1940)\mp4\his_girl_friday_512kb.mp4 ...
+0:00:11 Total time to create AVFileSet.
+Thumbnails Range   0:00:59.000 -&gt; 1:31:07.000
+Thumbnail Duration 1:30:08.000 (Total 1:31:44.521)
+OutputDirectory is "MyThumbs"
+Generating 144 104x78 thumbnails on a 12x12 Overview page.
+0:00:12 to create Overview thumbnails.
+144 thumbnails created. 0.09 seconds / thumbnail.
+Detail page thumbnails skipped.
+0:00:24 overall time to process his_girl_friday_512kb.mp4.
+
+Processing C:\His Girl Friday (1940)\mpeg2\his_girl_friday.mpeg ...
+0:01:16 Total time to create AVFileSet.
+Thumbnails Range   0:00:48.000 -&gt; 1:30:57.000
+Thumbnail Duration 1:30:09.000 (Total 1:31:44.048)
+OutputDirectory is "MyThumbs"
+Auto adjusting aspect ratio from 1.500 to 1.333
+Generating 144 104x78 thumbnails on a 12x12 Overview page.
+0:01:56 to create Overview thumbnails.
+144 thumbnails created. 0.81 seconds / thumbnail.
+Detail page thumbnails skipped.
+0:03:12 overall time to process his_girl_friday.mpeg.
+
+Processing C:\McLintock (1963)\mp4\McLintock.mp4 ...
+0:00:03 Total time to create AVFileSet.
+Thumbnails Range   0:01:59.000 -&gt; 2:06:39.000
+Thumbnail Duration 2:04:40.000 (Total 2:06:47.257)
+OutputDirectory is "MyThumbs"
+Generating 84 181x78 thumbnails on a 7x12 Overview page.
+0:00:21 to create Overview thumbnails.
+84 thumbnails created. 0.26 seconds / thumbnail.
+Detail page thumbnails skipped.
+0:00:25 overall time to process McLintock.mp4.
+
+Processing C:\McLintock (1963)\mp4 512kb\McLintock_512kb.mp4 ...
+0:00:02 Total time to create AVFileSet.
+Thumbnails Range   0:01:59.000 -&gt; 2:06:39.000
+Thumbnail Duration 2:04:40.000 (Total 2:06:47.214)
+OutputDirectory is "MyThumbs"
+Generating 84 181x78 thumbnails on a 7x12 Overview page.
+0:00:09 to create Overview thumbnails.
+84 thumbnails created. 0.11 seconds / thumbnail.
+Detail page thumbnails skipped.
+0:00:12 overall time to process McLintock_512kb.mp4.
+
+0:04:14 Total time.</pre>
+</div>
+<p>and looking in <span class="filename">C:\His Girl Friday (1940)\MyThumbs\</span>, we do indeed
+see the following files:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">his_girl_friday_512kb_overview</span><span class="o">.</span><span class="n">jpg</span>
+<span class="n">his_girl_friday_overview</span><span class="o">.</span><span class="n">jpg</span>
+<span class="n">McLintock_overview</span><span class="o">.</span><span class="n">jpg</span>
+<span class="n">McLintock_512kb_overview</span><span class="o">.</span><span class="n">jpg</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="howto.html">How To</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="how-skipcredits.html">Skip the video credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-changelayout.html">Change the thumbnail page layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-resizepage.html">Resize the thumbnail page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-thumbnaildir.html">Thumbnail an entire directory</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Skip thumbnailing the credits in lots of movies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-blackbars.html">Remove the black bars from the edges of thumbnails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-distortion.html">Fix distorted thumbnails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-multipart.html">Thumbnail a multi-part video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-dvd.html">Thumbnail an unencrypted DVD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-createscreenshots.html">Create screenshots</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trouble.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html"><strong class="command">CLAutoThumbnailer</strong> Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samplefile.html">Sample Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">To Do List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="how-blackbars.html" title="Remove the black bars from the edges of thumbnails"
+             >next</a></li>
+        <li class="right" >
+          <a href="how-thumbnaildir.html" title="Thumbnail an entire directory"
+             >previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li>
+          <li><a href="howto.html" >How To</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

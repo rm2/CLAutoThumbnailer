@@ -1,0 +1,188 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Create screenshots &mdash; CLAutoThumbnailer v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/mydefault.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="top" title="CLAutoThumbnailer v1.0 documentation" href="index.html" />
+    <link rel="up" title="How To" href="howto.html" />
+    <link rel="next" title="FAQ – Frequently Asked Questions" href="faq.html" />
+    <link rel="prev" title="Thumbnail an unencrypted DVD" href="how-dvd.html" />
+ 
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23896923-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="faq.html" title="FAQ – Frequently Asked Questions"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="how-dvd.html" title="Thumbnail an unencrypted DVD"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li>
+          <li><a href="howto.html" accesskey="U">How To</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="create-screenshots">
+<h1>Create screenshots<a class="headerlink" href="#create-screenshots" title="Permalink to this headline">¶</a></h1>
+<p><strong class="command">CLAutoThumbnailer</strong> is designed to make thumbnail <em class="bolditalic">pages</em> not screenshots (frame
+grabs) of individual video frames. If you want to create screenshots,
+you&#8217;re best bet is to use <a class="reference external" href="http://www.ffmpeg.org/">ffmpeg</a>. For
+example, the following command:</p>
+<div class="highlight-python"><pre>ffmpeg -i his_girl_friday_512kb.mp4 -r 1 -s 320x240 -ss 00:02:00 -t 60 -f image2 thumbs%08d.jpg</pre>
+</div>
+<p>will generate 60 seconds of screenshots at 1 screenshot per second,
+starting from 2 minutes into <span class="filename">his_girl_friday_512kb.mp4</span>.</p>
+<p>The analogous operation with <strong class="command">CLAutoThumbnailer</strong> would be:</p>
+<div class="highlight-python"><pre>clatn -i 1 -s 0:2:00 -e 0:2:59 -v- -R 1 -C 1 --layout 1 -w 326 -h 281 -l 0 "his_girl_friday_512kb.mp4"</pre>
+</div>
+<p>where you have to explicitly say you want only one column and one row by
+specifying <tt class="docutils literal"><span class="pre">-R</span> <span class="pre">1</span> <span class="pre">-C</span> <span class="pre">1</span> <span class="pre">--layout</span> <span class="pre">1</span></tt>, <tt class="docutils literal"><span class="pre">-w</span> <span class="pre">326</span> <span class="pre">-h</span> <span class="pre">281</span></tt> gives a thumbnail
+width and height of 320x240 after taking into account the margins,
+border, and header line, and <tt class="docutils literal"><span class="pre">-l</span> <span class="pre">0</span></tt> turns off the timestamps. This
+results in the following messages:</p>
+<div class="highlight-python"><pre>Processing C:\His Girl Friday (1940)\mp4\his_girl_friday_512kb.mp4 ...
+0:00:11 Total time to create AVFileSet.
+Thumbnails Range   0:02:00.000 -&gt; 0:02:59.000
+Thumbnail Duration 0:00:59.000 (Total 1:31:44.521)
+Overview page skipped.
+Generating 60 320x240 thumbnails every 1 seconds on 60 1x1 Detail pages.
+0:00:11 to generate Detail page thumbnails.
+60 thumbnails created. 0.20 seconds / thumbnail.
+0:00:23 overall time to process his_girl_friday_512kb.mp4.
+
+0:00:23 Total time.</pre>
+</div>
+<p>with sample thumbs that look like:</p>
+<div class="figure align-center">
+<img alt="Sample screenshot 1" src="_images/his_girl_friday_512kb_page0022_00_02_21.jpg" />
+<p class="caption">Sample screenshot 1</p>
+</div>
+<div class="figure align-center">
+<img alt="Sample screenshot 2" src="_images/his_girl_friday_512kb_page0025_00_02_24.jpg" />
+<p class="caption">Sample screenshot 2</p>
+</div>
+<p>where <strong class="command">CLAutoThumbnailer</strong> has a problem since the thumbnail page isn&#8217;t wide enough
+to contain the information it displays on its header line.</p>
+<p>If you don&#8217;t mind doubling the dimension of your screenshots, you&#8217;ll get
+somewhat better results for tiny videos by doing:</p>
+<div class="highlight-python"><pre>clatn -i 1 -s 0:2:00 -e 0:2:59 -v- -R 1 -C 1 --layout 1 -w 646 -h 521 -l 0 "his_girl_friday_512kb.mp4"</pre>
+</div>
+<div class="figure align-center">
+<img alt="2x Sample screenshot 1" src="_images/his_girl_friday_512kb_2x_page0022_00_02_21.jpg" />
+<p class="caption">2x Sample screenshot 1</p>
+</div>
+<div class="figure align-center">
+<img alt="2x Sample screenshot 2" src="_images/his_girl_friday_512kb_2x_page0025_00_02_24.jpg" />
+<p class="caption">2x Sample screenshot 2</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="howto.html">How To</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="how-skipcredits.html">Skip the video credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-changelayout.html">Change the thumbnail page layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-resizepage.html">Resize the thumbnail page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-thumbnaildir.html">Thumbnail an entire directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-skipcreditscf.html">Skip thumbnailing the credits in lots of movies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-blackbars.html">Remove the black bars from the edges of thumbnails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-distortion.html">Fix distorted thumbnails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-multipart.html">Thumbnail a multi-part video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-dvd.html">Thumbnail an unencrypted DVD</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Create screenshots</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trouble.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html"><strong class="command">CLAutoThumbnailer</strong> Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samplefile.html">Sample Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">To Do List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="faq.html" title="FAQ – Frequently Asked Questions"
+             >next</a></li>
+        <li class="right" >
+          <a href="how-dvd.html" title="Thumbnail an unencrypted DVD"
+             >previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li>
+          <li><a href="howto.html" >How To</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

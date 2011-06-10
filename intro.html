@@ -1,0 +1,291 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Introduction &mdash; CLAutoThumbnailer v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/mydefault.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="top" title="CLAutoThumbnailer v1.0 documentation" href="index.html" />
+    <link rel="next" title="Quick Start" href="quickstart.html" />
+    <link rel="prev" title="CLAutoThumbnailer Documentation" href="index.html" />
+ 
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23896923-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="quickstart.html" title="Quick Start"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="index.html" title="CLAutoThumbnailer Documentation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p><strong class="command">CLAutoThumbnailer</strong> is a command-line program that makes it easy to generate nicely
+sized thumbnails of a video file (or even entire directories of video
+files). Instead of having to experiment with the number of columns and
+rows until you get thumbnails that are not too small or too large,
+<strong class="command">CLAutoThumbnailer</strong> will do its best to figure this out for you automatically.</p>
+<p>You specify the number of rows (or columns) of thumbnails you want along
+with the dimensions of the screen you&#8217;ll be using to view the thumbnail
+pages &#8212; or just use the defaults &#8212; and <strong class="command">CLAutoThumbnailer</strong> will do the rest. It
+automatically chooses the best number of columns (or rows) that will
+fit.</p>
+<p>It can create the typical <a class="reference internal" href="ref-overview.html"><em>Overview Thumbnail Page</em></a> that has thumbnails of an
+entire video on a single page. In addition, it can also create as many
+<a class="reference internal" href="ref-detail.html"><em>Detail Thumbnail Pages</em></a> as required to have thumbnails made every set interval
+(for example, every 60 seconds).</p>
+<table border="1" class="centered centercells noborders docutils">
+<colgroup>
+<col width="52%" />
+<col width="48%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><a class="reference internal" href="_images/his_girl_friday_512kb_overview_9x9.jpg"><img alt="over1" src="_images/his_girl_friday_512kb_overview_9x9.jpg" style="width: 261.4px; height: 203.8px;" /></a></td>
+<td><a class="reference internal" href="_images/his_girl_friday_512kb_page0001_00_00_05.jpg"><img alt="detail1" src="_images/his_girl_friday_512kb_page0001_00_00_05.jpg" style="width: 263.6px; height: 204.2px;" /></a></td>
+</tr>
+<tr><td><a class="reference internal" href="_images/McLintock_512kb_overview.jpg"><img alt="over2" src="_images/McLintock_512kb_overview.jpg" style="width: 259.4px; height: 202.6px;" /></a></td>
+<td><a class="reference internal" href="_images/McLintock_page0002_00_02_30.jpg"><img alt="detail2" src="_images/McLintock_page0002_00_02_30.jpg" style="width: 274.0px; height: 204.8px;" /></a></td>
+</tr>
+<tr><td><strong>Overview thumbnail pages</strong></td>
+<td><strong>Detail thumbnail pages</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Only in this way is it possible to process entire directories of video
+files and still get nicely sized thumbs for all of them. This is
+especially true if your collection contains videos of different
+<a class="reference internal" href="glossary.html#term-aspect-ratio"><em class="xref std std-term">aspect ratios</em></a> such as full-screen 1.33 (4:3),
+high-definition 1.77 (16:9), wide-screen DVD 2.35, or something
+in-between. Without automatic row/column determination, most of those
+types of files will come out with badly sized thumbnail pages.</p>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Allows fully <a class="reference internal" href="ref-layout.html"><em>&#8220;automatic&#8221; operation</em></a> based on the
+video <a class="reference internal" href="glossary.html#term-aspect-ratio"><em class="xref std std-term">aspect ratio</em></a> but is also customizable.</p>
+</li>
+<li><p class="first">Can generate an <a class="reference internal" href="ref-overview.html"><em>Overview</em></a> thumbnail page of an
+entire video.</p>
+</li>
+<li><p class="first">Can generate <a class="reference internal" href="ref-detail.html"><em>Detail</em></a> thumbnail pages where the
+thumbnails are created using a specified time interval.</p>
+</li>
+<li><p class="first">Can process <a class="reference internal" href="how-thumbnaildir.html"><em>entire directories</em></a> (and
+sub-directories).</p>
+</li>
+<li><p class="first">Can process <a class="reference internal" href="how-multipart.html"><em>multi-part video files</em></a> (like
+<a class="reference internal" href="how-dvd.html"><em>DVD .vob sets</em></a>) as a single long video.</p>
+</li>
+<li><p class="first">Allows setting <a class="reference internal" href="how-skipcredits.html"><em>starting and ending times</em></a> for
+thumbnails.</p>
+</li>
+<li><p class="first">Allows cropping to <a class="reference internal" href="how-blackbars.html"><em>remove black bars</em></a> and
+stretching to <a class="reference internal" href="how-distortion.html"><em>fix distortion</em></a>.</p>
+</li>
+<li><p class="first">Supports <a class="reference internal" href="how-skipcreditscf.html"><em>Command Files</em></a> for batch processing
+of files requiring custom settings.</p>
+</li>
+<li><p class="first">Allows creation of thumbnails at frequent intervals (sub-second) while
+still preserving thumbnail time accuracy (though some formats are
+better than others at this).</p>
+</li>
+<li><p class="first">Is fully documented.</p>
+</li>
+<li><p class="first">Has fully commented C# source code with documentation project files
+for <a class="reference external" href="http://www.doxygen.org/">Doxygen</a> and <a class="reference external" href="http://shfb.codeplex.com/">Sandcastle Help File
+Builder</a>. However, now that I&#8217;m done with
+the initial release I probably need to refactor various classes.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Knowledge of how to enter commands in a Windows Command Prompt window.</p>
+</li>
+<li><p class="first">The free Microsoft Expression Encoder 4 with Service Pack 1 (SP1)
+which can be downloaded from <a class="reference external" href="http://www.microsoft.com/expression/service-packs/Encoder.aspx">here</a> or
+<a class="reference external" href="http://www.microsoft.com/expression/products/EncoderPro_Overview.aspx">Microsoft Expression Encoder 4 Pro</a></p>
+</li>
+<li><p class="first">The <a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=9CFB2D51-5FF4-4491-B0E5-B386F32C0992">Microsoft .NET Framework 4.0 runtime</a>.</p>
+</li>
+<li><p class="first"><a class="reference internal" href="glossary.html#term-codec"><em class="xref std std-term">Video codecs</em></a> for the video types you want to generate
+thumbnails for. If you can play your videos using Windows Media Player
+you probably already have all the codecs you need. Otherwise, I
+recommend the <a class="reference external" href="http://www.codecguide.com/about_kl.htm">K-Lite Codec Pack</a>.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="downloads">
+<h2>Downloads<a class="headerlink" href="#downloads" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="binary-releases">
+<h3>Binary Releases<a class="headerlink" href="#binary-releases" title="Permalink to this headline">¶</a></h3>
+<p>Binary executables for <strong class="command">CLAutoThumbnailer</strong> are available from <a class="reference external" href="http://www.github.com">GitHub</a>.  You download either a <a class="reference external" href="https://github.com/downloads/rm2/CLAutoThumbnailer/CLAutoThumbnailerSetup-v1.0-20110610.msi">standard installer</a>
+(<span class="filename">CLAutoThumbnailerSetup.msi</span>) or a <a class="reference external" href="https://github.com/downloads/rm2/CLAutoThumbnailer/CLAutoThumbnailerSetup-v1.0-20110610.zip">zip archive</a>
+(<span class="filename">CLAutoThumbnailer.zip</span>).</p>
+</div>
+<div class="section" id="source-code">
+<h3>Source Code<a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h3>
+<p>The C# source code and Visual Studio 2010 project files for <strong class="command">CLAutoThumbnailer</strong> are
+available on <a class="reference external" href="http://www.github.com">GitHub</a> either for <a class="reference external" href="https://github.com/rm2/CLAutoThumbnailer">browsing</a> or <a class="reference external" href="https://github.com/rm2/CLAutoThumbnailer/zipball/master">download</a>.</p>
+</div>
+<div class="section" id="sphinx-restructuredtext-documentation">
+<h3>Sphinx reStructuredText Documentation<a class="headerlink" href="#sphinx-restructuredtext-documentation" title="Permalink to this headline">¶</a></h3>
+<p>The Sphinx reStructuredText documentation files for <strong class="command">CLAutoThumbnailer</strong> are
+available on <a class="reference external" href="http://www.github.com">GitHub</a> either for <a class="reference external" href="https://github.com/rm2/CLAutoThumbnailerDoc">browsing</a> or <a class="reference external" href="https://github.com/rm2/CLAutoThumbnailerDoc/zipball/master">download</a>.</p>
+</div>
+</div>
+<div class="section" id="installation">
+<span id="installation-instructions"></span><h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Download and install the free <a class="reference external" href="http://www.microsoft.com/expression/service-packs/Encoder.aspx">Microsoft Expression Encoder 4 with
+Service Pack 1 (SP1)</a> or
+<a class="reference external" href="http://www.microsoft.com/expression/products/EncoderPro_Overview.aspx">Microsoft Expression Encoder 4 Pro</a>.</p>
+</li>
+<li><p class="first">By default Microsoft Expression Encoder 4 enables all video filters. This may work fine
+initially but eventually you should see <a class="reference internal" href="trouble.html#ee-video-filters"><em>Microsoft Expression Encoder 4’s Video Filter List</em></a> and
+learn how to fine tune this. 99% of any problems you have with
+<strong class="command">CLAutoThumbnailer</strong> will be the result of this (and the rest are from broken
+video files).</p>
+</li>
+<li><p class="first">If you downloaded <span class="filename">CLAutoThumbnailerSetup.msi</span> then just run it (if
+you&#8217;ve previously installed <strong class="command">CLAutoThumbnailer</strong> you first have to uninstall
+it). The setup program will automatically download the Microsoft .NET
+Framework 4.0 runtime if it determines it isn&#8217;t installed on your
+system.</p>
+<p>Otherwise, if you got <span class="filename">CLAutoThumbnailer.zip</span>, unpack it to a folder
+of your choice. Also be sure to manually install the <a class="reference external" href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=9CFB2D51-5FF4-4491-B0E5-B386F32C0992">Microsoft .NET
+Framework 4.0 runtime</a>
+if you haven&#8217;t already.</p>
+</li>
+</ol>
+<ol class="arabic" id="editing-clatn" start="4">
+<li><p class="first">If necessary edit <span class="filename">&lt;InstallDir&gt;\clautn.bat</span> to point at the correct
+location of <span class="filename">CLAutoThumbnailer.exe</span>. It assumes that&#8217;s in
+<span class="filename">C:\Program Files\CLAutoThumbnailer</span>.</p>
+</li>
+</ol>
+<ol class="arabic" id="copying-clatn" start="5">
+<li><p class="first">Copy <span class="filename">&lt;InstallDir&gt;\clautn.bat</span> to some folder that is in the command
+path specified by the <a class="reference external" href="http://msdn.microsoft.com/en-us/library/bb490963.aspx">PATH</a>
+<a class="reference external" href="http://support.microsoft.com/kb/310519">environment variable</a>.</p>
+</li>
+</ol>
+<p>To then run <strong class="command">CLAutoThumbnailer</strong>, all you have to do is open up a Command Prompt
+window, switch to a folder that has a video file in it, and type:</p>
+<div class="highlight-python"><pre>clatn videofile.ext</pre>
+</div>
+<p>See the following <a class="reference internal" href="quickstart.html"><em>Quick Start</em></a> section for more details.</p>
+</div>
+<div class="section" id="uninstallation">
+<h2>Uninstallation<a class="headerlink" href="#uninstallation" title="Permalink to this headline">¶</a></h2>
+<p>Just use the Control Panel&#8217;s &#8220;Add or Remove Programs&#8221; dialog box and
+remove <tt class="docutils literal"><span class="pre">CLAutoThumbnailer</span></tt>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#features">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#downloads">Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#uninstallation">Uninstallation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">How To</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trouble.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html"><strong class="command">CLAutoThumbnailer</strong> Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samplefile.html">Sample Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">To Do List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="quickstart.html" title="Quick Start"
+             >next</a></li>
+        <li class="right" >
+          <a href="index.html" title="CLAutoThumbnailer Documentation"
+             >previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

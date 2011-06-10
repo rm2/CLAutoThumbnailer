@@ -1,0 +1,266 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Thumbnail an entire directory &mdash; CLAutoThumbnailer v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/mydefault.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="top" title="CLAutoThumbnailer v1.0 documentation" href="index.html" />
+    <link rel="up" title="How To" href="howto.html" />
+    <link rel="next" title="Skip thumbnailing the credits in lots of movies" href="how-skipcreditscf.html" />
+    <link rel="prev" title="Resize the thumbnail page" href="how-resizepage.html" />
+ 
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23896923-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="how-skipcreditscf.html" title="Skip thumbnailing the credits in lots of movies"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="how-resizepage.html" title="Resize the thumbnail page"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li>
+          <li><a href="howto.html" accesskey="U">How To</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="thumbnail-an-entire-directory">
+<h1>Thumbnail an entire directory<a class="headerlink" href="#thumbnail-an-entire-directory" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="basic-operation">
+<h2>Basic operation<a class="headerlink" href="#basic-operation" title="Permalink to this headline">¶</a></h2>
+<p>Thumbnailing all the videos in a directory (including its
+sub-directories) is easy, just use the <a class="reference internal" href="ref-options.html#cmdoption-d"><em class="xref std std-option">-d, --directory</em></a>
+option. For example, if your directories were laid out as mentioned in
+the <a class="reference internal" href="samplefile.html"><em>Sample Files</em></a> section, then to thumbnail the entire <span class="filename">His Girl
+Friday (1940)</span> directory, do:</p>
+<div class="highlight-python"><pre>cd C:\His Girl Friday (1940)
+clatn -d .</pre>
+</div>
+<p>This would automatically generate thumbnails for:</p>
+<div class="highlight-python"><pre>C:\His Girl Friday (1940)\mp4\his_girl_friday_512kb.mp4
+C:\His Girl Friday (1940)\mpeg2\his_girl_friday.mpeg
+C:\His Girl Friday (1940)\pillarboxed\his_girl_friday_512kb pillarboxed.wmv
+C:\His Girl Friday (1940)\stretched\his_girl_friday_512kb stretched.wmv</pre>
+</div>
+<p><strong class="command">CLAutoThumbnailer</strong> will normally put the generated thumbnail pages in the original
+directory of each video file. This is almost always what you want for
+Detail thumbnail pages. It is also why it&#8217;s better to put each video
+file in its own directory (with the exception of <a class="reference internal" href="ref-multipart.html"><em>Multi-Part Video Files</em></a>).
+The <a class="reference internal" href="ref-options.html#cmdoption--subdir"><em class="xref std std-option">--subdir</em></a> option can instead be used to write thumbnail
+pages to a specified sub-directory.</p>
+<p>The <a class="reference internal" href="ref-options.html#cmdoption-d"><em class="xref std std-option">-d, --directory</em></a> option will skip processing
+directories that have filenames that match <span class="filename">*_overview.jpg</span>,
+<span class="filename">*_pageNNNN_NN_NN_NN.jpg</span>, or <span class="filename">*_pageNNNN.jpg</span>. This means you have to
+delete any such files if you want to reprocess a directory. It also
+means you can manually skip certain directories by creating a dummy file
+called <span class="filename">skipthisdirectory_overview.jpg</span> in them (or something like
+this).</p>
+<p>If the <a class="reference internal" href="ref-options.html#cmdoption--subdir"><em class="xref std std-option">--subdir</em></a> option is a non-empty string then the presence
+of a sub-directory with that name will indicate that the parent
+directory should be skipped.</p>
+<p>Checking for already created thumbnails only affects <a class="reference internal" href="ref-options.html#cmdoption-d"><em class="xref std std-option">-d,
+--directory</em></a> option processing. If you explicitly list a file in
+the arguments to <strong class="command">CLAutoThumbnailer</strong> it will always be thumbnailed, regardless of
+the presence of previously generated thumbnails (which will be silently
+overwritten).</p>
+<p>In our case, we really don&#8217;t want to automatically process the
+<span class="filename">pillarboxed</span> or <span class="filename">stretched</span> sub-directories (since those videos will
+need special handling). Therefore create the following dummy files (they
+can be empty text files):</p>
+<div class="highlight-python"><pre>C:\His Girl Friday (1940)\pillarboxed\skipthisdirectory_overview.jpg
+C:\His Girl Friday (1940)\stretched\skipthisdirectory_overview.jpg</pre>
+</div>
+<p>Running <tt class="docutils literal"><span class="pre">clatn</span> <span class="pre">-d</span> <span class="pre">.</span></tt> then results in:</p>
+<div class="highlight-python"><pre>Processing directory C:\His Girl Friday (1940)\mp4
+Processing C:\His Girl Friday (1940)\mp4\his_girl_friday_512kb.mp4 ...
+0:00:11 Total time to create AVFileSet.
+Thumbnails Range   0:00:05.000 -&gt; 1:31:39.521
+Thumbnail Duration 1:31:34.521 (Total 1:31:44.521)
+Generating 144 104x78 thumbnails on a 12x12 Overview page.
+0:00:12 to create Overview thumbnails.
+144 thumbnails created. 0.09 seconds / thumbnail.
+Generating 552 325x244 thumbnails every 10 seconds on 35 4x4 Detail pages.
+0:00:48 to generate Detail page thumbnails.
+551 thumbnails created. 0.09 seconds / thumbnail.
+0:01:13 overall time to process his_girl_friday_512kb.mp4.
+
+Done processing directory C:\His Girl Friday (1940)\mp4
+0:01:13 Total time.
+
+Processing directory C:\His Girl Friday (1940)\mpeg2
+Processing C:\His Girl Friday (1940)\mpeg2\his_girl_friday.mpeg ...
+0:01:14 Total time to create AVFileSet.
+Thumbnails Range   0:00:05.000 -&gt; 1:31:39.048
+Thumbnail Duration 1:31:34.048 (Total 1:31:44.048)
+Auto adjusting aspect ratio from 1.500 to 1.333
+Generating 144 104x78 thumbnails on a 12x12 Overview page.
+0:02:06 to create Overview thumbnails.
+144 thumbnails created. 0.88 seconds / thumbnail.
+Generating 552 325x244 thumbnails every 10 seconds on 35 4x4 Detail pages.
+0:08:22 to generate Detail page thumbnails.
+551 thumbnails created. 0.91 seconds / thumbnail.
+0:11:44 overall time to process his_girl_friday.mpeg.
+
+Done processing directory C:\His Girl Friday (1940)\mpeg2
+0:11:44 Total time.
+
+C:\His Girl Friday (1940)\pillarboxed already contains thumbnails.
+C:\His Girl Friday (1940)\stretched already contains thumbnails.
+0:12:57 Total time.</pre>
+</div>
+<p>During the initial processing of <span class="filename">his_girl_friday.mpeg</span>, you&#8217;ll see an
+additional &#8220;% Indexing&#8221; message (actually this always happens but is
+usually too quick to see). This is normal for <a class="reference internal" href="ref-mpeg2.html"><em>MPEG2 videos</em></a>.</p>
+<p><strong class="command">CLAutoThumbnailer</strong> reports the time to thumbnail each file, each directory, and the
+total time for the entire command. For directories with lots of videos,
+be warned that this can easily take hours to complete.</p>
+<p>Run <tt class="docutils literal"><span class="pre">clatn</span> <span class="pre">-d</span> <span class="pre">.</span></tt> again to see the effect of directory skipping:</p>
+<div class="highlight-python"><pre>C:\His Girl Friday (1940)\mp4 already contains thumbnails.
+C:\His Girl Friday (1940)\mpeg2 already contains thumbnails.
+C:\His Girl Friday (1940)\pillarboxed already contains thumbnails.
+C:\His Girl Friday (1940)\stretched already contains thumbnails.
+0:00:00 Total time.</pre>
+</div>
+<p>To only generate Detail thumbnail pages for a directory (because you&#8217;re
+going to later create Overview pages with custom time ranges as
+discussed in <a class="reference internal" href="how-skipcreditscf.html"><em>Skip thumbnailing the credits in lots of movies</em></a>) do:</p>
+<div class="highlight-python"><pre>clatn -v- -d .</pre>
+</div>
+</div>
+<div class="section" id="summarizing-video-directories">
+<h2>Summarizing video directories<a class="headerlink" href="#summarizing-video-directories" title="Permalink to this headline">¶</a></h2>
+<p>You can summarize an entire directory of videos by putting all its
+Overview thumbnails in one directory. You do this by using the
+<a class="reference internal" href="ref-options.html#cmdoption-o"><em class="xref std std-option">-o, --outdir</em></a> option:</p>
+<div class="highlight-python"><pre>mkdir MyThumbs
+clatn -i 0 -o MyThumbs -d .</pre>
+</div>
+<p>which will put Overview thumbnails for all videos within the current
+working directory in the <span class="filename">MyThumbs</span> subdirectory. Notice that the
+directory specified by the <a class="reference internal" href="ref-options.html#cmdoption-o"><em class="xref std std-option">-o, --outdir</em></a> must already
+exist &#8212; it will not be automatically created.</p>
+<div class="admonition-todo admonition " id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">Fix to take into account presence of overview thumbnail page. It
+would be nice if we only generate thumbs to <span class="filename">MyThumbs</span> if they aren&#8217;t
+already there.</p>
+</div>
+</div>
+<div class="section" id="what-s-a-video-file">
+<h2>What&#8217;s a video file?<a class="headerlink" href="#what-s-a-video-file" title="Permalink to this headline">¶</a></h2>
+<p>See the <a class="reference internal" href="ref-options.html#cmdoption--exts"><em class="xref std std-option">--exts</em></a> option for how to control which extensions the
+<a class="reference internal" href="ref-options.html#cmdoption-d"><em class="xref std std-option">-d, --directory</em></a> considers video files.</p>
+<p>By default, video files smaller than 100MB are skipped during directory
+processing. The <a class="reference internal" href="ref-options.html#cmdoption--minsize"><em class="xref std std-option">--minsize</em></a> option controls how big a video file
+has to be to be thumbnailed. Set it to <tt class="docutils literal"><span class="pre">0</span></tt> to disable file size
+checking during directory processing.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="howto.html">How To</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="how-skipcredits.html">Skip the video credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-changelayout.html">Change the thumbnail page layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-resizepage.html">Resize the thumbnail page</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Thumbnail an entire directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-skipcreditscf.html">Skip thumbnailing the credits in lots of movies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-blackbars.html">Remove the black bars from the edges of thumbnails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-distortion.html">Fix distorted thumbnails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-multipart.html">Thumbnail a multi-part video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-dvd.html">Thumbnail an unencrypted DVD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-createscreenshots.html">Create screenshots</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trouble.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html"><strong class="command">CLAutoThumbnailer</strong> Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samplefile.html">Sample Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">To Do List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="how-skipcreditscf.html" title="Skip thumbnailing the credits in lots of movies"
+             >next</a></li>
+        <li class="right" >
+          <a href="how-resizepage.html" title="Resize the thumbnail page"
+             >previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li>
+          <li><a href="howto.html" >How To</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

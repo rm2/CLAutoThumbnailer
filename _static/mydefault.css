@@ -1,0 +1,114 @@
+@import url("default.css");
+
+div.body 
+    {
+    font-family: 'Droid Serif', Georgia, serif;
+    }
+
+div.body h1, 
+div.body h2, 
+div.body h3, 
+div.body h4, 
+div.body h5, 
+div.body h6
+    {
+    font-family: 'Droid Sans', sans-serif;
+    }
+
+div.body p,
+div.body dd,
+div.body li 
+    {
+    text-align: left;
+    }
+
+div.body div.contents p
+    {
+    margin: 0;
+    }
+
+pre 
+    {
+    padding-left: 1em;
+    padding-right: 1em;
+
+    font-family: 'Droid Sans Mono', monospace;
+    white-space: pre-wrap;
+    }
+
+.caption
+    {
+    font-weight: bold;
+    margin-bottom: 1.5em;
+    }
+
+table.centered 
+    {
+    margin-left: auto;
+    margin-right: auto;
+    }
+
+table.centercells td,
+table.centercells th
+    {
+    text-align: center;
+    vertical-align: middle;
+    }
+
+table caption
+    {
+    font-weight: bold;
+    margin-bottom: 0.50em;
+    }
+
+table.noborders td
+    {
+    border-style: hidden;
+    padding: 0.5em;
+    }
+
+em.bolditalic
+    {
+    font-weight: bold;
+    }
+
+.filename
+    {
+    font-family: 'Droid Sans Mono', monospace;
+    }
+
+.mono
+    {
+    font-family: 'Droid Sans Mono', monospace;
+    }
+
+.optionarg
+    {
+    font-style: italic;
+    }
+
+.command
+    {
+    font-family: 'Droid Sans', sans-serif;
+    }
+
+.kbd
+    {
+    font-family: 'Droid Sans Mono', monospace;
+    white-space: pre-wrap;
+    padding: 0 1px 0 1px;
+    }
+
+em.guilabel 
+    {
+    font-family: 'Droid Sans', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    }
+
+em.menuselection 
+    {
+    font-family: 'Droid Sans', sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    }

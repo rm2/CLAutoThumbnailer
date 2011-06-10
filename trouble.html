@@ -1,0 +1,399 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Troubleshooting &mdash; CLAutoThumbnailer v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/mydefault.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="top" title="CLAutoThumbnailer v1.0 documentation" href="index.html" />
+    <link rel="next" title="CLAutoThumbnailer Reference" href="reference.html" />
+    <link rel="prev" title="FAQ – Frequently Asked Questions" href="faq.html" />
+ 
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23896923-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="reference.html" title="CLAutoThumbnailer Reference"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="faq.html" title="FAQ – Frequently Asked Questions"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="troubleshooting">
+<h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul>
+<li><p class="first"><a class="reference internal" href="#dealing-with-codecs" id="id8">Dealing with Codecs</a></p>
+<ul>
+<li><p class="first"><a class="reference internal" href="#understanding-codec-basics" id="id9">Understanding Codec Basics</a></p>
+</li>
+<li><p class="first"><a class="reference internal" href="#ees-video-filter-list" id="id10">Microsoft Expression Encoder 4’s Video Filter List</a></p>
+</li>
+<li><p class="first"><a class="reference internal" href="#the-ffdshow-codec" id="id11">The ffdshow codec</a></p>
+</li>
+</ul>
+</li>
+<li><p class="first"><a class="reference internal" href="#common-problems" id="id12">Common Problems</a></p>
+<ul>
+<li><p class="first"><a class="reference internal" href="#why-do-i-get-the-following-error-messages-when-trying-to-run-clatn" id="id13">Why do I get the following error messages when trying to run <strong class="command">clatn</strong>?</a></p>
+</li>
+<li><p class="first"><a class="reference internal" href="#why-do-i-see-the-isn-t-a-video-file-message" id="id14">Why do I see the &#8220;isn&#8217;t  a video file&#8221; message?</a></p>
+</li>
+<li><p class="first"><a class="reference internal" href="#why-does-ee-display-the-error-file-type-isn-t-supported-message" id="id15">Why does Microsoft Expression Encoder 4 display the &#8220;Error: File type isn&#8217;t supported.&#8221; message?</a></p>
+</li>
+<li><p class="first"><a class="reference internal" href="#how-do-i-fix-broken-video-files" id="id16">How do I fix broken video files?</a></p>
+</li>
+<li><p class="first"><a class="reference internal" href="#why-is-clatn-crashing" id="id17">Why is <strong class="command">CLAutoThumbnailer</strong> crashing?</a></p>
+</li>
+<li><p class="first"><a class="reference internal" href="#why-don-t-my-thumbnails-match-what-i-see-with-my-video-player" id="id18">Why don&#8217;t my thumbnails match what I see with my video player?</a></p>
+</li>
+</ul>
+</li>
+<li><p class="first"><a class="reference internal" href="#useful-tools" id="id19">Useful tools</a></p>
+<ul>
+<li><p class="first"><a class="reference internal" href="#graphstudio" id="id20">MONOGRAM GraphStudio</a></p>
+</li>
+<li><p class="first"><a class="reference internal" href="#mediainfo" id="id21">MediaInfo</a></p>
+</li>
+<li><p class="first"><a class="reference internal" href="#asfbinwin" id="id22">asfbinwin</a></p>
+</li>
+<li><p class="first"><a class="reference internal" href="#divfix" id="id23">DivFix++</a></p>
+</li>
+<li><p class="first"><a class="reference internal" href="#meteorite" id="id24">Meteorite</a></p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="dealing-with-codecs">
+<span id="id1"></span><h2><a class="toc-backref" href="#id8">Dealing with Codecs</a><a class="headerlink" href="#dealing-with-codecs" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="understanding-codec-basics">
+<h3><a class="toc-backref" href="#id9">Understanding Codec Basics</a><a class="headerlink" href="#understanding-codec-basics" title="Permalink to this headline">¶</a></h3>
+<p>In order to play a video (or make thumbnails using <strong class="command">CLAutoThumbnailer</strong>) you need at
+least three additional pieces of software:</p>
+<ol class="arabic">
+<li><p class="first">A &#8220;splitter&#8221; (aka <a class="reference external" href="http://en.wikipedia.org/wiki/Demultiplexer_(media_file)">demultiplexer</a>).</p>
+</li>
+<li><p class="first">A video <a class="reference internal" href="glossary.html#term-codec"><em class="xref std std-term">codec</em></a>.</p>
+</li>
+<li><p class="first">An audio codec.</p>
+</li>
+</ol>
+<p>The &#8220;splitter&#8221; splits the video file into separate audio and video
+streams that the other two codecs can use. I recommend using the either
+the splitter that comes with Microsoft Expression Encoder 4 or the <a class="reference external" href="http://haali.su/mkv/">Haali Media Splitter</a>.</p>
+<p>For the video and audio codecs, I recommend either the codecs
+specifically shipped with Microsoft Expression Encoder 4 and whose names start with &#8220;Expression
+Encoder&#8221; or the <a class="reference internal" href="#ffdshow-codec"><em>ffdshow codec</em></a>.</p>
+<p>Unfortunately, just because you can play a video doesn&#8217;t mean that you
+can generate thumbnails for it. This is because Microsoft Expression Encoder 4 maintains a
+separate list of enabled codecs (which it calls &#8220;filters&#8221;) that also has
+to be set correctly. This is explained in more detail in the next
+section.</p>
+</div>
+<div class="section" id="ees-video-filter-list">
+<span id="ee-video-filters"></span><h3><a class="toc-backref" href="#id10">Microsoft Expression Encoder 4’s Video Filter List</a><a class="headerlink" href="#ees-video-filter-list" title="Permalink to this headline">¶</a></h3>
+<p>Even though <strong class="command">CLAutoThumbnailer</strong> is a command line program, it is written using the
+<a class="reference external" href="http://expression.microsoft.com/en-us/library/ff728356">Microsoft Expression Encoder 4 SP1 SDK</a> so it also depends on the Microsoft Expression Encoder 4 user interface. In particular,
+<strong class="command">CLAutoThumbnailer</strong> uses the exact same enabled video filter set that Microsoft Expression Encoder 4 is
+currently using.</p>
+<p>See <a class="reference external" href="http://expression.microsoft.com/en-us/library/cc294533">Troubleshoot playback problems</a> for
+instructions on how to enable and disable video filters (aka video
+<a class="reference internal" href="glossary.html#term-codec"><em class="xref std std-term">codecs</em></a>). If Microsoft Expression Encoder 4 can&#8217;t import a video then <strong class="command">CLAutoThumbnailer</strong> will
+also be unable to generate thumbnails for that video, and you&#8217;ll see the
+&#8220;isn&#8217;t a video file&#8221; error message. Any tips you find online for
+importing videos for Microsoft Expression Encoder 4 will also apply to <strong class="command">CLAutoThumbnailer</strong>.</p>
+<p>When you first install Microsoft Expression Encoder 4 it enables all the video filters that it
+finds on your system. For tracking down problems however, it&#8217;s much
+better to use only a very limited set of filters:</p>
+<div class="figure align-center">
+<img alt="Recommended ffdshow filter set" src="_images/ee4ffdshowfilters.png" />
+<p class="caption">Recommended filter set when using ffdshow codecs</p>
+</div>
+<div class="figure align-center">
+<img alt="Recommended |EE| filter set" src="_images/ee4msfilters.png" />
+<p class="caption">Recommended filter set when using Microsoft Expression Encoder 4 codecs</p>
+</div>
+<p>If you need to support <span class="mono">MPEG</span> video files then enabling
+Microsoft&#8217;s <tt class="docutils literal"><span class="pre">MPEG-I</span> <span class="pre">Stream</span> <span class="pre">Splitter</span></tt> filter might be required.</p>
+<p>Another &#8220;set&#8221; to try is enabling all the Microsoft filters.</p>
+<p>You can click on any column label in the <em class="guilabel">Compatibility</em>
+filter list to sort by that column. You can also resize a column by
+dragging near the edge of its header.</p>
+<p>You don&#8217;t have to restart Microsoft Expression Encoder 4 to see the effect of changing
+filters. Once it is able to import a troublesome video, just run <strong class="command">CLAutoThumbnailer</strong>
+again.</p>
+<p>Microsoft Expression Encoder 4 has a cache that it uses when importing videos. This doesn&#8217;t
+affect <strong class="command">CLAutoThumbnailer</strong> but if you want to force Microsoft Expression Encoder 4 to analyze a file after
+importing, you need to clear the cache by choosing
+<em class="menuselection"><span class="accelerator">T</span>ools ‣ <span class="accelerator">O</span>ptions...</em>, clicking on the
+<em class="guilabel">Other</em> tab, and clicking the <em class="guilabel">Clear Cache</em> button.</p>
+<div class="figure align-center">
+<img alt="Clearing the |EE| cache" src="_images/ee4clearcache.png" />
+<p class="caption">Clearing the Microsoft Expression Encoder 4 cache</p>
+</div>
+</div>
+<div class="section" id="the-ffdshow-codec">
+<span id="ffdshow-codec"></span><h3><a class="toc-backref" href="#id11">The ffdshow codec</a><a class="headerlink" href="#the-ffdshow-codec" title="Permalink to this headline">¶</a></h3>
+<p>If you are using the highly recommended <a class="reference external" href="http://sourceforge.net/projects/ffdshow/">ffdshow</a> codecs then you might have
+to configure them. In particular they have a codec pane that lists all
+the supported codecs, whether they are enabled or not, and which decoder
+is being used.</p>
+<div class="figure align-center">
+<img alt="ffdshow codecs pane" src="_images/ffdshow-video-config-codecs.png" />
+<p class="caption">ffdshow codecs configuration pane</p>
+</div>
+<p>It&#8217;s also helpful to make sure a System Tray icon is displayed whenever
+the ffdshow video codec is being used:</p>
+<div class="figure align-center">
+<img alt="ffdshow Tray, dialogs, &amp; paths pane" src="_images/ffdshow-video-config-tray.png" />
+<p class="caption">ffdshow Tray, dialogs, &amp; paths pane</p>
+</div>
+<p>You might want to also display a dialog whenever a &#8220;new&#8221; application
+trys to use the ffdshow codec:</p>
+<div class="figure align-center">
+<img alt="ffdshow DirectShow control pane" src="_images/ffdshow-video-config-directshow.png" />
+<p class="caption">ffdshow DirectShow control pane</p>
+</div>
+</div>
+</div>
+<div class="section" id="common-problems">
+<h2><a class="toc-backref" href="#id12">Common Problems</a><a class="headerlink" href="#common-problems" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="why-do-i-get-the-following-error-messages-when-trying-to-run-clatn">
+<h3><a class="toc-backref" href="#id13">Why do I get the following error messages when trying to run <strong class="command">clatn</strong>?</a><a class="headerlink" href="#why-do-i-get-the-following-error-messages-when-trying-to-run-clatn" title="Permalink to this headline">¶</a></h3>
+<p><em>&#8216;clatn&#8217; is not recognized as an internal or external command,
+operable program or batch file.</em></p>
+<p>You didn&#8217;t follow the instructions for copying <span class="filename">clatn.bat</span> to a
+directory in your current PATH. See <a class="reference internal" href="intro.html#copying-clatn"><em>this</em></a> for
+more information.</p>
+<p><em>&#8216;C:\Program Files\CLAutoThumbnailer\CLAutoThumbnailer.exe&#8217; is not
+recognized as an internal or external command, operable program or
+batch file.</em></p>
+<p>You didn&#8217;t follow the instructions for editing <span class="filename">clatn.bat</span> so that it
+points to the correct location of <span class="filename">CLAutoThumbnailer.exe</span>. See
+<a class="reference internal" href="intro.html#editing-clatn"><em>this</em></a> for more information.</p>
+</div>
+<div class="section" id="why-do-i-see-the-isn-t-a-video-file-message">
+<span id="not-a-video"></span><h3><a class="toc-backref" href="#id14">Why do I see the &#8220;isn&#8217;t  a video file&#8221; message?</a><a class="headerlink" href="#why-do-i-see-the-isn-t-a-video-file-message" title="Permalink to this headline">¶</a></h3>
+<p>Make sure you close any open video players that are viewing that same file.</p>
+<p>Also see <a class="reference external" href="http://expression.microsoft.com/en-us/library/cc294687">Supported file formats</a></p>
+<p>Follow these steps to help troubleshoot problems with unrecognized
+video files:</p>
+<ol class="arabic" id="bsp-filters-advanced">
+<li><p class="first">Make sure <a class="reference external" href="http://www.bsplayer.org">BS.Player</a> can play the video. Right-click on the video and
+choose <em class="menuselection">Options ‣ Filters ‣ Advanced</em> to see
+the codecs that BS.Player is using to view the video. Unfortunately,
+BS.Player typically uses its own private copy of these codecs but this
+information is still helpful when enabling filters in Microsoft Expression Encoder 4.</p>
+<div class="figure align-center">
+<img alt="|BSP| :menuselection:`Options --&gt; Filters --&gt; Advanced` Dialog box" src="_images/bsp-filters-advanced.png" />
+<p class="caption">BS.Player <em class="menuselection">Options ‣ Filters ‣ Advanced</em> Dialog box</p>
+</div>
+<p>Remember that even though <strong class="command">CLAutoThumbnailer</strong> is only generating thumbnails,
+the proper <em class="bolditalic">audio</em> codec also has to be installed on your
+system in order for it to open a particular video file.</p>
+<p>If BS.Player can&#8217;t play the video file then it might be corrupt.</p>
+</li>
+<li><p class="first">See if you can <a class="reference external" href="http://expression.microsoft.com/en-us/library/cc294649">import</a> the
+video using Microsoft Expression Encoder 4.</p>
+<p>If Microsoft Expression Encoder 4 can&#8217;t import the video it will sometimes display a helpful
+message explaining the reason why.</p>
+<p>If you are using the recommended ffdshow filter set try switching
+to the Microsoft Expression Encoder 4 filter set and vice versa. See <a class="reference internal" href="#ee-video-filters"><em>here</em></a> for more information.</p>
+</li>
+<li><p class="first">Use <a class="reference internal" href="#mediainfo"><em>MediaInfo</em></a> to figure out exactly what codec the
+offending video is using. Then try enabling some filters that
+appear to support that codec in Microsoft Expression Encoder 4. You also use the information
+displayed by BS.Player mentioned in <a class="reference internal" href="#bsp-filters-advanced"><em>this step</em></a> to get a hint about what filters to
+enable.</p>
+</li>
+<li><p class="first">Try <a class="reference internal" href="#graphstudio"><em>GraphStudio</em></a> to see what codecs are used
+by default to render the video. If GraphStudio can play the video,
+then you can try enabling those filters in Microsoft Expression Encoder 4.</p>
+</li>
+<li><p class="first">If you are using the ffdshow codec you might have to configure
+it. See <a class="reference internal" href="#ffdshow-codec"><em>The ffdshow codec</em></a> for more information.</p>
+</li>
+<li><p class="first">As a last ditch effort you can try enabling all the video filters
+in Microsoft Expression Encoder 4 and then seeing if you can import the video. If this is
+successful, then you &#8220;just&#8221; have to narrow down the list until
+only a few filters are enabled (google &#8220;binary search&#8221; for a
+&#8220;quick&#8221; way of doing this).</p>
+</li>
+</ol>
+</div>
+<div class="section" id="why-does-ee-display-the-error-file-type-isn-t-supported-message">
+<span id="file-type-not-supported"></span><h3><a class="toc-backref" href="#id15">Why does Microsoft Expression Encoder 4 display the &#8220;Error: File type isn&#8217;t supported.&#8221; message?</a><a class="headerlink" href="#why-does-ee-display-the-error-file-type-isn-t-supported-message" title="Permalink to this headline">¶</a></h3>
+<p>If Microsoft Expression Encoder 4 displays an &#8220;Error: File type isn&#8217;t supported.&#8221; message when you
+import a video, try using the Gabest splitter(s) and disable the Haali
+Media Splitter(s).</p>
+<p>This seems to happen particularly with <span class="mono">MPEG</span> encoded videos.</p>
+</div>
+<div class="section" id="how-do-i-fix-broken-video-files">
+<h3><a class="toc-backref" href="#id16">How do I fix broken video files?</a><a class="headerlink" href="#how-do-i-fix-broken-video-files" title="Permalink to this headline">¶</a></h3>
+<p>Once you&#8217;ve determined that a video file appears to be corrupt, all
+is not lost. You can see if <a class="reference internal" href="#divfix"><em>DivFix++</em></a> (for
+<span class="mono">AVI</span>s), <a class="reference internal" href="#meteorite"><em>Meteorite</em></a> (for <span class="mono">MKV</span>s),
+or <a class="reference internal" href="#asfbinwin"><em>asfbinwin</em></a> (for <span class="mono">WMV</span>s and <span class="mono">ASF</span>s) can fix it.</p>
+</div>
+<div class="section" id="why-is-clatn-crashing">
+<h3><a class="toc-backref" href="#id17">Why is <strong class="command">CLAutoThumbnailer</strong> crashing?</a><a class="headerlink" href="#why-is-clatn-crashing" title="Permalink to this headline">¶</a></h3>
+<p>If <strong class="command">CLAutoThumbnailer</strong> crashes with a lengthy &#8220;Unhandled Exception&#8221; message, then
+there is probably some error in the program and you should report a bug.</p>
+<p>However, if it just crashes silently and mysteriously bounces you back
+to the Command Prompt the problem is more likely with the video codec
+you are using. Oftentimes, just trying again solves the problem. If not,
+try switching to the Microsoft Expression Encoder 4 filters if you are using the ffdshow codec or
+vice versa.</p>
+<p>The <a class="reference internal" href="#ffdshow-codec"><em>ffdshow codec</em></a> can be sensitive to its
+configuration settings. You might want to bring up the &#8220;ffdshow video
+decoder configuration&#8221; Dialog box and look around and see if any of the
+settings are obviously wrong. ffdshow usually has two options for
+decoder for any format, so try the other if one always seems to
+crash. For example, if the <tt class="docutils literal"><span class="pre">Xvid</span></tt> decoder is causing problems try
+<tt class="docutils literal"><span class="pre">libavcodec</span></tt> instead.</p>
+</div>
+<div class="section" id="why-don-t-my-thumbnails-match-what-i-see-with-my-video-player">
+<h3><a class="toc-backref" href="#id18">Why don&#8217;t my thumbnails match what I see with my video player?</a><a class="headerlink" href="#why-don-t-my-thumbnails-match-what-i-see-with-my-video-player" title="Permalink to this headline">¶</a></h3>
+<p>This seems to be particularly a problem with <span class="mono">MPEG2</span> encoded
+(aka VOB) files. The workaround is to use the Microsoft Expression Encoder 4 player to check
+thumbnail times.</p>
+</div>
+</div>
+<div class="section" id="useful-tools">
+<h2><a class="toc-backref" href="#id19">Useful tools</a><a class="headerlink" href="#useful-tools" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="graphstudio">
+<span id="id2"></span><h3><a class="reference external" href="http://www.monogrammultimedia.com/graphstudio.html">MONOGRAM GraphStudio</a><a class="headerlink" href="#graphstudio" title="Permalink to this headline">¶</a></h3>
+<p><em class="menuselection"><span class="accelerator">F</span>ile ‣ Render Media File...</em> (<tt class="kbd docutils literal"><span class="pre">Ctrl+R</span></tt>)</p>
+<div class="figure align-center">
+<img alt="MONOGRAM GraphStudio screenshot" src="_images/graphstudio-hgf.png" />
+<p class="caption">MONOGRAM GraphStudio screenshot</p>
+</div>
+</div>
+<div class="section" id="mediainfo">
+<span id="id3"></span><h3><a class="reference external" href="http://mediainfo.sourceforge.net/en">MediaInfo</a><a class="headerlink" href="#mediainfo" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-center">
+<img alt="MediaInfo screenshot" src="_images/mediainfo-hgf.png" />
+<p class="caption">MediaInfo screenshot</p>
+</div>
+</div>
+<div class="section" id="asfbinwin">
+<span id="id4"></span><h3><a class="reference external" href="http://www.radioactivepages.com/asfbin.aspx">asfbinwin</a><a class="headerlink" href="#asfbinwin" title="Permalink to this headline">¶</a></h3>
+<p>&#8220;Intuitive, fast and reliable tool for processing ASF and WMV files.</p>
+<p>Asfbin is a full implementation of ASF file specification completely independent from Microsoft Windows Media Format SDK. This makes Asfbin especially powerful when it comes to fixing damaged ASF/WMV files. It can repair almost all types of errors within your favourite video files.&#8221;</p>
+</div>
+<div class="section" id="divfix">
+<span id="id6"></span><h3><a class="reference external" href="http://www.divfix.org/">DivFix++</a><a class="headerlink" href="#divfix" title="Permalink to this headline">¶</a></h3>
+<p>&#8220;DivFix++ is FREE AVI Video Fix &amp; Preview program.&#8221;</p>
+</div>
+<div class="section" id="meteorite">
+<span id="id7"></span><h3><a class="reference external" href="http://meteorite.sourceforge.net/">Meteorite</a><a class="headerlink" href="#meteorite" title="Permalink to this headline">¶</a></h3>
+<p>&#8220;Meteorite Project is DivFix++ like program but for Matroska/MKV files.
+It can repair your corrupted MKV video files to make it compatible with
+your player.&#8221;</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">How To</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dealing-with-codecs">Dealing with Codecs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#common-problems">Common Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#useful-tools">Useful tools</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html"><strong class="command">CLAutoThumbnailer</strong> Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samplefile.html">Sample Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">To Do List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="reference.html" title="CLAutoThumbnailer Reference"
+             >next</a></li>
+        <li class="right" >
+          <a href="faq.html" title="FAQ – Frequently Asked Questions"
+             >previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

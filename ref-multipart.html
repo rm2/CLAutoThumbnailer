@@ -1,0 +1,167 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Multi-Part Video Files &mdash; CLAutoThumbnailer v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/mydefault.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="top" title="CLAutoThumbnailer v1.0 documentation" href="index.html" />
+    <link rel="up" title="CLAutoThumbnailer Reference" href="reference.html" />
+    <link rel="next" title="MPEG2 Encoded Videos" href="ref-mpeg2.html" />
+    <link rel="prev" title="Command Files" href="ref-commandfile.html" />
+ 
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23896923-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="ref-mpeg2.html" title="MPEG2 Encoded Videos"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="ref-commandfile.html" title="Command Files"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li>
+          <li><a href="reference.html" accesskey="U"><strong class="command">CLAutoThumbnailer</strong> Reference</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="multi-part-video-files">
+<span id="multi-part-videos"></span><h1>Multi-Part Video Files<a class="headerlink" href="#multi-part-video-files" title="Permalink to this headline">¶</a></h1>
+<p>If the <tt class="docutils literal"><span class="pre">videofilename</span></tt> specified on the command line contains a <tt class="docutils literal"><span class="pre">*</span></tt>
+character, all matching files will be treated as a single multi-part
+video file. These files will be treated as if they were concatenated
+into a single large file. The duration of this file will be the sum of
+the durations of the individual files.</p>
+<p>Only a single Overview thumbnail page and set of Detail pages will be
+generated for this multi-part file. This can come in handy when a video
+file has been arbitrarily split into pieces (normally to fit onto a
+single CDROM or within the DVD 1GB maximum).</p>
+<p>For example, say you have two video files called <span class="filename">myvideo-cd1.avi</span> and
+<span class="filename">myvideo-cd2.avi</span> that are really just pieces of the single file
+<span class="filename">myvideo.avi</span> &#8212; or you are trying to thumbnails files from a
+unencrypted DVD title set. Instead of getting multiple Overview pages
+with the each page restarting at time 0:0:0, if you do:</p>
+<div class="highlight-python"><pre>clatn myvideo-cd*.avi</pre>
+</div>
+<p>or:</p>
+<div class="highlight-python"><pre>clatn -outdir . d:\VIDEO_TS\VTS_01_*.VOB</pre>
+</div>
+<p>you&#8217;ll get just a single Overview page with the timestamps showing the
+time from the real start. The first thumbnail from each part will have
+the file number added to its timestamp and be highlighted with a
+different colored border to make it slightly easier to notice the
+location of the file splits.</p>
+<p>Similarly, there will only be one set of Detail pages for the entire
+multi-part video. The thumbnail times will indicate both the time from
+the actual start and the time from each individual file along with the
+file number. The first thumbnail from each part will again be
+highlighted with a different colored border. <span class="filename">MULTI</span> is also added at
+the beginning of the detail page filenames to indicate that these Detail
+pages came from a multi-part video.</p>
+<p>See <a class="reference internal" href="how-multipart.html"><em>Thumbnail a multi-part video</em></a> for a detailed example.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">How To</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trouble.html">Troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="reference.html"><strong class="command">CLAutoThumbnailer</strong> Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ref-overview.html">Overview Thumbnail Page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref-detail.html">Detail Thumbnail Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref-commandfile.html">Command Files</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Multi-Part Video Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref-mpeg2.html">MPEG2 Encoded Videos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref-aar.html">Auto Aspect Ratio Adjustment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref-layout.html">Thumbnail Page Layout Modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref-options.html">Command-line Options Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="samplefile.html">Sample Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">To Do List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="ref-mpeg2.html" title="MPEG2 Encoded Videos"
+             >next</a></li>
+        <li class="right" >
+          <a href="ref-commandfile.html" title="Command Files"
+             >previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li>
+          <li><a href="reference.html" ><strong class="command">CLAutoThumbnailer</strong> Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

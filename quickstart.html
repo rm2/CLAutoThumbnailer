@@ -1,0 +1,327 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Quick Start &mdash; CLAutoThumbnailer v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/mydefault.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="top" title="CLAutoThumbnailer v1.0 documentation" href="index.html" />
+    <link rel="next" title="How To" href="howto.html" />
+    <link rel="prev" title="Introduction" href="intro.html" />
+ 
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23896923-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="howto.html" title="How To"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="intro.html" title="Introduction"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="quick-start">
+<h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h1>
+<p>The following assumes you&#8217;ve downloaded the public domain
+<span class="filename">his_girl_friday_512kb.mp4</span> and <span class="filename">McLintock_512kb.mp4</span> videos mentioned
+in the <a class="reference internal" href="samplefile.html"><em>Sample Files</em></a> section but you can substitute any other video
+files.</p>
+<div class="section" id="basic-operation">
+<h2>Basic Operation<a class="headerlink" href="#basic-operation" title="Permalink to this headline">¶</a></h2>
+<p>Open up a Command Prompt window and type the following:</p>
+<div class="highlight-python"><pre>cd "C:\His Girl Friday (1940)\mp4"
+clatn "his_girl_friday_512kb.mp4"</pre>
+</div>
+<p>you&#8217;ll see:</p>
+<div class="highlight-python"><pre>Processing C:\His Girl Friday (1940)\mp4\his_girl_friday_512kb.mp4 ...</pre>
+</div>
+<p>and after a some seconds (depending on how long it takes your computer
+to open up a 382.6MB file) you&#8217;ll see:</p>
+<div class="highlight-python"><pre>0:00:11 Total time to create AVFileSet.
+Thumbnails Range   0:00:05.000 -&gt; 1:31:39.521
+Thumbnail Duration 1:31:34.521 (Total 1:31:44.521)
+Generating 144 104x78 thumbnails on a 12x12 Overview page.</pre>
+</div>
+<p>and then an &#8220;animation&#8221; that changes every time a new overview thumbnail
+is created followed by a percent complete indicator. When this is done
+you&#8217;ll see:</p>
+<div class="highlight-python"><pre>0:00:13 to create Overview thumbnails.
+144 thumbnails created. 0.09 seconds / thumbnail.</pre>
+</div>
+<p>and then Detail page thumbnail generation starts:</p>
+<div class="highlight-python"><pre>Generating 552 325x244 thumbnails every 10 seconds on 35 4x4 Detail pages.</pre>
+</div>
+<p>and again an &#8220;animation&#8221; is displayed that changes every time a new
+thumbnail is created followed by a percent complete indicator. When it&#8217;s
+done, you&#8217;ll see:</p>
+<div class="highlight-python"><pre>0:00:48 to generate Detail page thumbnails.
+551 thumbnails created. 0.09 seconds / thumbnail.
+0:01:13 overall time to process his_girl_friday_512kb.mp4.
+0:01:13 Total time.</pre>
+</div>
+<p>At this point you&#8217;ll have the following new files in the
+<span class="filename">C:\His Girl Friday (1940)\mp4</span> folder:</p>
+<div class="highlight-python"><pre>CLAutoThumbnailer.log
+his_girl_friday_512kb_overview.jpg
+his_girl_friday_512kb_page0001_00_00_05,jpg
+his_girl_friday_512kb_page0002_00_02_40.jpg
+ ...
+his_girl_friday_512kb_page0035_01_30_40.jpg</pre>
+</div>
+<p>The three sets of numbers at the end of the detail page filenames are
+the time of the first thumbnail on that page in
+<tt class="docutils literal"><span class="pre">hours_minutes_seconds</span></tt> format. This makes it easy to find thumbnails
+at a particular time in a video.</p>
+<p>Here&#8217;s a sample of what the generated thumbnail pages look like (click
+on the images to see them at full scale):</p>
+<div class="figure align-center">
+<a class="reference external image-reference" href="_images/his_girl_friday_512kb_overview.jpg"><img alt="his_girl_friday_512kb_.mpeg Thumbnail Page" src="_images/his_girl_friday_512kb_overview.jpg" style="width: 649.0px; height: 506.5px;" /></a>
+<p class="caption">his_girl_friday_512kb_overview.jpg</p>
+</div>
+<div class="figure align-center">
+<a class="reference external image-reference" href="_images/his_girl_friday_512kb_page0001_00_00_05.jpg"><img alt="his_girl_friday_512kb_.mpeg First Detail Thumbnail Page" src="_images/his_girl_friday_512kb_page0001_00_00_05.jpg" style="width: 659.0px; height: 510.5px;" /></a>
+<p class="caption">his_girl_friday_512kb_page0001.jpg</p>
+</div>
+<div class="figure align-center">
+<a class="reference external image-reference" href="_images/his_girl_friday_512kb_page0035_01_30_40.jpg"><img alt="his_girl_friday_512kb_.mpeg Last Detail Thumbnail Page" src="_images/his_girl_friday_512kb_page0035_01_30_40.jpg" style="width: 659.0px; height: 510.5px;" /></a>
+<p class="caption">his_girl_friday_512kb_page0035.jpg</p>
+</div>
+<p>We can see that the thumbnail timestamp is very accurate by comparing
+the thumbnail generated at <span class="mono">01:30:40</span> to the frame displayed at
+that time by <a class="reference external" href="http://www.microsoft.com/expression/products/EncoderPro_Overview.aspx">Microsoft Expression Encoder 4</a> and <a class="reference external" href="http://www.bsplayer.org">BS.Player</a>:</p>
+<div class="figure align-center">
+<a class="reference external image-reference" href="_images/ee4-hgf-mp4-ff-01m30s40.png"><img alt="Frame at 1:30:40 using Microsoft Expression Encoder 4" src="_images/ee4-hgf-mp4-ff-01m30s40.png" style="width: 640.0px; height: 499.0px;" /></a>
+<p class="caption">Frame at 1:30:40 using Microsoft Expression Encoder 4</p>
+</div>
+<div class="figure align-center">
+<a class="reference external image-reference" href="_images/bsp-hgf-mp4-ff-01m30s40.png"><img alt="Frame at 1:30:40 using BS.Player" src="_images/bsp-hgf-mp4-ff-01m30s40.png" style="width: 640.0px; height: 512.0px;" /></a>
+<p class="caption">Frame at 1:30:40 using BS.Player</p>
+</div>
+<p><span class="filename">CLAutoThumbnailer.log</span> is just a text file that stores details on the
+thumbnailing operation. It contains:</p>
+<div class="highlight-python"><pre>Command Line: his_girl_friday_512kb.mp4
+Processing C:\His Girl Friday (1940)\mp4\his_girl_friday_512kb.mp4 ...
+0:00:10.14 to create Microsoft.Encoder.AudioVideoFile.
+0:00:00.67 to create Microsoft.Encoder.MediaItem.
+0:00:01.10 to run CalculateDuration.
+AudioVideoFile.Duration 1:31:44.5211 C:\His Girl Friday (1940)\mp4\his_girl_friday_512kb.mp4.
+VideoStream.Duration    1:31:44.5211 C:\His Girl Friday (1940)\mp4\his_girl_friday_512kb.mp4.
+AudioStream.Duration    1:31:44.5211 C:\His Girl Friday (1940)\mp4\his_girl_friday_512kb.mp4.
+AudioStream channels =  6 C:\His Girl Friday (1940)\mp4\his_girl_friday_512kb.mp4.
+0:00:11 Total time to create AVFileSet.
+Using Auto Layout Mode.
+Thumbnails Range   0:00:05.000 -&gt; 1:31:39.521
+Thumbnail Duration 1:31:34.521 (Total 1:31:44.521)
+Auto Row Priority Layout (aspect ratio 1.33 &gt;= 1.275), using 12 rows
+  1.33 aspect ratio
+  Wasted width 0.733 &gt; 0.600, increased columns:  12x12 0.000x0.326
+Generating 144 104x78 thumbnails on a 12x12 Overview page.
+0:00:13 to create Overview thumbnails.
+144 thumbnails created. 0.09 seconds / thumbnail.
+Auto Row Priority Layout (aspect ratio 1.33 &gt;= 1.275), using 4 rows
+  1.33 aspect ratio
+  Wasted width 0.884 &gt; 0.600, increased columns:  4x4 0.000x0.137
+Generating 552 325x244 thumbnails every 10 seconds on 35 4x4 Detail pages.
+0:00:48 to generate Detail page thumbnails.
+551 thumbnails created. 0.09 seconds / thumbnail.
+0:01:13 overall time to process his_girl_friday_512kb.mp4.
+
+0:01:13 Total time.</pre>
+</div>
+<p>but for the most part you can just ignore it.</p>
+</div>
+<div class="section" id="thumbnailing-a-widescreen-video">
+<span id="thumbnailing-widescreen"></span><h2>Thumbnailing a Widescreen Video<a class="headerlink" href="#thumbnailing-a-widescreen-video" title="Permalink to this headline">¶</a></h2>
+<p><span class="filename">his_girl_friday_512kb.mp4</span> is a &#8220;Standard&#8221; (aka &#8220;Fullscreen&#8221;)
+video. Let&#8217;s see how <strong class="command">CLAutoThumbnailer</strong> handles a &#8220;Widescreen&#8221; video by generating
+thumbnails for <span class="filename">McLintock_512kb.mp4</span>. Do:</p>
+<div class="highlight-python"><pre>cd "C:\McLintock (1963)\mp4 512kb"
+clatn "McLintock_512kb.mp4"</pre>
+</div>
+<p>and you&#8217;ll see:</p>
+<div class="highlight-python"><pre>Processing C:\McLintock (1963)\mp4 512kb\McLintock_512kb.mp4 ...
+0:00:11 Total time to create AVFileSet.
+Thumbnails Range   0:00:05.000 -&gt; 2:06:42.214
+Thumbnail Duration 2:06:37.214 (Total 2:06:47.214)
+Generating 84 181x78 thumbnails on a 7x12 Overview page.
+0:00:09 to create Overview thumbnails.
+84 thumbnails created. 0.12 seconds / thumbnail.
+Generating 762 452x195 thumbnails every 10 seconds on 51 3x5 Detail pages.
+0:01:27 to generate Detail page thumbnails.
+762 thumbnails created. 0.12 seconds / thumbnail.
+0:01:49 overall time to process McLintock_512kb.mp4.
+0:01:49 Total time.</pre>
+</div>
+<p>And here&#8217;s some samples of what the generated thumbnail pages look like
+(click on the images to see them at full scale):</p>
+<div class="figure align-center">
+<a class="reference external image-reference" href="_images/McLintock_512kb_overview.jpg"><img alt="McLintock_512kb_.mpeg Thumbnail Page" src="_images/McLintock_512kb_overview.jpg" style="width: 648.5px; height: 506.5px;" /></a>
+<p class="caption">McLintock_512kb_overview.jpg</p>
+</div>
+<div class="figure align-center">
+<a class="reference external image-reference" href="_images/McLintock_512kb_page0001_00_00_05.jpg"><img alt="McLintock_512kb_.mpeg First Detail Thumbnail Page" src="_images/McLintock_512kb_page0001_00_00_05.jpg" style="width: 685.0px; height: 512.0px;" /></a>
+<p class="caption">McLintock_512kb_page0001_00_00_05.jpg</p>
+</div>
+<div class="figure align-center">
+<a class="reference external image-reference" href="_images/McLintock_512kb_page0051_02_05_00.jpg"><img alt="McLintock_512kb_.mpeg Last Detail Thumbnail Page" src="_images/McLintock_512kb_page0051_02_05_00.jpg" style="width: 685.0px; height: 512.0px;" /></a>
+<p class="caption">McLintock_512kb_page0051_02_05_00.jpg</p>
+</div>
+<p>The <span class="filename">CLAutoThumbnailer.log</span> for this operation contains:</p>
+<div class="highlight-python"><pre>Command Line: McLintock_512kb.mp4
+Processing C:\McLintock (1963)\mp4 512kb\McLintock_512kb.mp4 ...
+0:00:10.01 to create Microsoft.Encoder.AudioVideoFile.
+0:00:00.64 to create Microsoft.Encoder.MediaItem.
+0:00:01.20 to run CalculateDuration.
+AudioVideoFile.Duration 2:06:47.2143 C:\McLintock (1963)\mp4 512kb\McLintock_512kb.mp4.
+VideoStream.Duration    2:06:47.2143 C:\McLintock (1963)\mp4 512kb\McLintock_512kb.mp4.
+AudioStream.Duration    2:06:47.2143 C:\McLintock (1963)\mp4 512kb\McLintock_512kb.mp4.
+AudioStream channels =  6 C:\McLintock (1963)\mp4 512kb\McLintock_512kb.mp4.
+0:00:11 Total time to create AVFileSet.
+Using Auto Layout Mode.
+Thumbnails Range   0:00:05.000 -&gt; 2:06:42.214
+Thumbnail Duration 2:06:37.214 (Total 2:06:47.214)
+Auto Row Priority Layout (aspect ratio 2.32 &gt;= 1.275), using 12 rows
+  2.32 aspect ratio
+  Wasted width 0.852 &gt; 0.600, increased columns:  7x12 0.000x0.315
+Generating 84 181x78 thumbnails on a 7x12 Overview page.
+0:00:09 to create Overview thumbnails.
+84 thumbnails created. 0.12 seconds / thumbnail.
+Auto Row Priority Layout (aspect ratio 2.32 &gt;= 1.275), using 4 rows
+  2 columns &lt; minimum, setting to 3
+  2.32 aspect ratio
+  3 columns is good enough, wasted width 0.000 &lt;= 0.600
+  3x4 0.000x1.419
+  Now wasted height 1.419 &gt; 0.600, increased rows:  3x5 0.000x0.369
+Generating 762 452x195 thumbnails every 10 seconds on 51 3x5 Detail pages.
+0:01:27 to generate Detail page thumbnails.
+762 thumbnails created. 0.12 seconds / thumbnail.
+0:01:49 overall time to process McLintock_512kb.mp4.
+0:01:49 Total time.</pre>
+</div>
+</div>
+<div class="section" id="some-details">
+<h2>Some Details<a class="headerlink" href="#some-details" title="Permalink to this headline">¶</a></h2>
+<p>The first thing you should notice is that while <strong class="command">CLAutoThumbnailer</strong> creates the
+default 12 Overview rows for both videos, it decides to use 12 columns
+for &#8220;His Girl Friday&#8221; and only 7 for &#8220;McLintock!&#8221;. It does this to keep
+the thumbnails the same height. Since &#8220;McLintock!&#8221;s widescreen
+thumbnails are so much wider than &#8220;His Girl Friday&#8221;s fullscreen ones, it
+has to reduce the number of columns to make them fit.</p>
+<p>On the Detail pages, notice that the default 4 rows are used for &#8220;His
+Girl Friday&#8221; but 5 are used for &#8220;McLintock!&#8221;. When 4 rows are used only
+2 columns will fit which is below the default minimum of 3 columns. So
+<strong class="command">CLAutoThumbnailer</strong> bumps up the number of columns to 3, but then sees that this
+wastes too much vertical space and also increases the number of rows to
+5.</p>
+<p>See <a class="reference internal" href="ref-layout.html"><em>Thumbnail Page Layout Modes</em></a> for more information.</p>
+</div>
+<div class="section" id="what-s-next">
+<h2>What&#8217;s Next?<a class="headerlink" href="#what-s-next" title="Permalink to this headline">¶</a></h2>
+<p><strong class="command">CLAutoThumbnailer</strong> has many options you can use to control its operation. See
+<a class="reference internal" href="ref-options.html#command-line-options"><em>Command-line Options Reference</em></a> for the entire list or see the <a class="reference internal" href="howto.html"><em>How To</em></a>
+section for instructions on generating various results.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basic-operation">Basic Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#thumbnailing-a-widescreen-video">Thumbnailing a Widescreen Video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#some-details">Some Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-s-next">What&#8217;s Next?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">How To</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trouble.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html"><strong class="command">CLAutoThumbnailer</strong> Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samplefile.html">Sample Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">To Do List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="howto.html" title="How To"
+             >next</a></li>
+        <li class="right" >
+          <a href="intro.html" title="Introduction"
+             >previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

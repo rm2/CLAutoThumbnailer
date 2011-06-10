@@ -1,0 +1,1080 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Command-line Options Reference &mdash; CLAutoThumbnailer v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/mydefault.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="top" title="CLAutoThumbnailer v1.0 documentation" href="index.html" />
+    <link rel="up" title="CLAutoThumbnailer Reference" href="reference.html" />
+    <link rel="next" title="Sample Files" href="samplefile.html" />
+    <link rel="prev" title="Thumbnail Page Layout Modes" href="ref-layout.html" />
+ 
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23896923-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="samplefile.html" title="Sample Files"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="ref-layout.html" title="Thumbnail Page Layout Modes"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li>
+          <li><a href="reference.html" accesskey="U"><strong class="command">CLAutoThumbnailer</strong> Reference</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="command-line-options-reference">
+<span id="command-line-options"></span><h1>Command-line Options Reference<a class="headerlink" href="#command-line-options-reference" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul>
+<li><p class="first"><a class="reference internal" href="#summary" id="id1">Summary</a></p>
+</li>
+<li><p class="first"><a class="reference internal" href="#input-options" id="id2">Input Options</a></p>
+</li>
+<li><p class="first"><a class="reference internal" href="#time-range-options" id="id3">Time Range Options</a></p>
+</li>
+<li><p class="first"><a class="reference internal" href="#overview-page-options" id="id4">Overview Page Options</a></p>
+</li>
+<li><p class="first"><a class="reference internal" href="#detail-page-options" id="id5">Detail Page Options</a></p>
+</li>
+<li><p class="first"><a class="reference internal" href="#layout-options" id="id6">Layout Options</a></p>
+</li>
+<li><p class="first"><a class="reference internal" href="#aspect-ratio-options" id="id7">Aspect Ratio Options</a></p>
+</li>
+<li><p class="first"><a class="reference internal" href="#output-page-options" id="id8">Output Page Options</a></p>
+</li>
+<li><p class="first"><a class="reference internal" href="#miscellaneous-options" id="id9">Miscellaneous Options</a></p>
+</li>
+</ul>
+</div>
+<div class="section" id="summary">
+<h2><a class="toc-backref" href="#id1">Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<pre class="literal-block">
+Usage: CLAutoThumbnailer [OPTIONS] videofilename.ext |
+                                   -d directory      |
+                                   commandfile.txt
+Generates thumbnail pages for videos.
+
+Options:
+  <a class="reference internal" href="#cmdoption-d"><em class="xref std std-option">-d, --directory=DIRECTORY</em></a>  DIRECTORY to process. Generate thumbnails for
+                               files with the following extensions:
+                               3gp, asf, avi, divx, flv, m2v, m2p, m2ts, mkv,
+                               mov, mpeg, mpg, mp2, mp4, mts, ogm, rmvb, vob,
+                               wmv
+      <a class="reference internal" href="#cmdoption--exts"><em class="xref std std-option">--exts=EXTENSIONS</em></a>      add/remove video EXTENSIONS (&#8220;[+]ext1, -ext2&#8221;)
+      <a class="reference internal" href="#cmdoption--minsize"><em class="xref std std-option">--minsize=FILESIZE</em></a>     Minimum FILESIZE of video files (0 to disable)
+                               [104857600 (100MB)]
+  <a class="reference internal" href="#cmdoption-m"><em class="xref std std-option">-m, --cmddir=DIRECTORY</em></a>     create initial command file for DIRECTORY
+  <a class="reference internal" href="#cmdoption-s"><em class="xref std std-option">-s, --start=TIME</em></a>           start TIME in h:mm:ss [0:00:05]
+  <a class="reference internal" href="#cmdoption-e"><em class="xref std std-option">-e, --end=TIME</em></a>             end TIME in h:mm:ss [-0:00:05]
+  <a class="reference internal" href="#cmdoption-v"><em class="xref std std-option">-v, --overview</em></a>            create Overview page (-v- disables) [True]
+  <a class="reference internal" href="#cmdoption-n"><em class="xref std std-option">-n=ROWS or COLUMNS</em></a>         Overview page desired # of ROWS or COLUMNS [12]
+  <a class="reference internal" href="#cmdoption-c"><em class="xref std std-option">-c, --columns=COLUMNS</em></a>      Overview page actual # of COLUMNS [12]
+  <a class="reference internal" href="#cmdoption-r"><em class="xref std std-option">-r, --rows=ROWS</em></a>            Overview page actual # of ROWS [12]
+  <a class="reference internal" href="#cmdoption-i"><em class="xref std std-option">-i, --interval=SECONDS</em></a>     Detail page thumbnail interval SECONDS [10.00]
+      <a class="reference internal" href="#cmdoption--autointerval"><em class="xref std std-option">--autointerval</em></a>          use automatic interval based on duration [False]
+      <a class="reference internal" href="#cmdoption--autointervals"><em class="xref std std-option">--autointervals=SPECIFICATION</em></a>
+                             automatic interval SPECIFICATION
+                               ( &lt;min1=secs1, &lt;min2=secs2, &lt;min3=secs3, secs4 )
+                               [ &lt;15=5, &lt;30=10, &lt;60=15, &lt;90=30, 60 ]
+  <a class="reference internal" href="#cmdoption-N"><em class="xref std std-option">-N=ROWS or COLUMNS</em></a>         Detail page desired # of ROWS or COLUMNS [4]
+  <a class="reference internal" href="#cmdoption-C"><em class="xref std std-option">-C, --Columns=COLUMNS</em></a>      Detail page actual # of COLUMNS [4]
+  <a class="reference internal" href="#cmdoption-R"><em class="xref std std-option">-R, --Rows=ROWS</em></a>            Detail page actual # of ROWS [4]
+      <a class="reference internal" href="#cmdoption--dfts"><em class="xref std std-option">--dfts</em></a>                 add Detail page filename timestamps
+                               (&#8211;dfts- disables) [True]
+  <a class="reference internal" href="#cmdoption-y"><em class="xref std std-option">-y, --layout=MODE</em></a>          layout MODE
+                               (0=Auto,1=Actual,2=Row Priority,3=Column
+                               Priority) [Auto]
+      <a class="reference internal" href="#cmdoption--othres"><em class="xref std std-option">--othres=THRESHOLD</em></a>     video aspect ratio THRESHOLD for
+                               Auto Layout of Overview Page [0.00]
+      <a class="reference internal" href="#cmdoption--dthres"><em class="xref std std-option">--dthres=THRESHOLD</em></a>     video aspect ratio THRESHOLD for
+                               Auto Layout of Detail Pages [0.00]
+      <a class="reference internal" href="#cmdoption--rcopt"><em class="xref std std-option">--rcopt</em></a>                do row/column optimizations
+                               (&#8211;rcopt- disables) [True]
+      <a class="reference internal" href="#cmdoption--maxoptsteps"><em class="xref std std-option">--maxoptsteps=STEPS</em></a>    max # of row/column optimization STEPS
+                               (0=unlimited) [2]
+      <a class="reference internal" href="#cmdoption--wthres"><em class="xref std std-option">--wthres=THRESHOLD</em></a>     width THRESHOLD for adding columns (0.1 - 1.0)
+                               [0.60]
+      <a class="reference internal" href="#cmdoption--hthres"><em class="xref std std-option">--hthres=THRESHOLD</em></a>     height THRESHOLD for adding rows (0.1 - 1.0)
+                               [0.60]
+      <a class="reference internal" href="#cmdoption--mincols"><em class="xref std std-option">--mincols=COLUMNS</em></a>      minimum # of COLUMNS [3]
+      <a class="reference internal" href="#cmdoption--minrows"><em class="xref std std-option">--minrows=ROWS</em></a>         minimum # of ROWS [3]
+  <a class="reference internal" href="#cmdoption-p"><em class="xref std std-option">-p, --crop=ASPECT RATIO</em></a>    crop ASPECT RATIO
+      <a class="reference internal" href="#cmdoption--rect"><em class="xref std std-option">--rect=RECTANGLE</em></a>       source RECTANGLE ( X,Y+WxH )
+  <a class="reference internal" href="#cmdoption-t"><em class="xref std std-option">-t, --stretch=ASPECT RATIO</em></a> stretch ASPECT RATIO
+      <a class="reference internal" href="#cmdoption--aar"><em class="xref std std-option">--aar</em></a>                  do auto aspect ratio adjustment
+                               (&#8211;aar- disables) [True]
+  <a class="reference internal" href="#cmdoption-o"><em class="xref std std-option">-o, --outdir=DIRECTORY</em></a>     Output DIRECTORY
+      <a class="reference internal" href="#cmdoption--subdir"><em class="xref std std-option">--subdir=NAME</em></a>          Output sub-directory NAME [&#8220;&#8221;]
+      <a class="reference internal" href="#cmdoption--name"><em class="xref std std-option">--name=NAME</em></a>            Display NAME
+  <a class="reference internal" href="#cmdoption-l"><em class="xref std std-option">-l, --label=POSITION</em></a>       timestamp label POSITION
+                               (0=Off,1=LR,2=LL,3=UR,4=UL) [LowerRight]
+      <a class="reference internal" href="#cmdoption--ms"><em class="xref std std-option">--ms</em></a>                   show non-zero millisecond display in timestamps
+                               [False]
+  <a class="reference internal" href="#cmdoption-f"><em class="xref std std-option">-f, --scalefactor=SCALE FACTOR</em></a>
+                             page SCALE FACTOR [1.00]
+  <a class="reference internal" href="#cmdoption-w"><em class="xref std std-option">-w, --width=PIXELS</em></a>         page width PIXELS [1280]
+  <a class="reference internal" href="#cmdoption-h"><em class="xref std std-option">-h, --height=PIXELS</em></a>        page height PIXELS [1024]
+      <a class="reference internal" href="#cmdoption--margin"><em class="xref std std-option">--margin=PIXELS</em></a>        margin between thumbnails PIXELS [2]
+      <a class="reference internal" href="#cmdoption--border"><em class="xref std std-option">--border=PIXELS</em></a>        thumbnail border width PIXELS [1]
+      <a class="reference internal" href="#cmdoption--save"><em class="xref std std-option">--save</em></a>                 save current settings as defaults
+      <a class="reference internal" href="#cmdoption--reset"><em class="xref std std-option">--reset</em></a>                reset settings to initial defaults
+      <a class="reference internal" href="#cmdoption--dumpcr"><em class="xref std std-option">--dumpcr[=FILE]</em></a>        dump # columns/rows diagnostic plot to FILE
+      <a class="reference internal" href="#cmdoption--debug"><em class="xref std std-option">--debug[=VALUE]</em></a>       show debugging information
+  <a class="reference internal" href="#cmdoption--help"><em class="xref std std-option">-?, --help</em></a>                 show this message and exit
+      <a class="reference internal" href="#cmdoption--version"><em class="xref std std-option">--version</em></a>              show version and exit
+</pre>
+<p>In general, only the options with single letter abbreviations are
+normally used and even most of those are for somewhat advanced
+customizations.</p>
+<p id="option-short-list">Here&#8217;s the list of options you&#8217;ll most likely use:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt><a class="reference internal" href="#cmdoption--help"><em class="xref std std-option">-?, --help</em></a></dt>
+<dd>Show help message.</dd>
+<dt><a class="reference internal" href="#cmdoption-v"><em class="xref std std-option">-v, --overview</em></a></dt>
+<dd>Control creation of Overview page.</dd>
+<dt><a class="reference internal" href="#cmdoption-s"><em class="xref std std-option">-s, --start</em></a></dt>
+<dd>Set time to start thumbnailing.</dd>
+<dt><a class="reference internal" href="#cmdoption-e"><em class="xref std std-option">-e, --end</em></a></dt>
+<dd>Set time to end thumbnailing.</dd>
+<dt><a class="reference internal" href="#cmdoption-n"><em class="xref std std-option">-n</em></a></dt>
+<dd>Set Overview page desired number of rows or columns.</dd>
+<dt><a class="reference internal" href="#cmdoption-N"><em class="xref std std-option">-N</em></a></dt>
+<dd>Set Detail page desired number of rows or columns.</dd>
+<dt><a class="reference internal" href="#cmdoption-i"><em class="xref std std-option">-i, --interval</em></a></dt>
+<dd>Set Detail page thumbnail interval.</dd>
+<dt><a class="reference internal" href="#cmdoption-d"><em class="xref std std-option">-d, --directory</em></a></dt>
+<dd>Generate thumbnails for a directory.</dd>
+<dt><a class="reference internal" href="#cmdoption-o"><em class="xref std std-option">-o, --outdir</em></a></dt>
+<dd>Set output directory.</dd>
+<dt><a class="reference internal" href="#cmdoption-l"><em class="xref std std-option">-l, --label</em></a></dt>
+<dd>Set timestamp label position.</dd>
+<dt><a class="reference internal" href="#cmdoption-m"><em class="xref std std-option">-m, --cmddir</em></a></dt>
+<dd>Create initial command file for a directory.</dd>
+</dl>
+</div></blockquote>
+<p>&#8220;Boolean&#8221; options can be set to <tt class="xref docutils literal"><span class="pre">False</span></tt> by adding a <tt class="docutils literal"><span class="pre">-</span></tt> to the end
+of the option. For example, to turn off the <a class="reference internal" href="#cmdoption-v"><em class="xref std std-option">-v, --overview</em></a>
+option you can specify either <tt class="docutils literal"><span class="pre">-v-</span></tt> or <tt class="docutils literal"><span class="pre">--overview-</span></tt>.</p>
+<p>To set a boolean option to <tt class="xref docutils literal"><span class="pre">True</span></tt> just specify the option or add a
+<tt class="docutils literal"><span class="pre">+</span></tt> to the end. For example, to turn on the <a class="reference internal" href="#cmdoption--ms"><em class="xref std std-option">--ms</em></a> option
+specify either <tt class="docutils literal"><span class="pre">--ms</span></tt> or <tt class="docutils literal"><span class="pre">--ms+</span></tt>.</p>
+</div>
+<div class="section" id="input-options">
+<h2><a class="toc-backref" href="#id2">Input Options</a><a class="headerlink" href="#input-options" title="Permalink to this headline">¶</a></h2>
+<dl class="option">
+<dt id="cmdoption-d">
+<tt class="descname">-d</tt><tt class="descclassname"> &lt;directory&gt;</tt><tt class="descclassname">, </tt><tt class="descname">--directory</tt><tt class="descclassname"> &lt;directory&gt;</tt><a class="headerlink" href="#cmdoption-d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate thumbnails for all video files in <span class="optionarg">directory</span> and
+its sub-directories. All files with recognized video extensions and
+that are greater than a minimum size will have thumbnails generated
+for them.</p>
+<p>By default, thumbnails are written to the original directory of each
+video file. The <a class="reference internal" href="#cmdoption-o"><em class="xref std std-option">-o, --outdir</em></a> option will change this
+to a single directory (not recommended when generating Detail
+thumbnail pages for multiple directories).</p>
+<p>Use the <a class="reference internal" href="#cmdoption-h"><em class="xref std std-option">-?, -h, --help</em></a> option to see the list of valid
+video extensions used during directory processing.</p>
+<p>If <strong class="command">CLAutoThumbnailer</strong> sees any files that match <span class="filename">*_overview.jpg</span>,
+<span class="filename">*_pageNNNN.jpg</span>, or <span class="filename">*_pageNNNN_NN_NN_NN.jpg</span> in a directory, it
+will be skipped since it is assumed that thumbnails have already been
+generated for it. You can trick the <a class="reference internal" href="#cmdoption-d"><em class="xref std std-option">-d</em></a> option into skipping
+particular directories by putting dummy files in them with names like
+<span class="filename">skipthisdirectory_overview.jpg</span>.</p>
+<p>A directory will also be skipped if it already has a sub-directory
+with the same name as <a class="reference internal" href="#cmdoption--subdir"><em class="xref std std-option">--subdir</em></a>.</p>
+<p>Checking for already created thumbnails only affects <a class="reference internal" href="#cmdoption-d"><em class="xref std std-option">-d,
+--directory</em></a> option processing. If you explicitly list a file in
+the arguments to <strong class="command">CLAutoThumbnailer</strong> it will always be thumbnailed, regardless of
+the presence of previously generated thumbnails (which will be
+silently overwritten).</p>
+<p>While the best organization is to have one directory per movie, this
+isn&#8217;t a requirement.</p>
+<p>Examples:</p>
+<div class="highlight-python"><pre>clatn -d .</pre>
+</div>
+<p>will generate Overview and Detail thumbnail pages for all video files
+found in the current working directory and its sub-directories. The
+thumbnail pages will be placed in the original directories of each
+video file.</p>
+<div class="highlight-python"><pre>clatn -d "C:\MyVideos\Latest"</pre>
+</div>
+<p>will generate Overview and Detail thumbnail pages for all video files
+found in <span class="filename">C:\MyVideos\Latest\</span>. The thumbnail pages will be placed
+in the original directories of each video file.</p>
+<div class="highlight-python"><pre>clatn -i 0 -o . -d "C:\MyVideos\Latest"</pre>
+</div>
+<p>will write only Overview thumbnail pages of all video files found in
+<span class="filename">C:\MyVideos\Latest\</span> to the current working directory.</p>
+<p>See <a class="reference internal" href="how-thumbnaildir.html"><em>Thumbnail an entire directory</em></a> for a detailed example.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption--exts">
+<tt class="descname">--exts</tt><tt class="descclassname"> &lt;extensions&gt;</tt><a class="headerlink" href="#cmdoption--exts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add/remove video <span class="optionarg">extensions</span> that will be recognized
+during <a class="reference internal" href="#cmdoption-d"><em class="xref std std-option">-d, --directory</em></a>
+processing. <span class="optionarg">Extensions</span> is a comma separated list of
+extensions. Prefix the extension with a <tt class="docutils literal"><span class="pre">-</span></tt> to remove it from the
+list, and with nothing or <tt class="docutils literal"><span class="pre">+</span></tt> to add it to the list.</p>
+<p>Examples:</p>
+<div class="highlight-python"><pre>clatn --exts "abc, -mov" --directory .</pre>
+</div>
+<p>will add the extension <tt class="docutils literal"><span class="pre">abc</span></tt> and remove the extension <tt class="docutils literal"><span class="pre">mov</span></tt> while
+processing the current directory.</p>
+<div class="highlight-python"><pre>clatn --exts "abc, -mov" --save</pre>
+</div>
+<p>will change <strong class="command">CLAutoThumbnailer</strong>’s default settings to add the extension <tt class="docutils literal"><span class="pre">abc</span></tt>
+and remove the extension <tt class="docutils literal"><span class="pre">mov</span></tt>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption--minsize">
+<tt class="descname">--minsize</tt><tt class="descclassname"> &lt;bytes&gt;</tt><a class="headerlink" href="#cmdoption--minsize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the minimum size for video files during <a class="reference internal" href="#cmdoption-d"><em class="xref std std-option">-d, --directory</em></a> processing to <span class="optionarg">bytes</span>.</p>
+<p>Range: <span class="optionarg">bytes</span> &gt;= <tt class="docutils literal"><span class="pre">0</span></tt>.</p>
+<p>Default is <tt class="docutils literal"><span class="pre">104857600</span> <span class="pre">=</span> <span class="pre">100</span> <span class="pre">*</span> <span class="pre">1024</span> <span class="pre">*</span> <span class="pre">1024</span></tt> (100MB).</p>
+<p>Examples:</p>
+<div class="highlight-python"><pre>clatn --minsize=0 --directory .</pre>
+</div>
+<p>will allow files of any size while processing the current directory.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">clatn</span> <span class="o">--</span><span class="n">minsize</span><span class="o">=</span><span class="mi">0</span> <span class="o">--</span><span class="n">save</span>
+</pre></div>
+</div>
+<p>will change <strong class="command">CLAutoThumbnailer</strong>’s default settings to allow files of any size
+during <a class="reference internal" href="#cmdoption-d"><em class="xref std std-option">-d, --directory</em></a> processing.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-m">
+<tt class="descname">-m</tt><tt class="descclassname"> &lt;directory&gt;</tt><tt class="descclassname">, </tt><tt class="descname">--cmddir</tt><tt class="descclassname"> &lt;directory&gt;</tt><a class="headerlink" href="#cmdoption-m" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an initial command file called <span class="filename">CLAutotn-temp.txt</span> in the
+current working directory for <span class="optionarg">directory</span>.</p>
+<p><span class="filename">CLAutotn-temp.txt</span> is just a text file that has an entry that looks
+like the following for each video found in <span class="optionarg">directory</span> and
+all its sub-directories:</p>
+<div class="highlight-python"><pre>-i 0 -s 0:0:0 -e "reldir\videofilename.ext"</pre>
+</div>
+<p>Lines for files in directories that have already had thumbs generated
+for them will the be prefixed with a <tt class="docutils literal"><span class="pre">#</span></tt> character. It uses the
+same method that the <a class="reference internal" href="#cmdoption-d"><em class="xref std std-option">-d, --directory</em></a> option uses to
+decide when to skip directories during processing.</p>
+<p>Example:</p>
+<div class="highlight-python"><pre>clatn -m .</pre>
+</div>
+<p>will create a file called <span class="filename">CLAutotn-temp.txt</span> in the current
+directory that contains entries for all its video files.</p>
+<p>See <a class="reference internal" href="how-skipcreditscf.html"><em>Skip thumbnailing the credits in lots of movies</em></a> for a detailed example of how to create
+and use a Command File.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="time-range-options">
+<h2><a class="toc-backref" href="#id3">Time Range Options</a><a class="headerlink" href="#time-range-options" title="Permalink to this headline">¶</a></h2>
+<dl class="option">
+<dt id="cmdoption-s">
+<tt class="descname">-s</tt><tt class="descclassname"> &lt;time&gt;</tt><tt class="descclassname">, </tt><tt class="descname">--start</tt><tt class="descclassname"> &lt;time&gt;</tt><a class="headerlink" href="#cmdoption-s" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the start time to begin thumbnailing, where the <span class="optionarg">time</span>
+is <span class="mono">h:mm:ss.fff</span>. This is useful when you want to
+avoid wasting thumbnails on any boring opening credits.</p>
+<p>The default is <span class="mono">0:0:5</span>.</p>
+<p>Example:</p>
+<div class="highlight-python"><pre>clatn -s 0:1:30 his_girl_friday_512kb.mp4</pre>
+</div>
+<p>will start thumbnailing 1 minute 30 seconds from the beginning of
+the video.</p>
+<p>See <a class="reference internal" href="how-skipcredits.html"><em>Skip the video credits</em></a> for a detailed example.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-e">
+<tt class="descname">-e</tt><tt class="descclassname"> &lt;time&gt;</tt><tt class="descclassname">, </tt><tt class="descname">--end</tt><tt class="descclassname"> &lt;time&gt;</tt><a class="headerlink" href="#cmdoption-e" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the time to end thumbnailing, where the <span class="optionarg">time</span> is
+<span class="mono">h:mm:ss.fff</span>. This is useful when you want to avoid wasting
+thumbnails on the closing credits. A negative <span class="optionarg">time</span> means
+time from the end of the video.</p>
+<p>The default is <span class="mono">-0:0:5</span> (meaning create thumbnails until 5
+seconds from the end of the video).</p>
+<p>Example:</p>
+<div class="highlight-python"><pre>clatn -e -0:2:05 his_girl_friday_512kb.mp4</pre>
+</div>
+<p>will stop thumbnailing at 2 minute 5 seconds from the end of
+the video.</p>
+<p>See <a class="reference internal" href="how-skipcredits.html"><em>Skip the video credits</em></a> for a detailed example.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="overview-page-options">
+<h2><a class="toc-backref" href="#id4">Overview Page Options</a><a class="headerlink" href="#overview-page-options" title="Permalink to this headline">¶</a></h2>
+<dl class="option">
+<dt id="cmdoption-v">
+<tt class="descname">-v</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">--overview</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-v" title="Permalink to this definition">¶</a></dt>
+<dd><p>Controls Overview page thumbnail generation. Add a <tt class="docutils literal"><span class="pre">-</span></tt> to turn off
+Overview page generation.</p>
+<p>Default is <tt class="xref docutils literal"><span class="pre">True</span></tt>.</p>
+<p>Examples:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">clatn</span> <span class="o">-</span><span class="n">v</span><span class="o">-</span> <span class="n">his_girl_friday_512kb</span><span class="o">.</span><span class="n">mp4</span>
+</pre></div>
+</div>
+<p>will skip generating the Overview thumbnail page for the current
+video.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">clatn</span> <span class="o">--</span><span class="n">overview</span><span class="o">-</span> <span class="o">--</span><span class="n">save</span>
+</pre></div>
+</div>
+<p>will change <strong class="command">CLAutoThumbnailer</strong>’s default settings to normally skip Overview
+thumbnail page generation.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-n">
+<tt class="descname">-n</tt><tt class="descclassname"> &lt;nRows or nColumns&gt;</tt><a class="headerlink" href="#cmdoption-n" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the desired number of Overview page rows or columns to
+<span class="optionarg">nRows or nColumns</span>. Ignored when in <a class="reference internal" href="ref-layout.html#actual-layout"><em>Actual Layout</em></a> mode.</p>
+<p>The value specified is interpreted as the desired # of rows in
+<a class="reference internal" href="ref-layout.html#row-priority-layout"><em>Row Priority Layout</em></a> mode and the desired # of columns in
+<a class="reference internal" href="ref-layout.html#column-priority-layout"><em>Column Priority Layout</em></a> mode.</p>
+<p>In <a class="reference internal" href="ref-layout.html#auto-layout"><em>Auto Layout</em></a> mode, it is interpreted as the desired # of
+rows when the video&#8217;s aspect ratio is greater than or equal to the
+thumbnail pages, otherwise it is treated as the desired # of columns.</p>
+<p>Notice that this option is lowercased to distinguish it from the
+<a class="reference internal" href="#cmdoption-N"><em class="xref std std-option">-N</em></a> option.</p>
+<p>Range: <span class="optionarg">nRows or nColumns</span> &gt;= <tt class="docutils literal"><span class="pre">1</span></tt>.</p>
+<p>Default is <tt class="docutils literal"><span class="pre">12</span></tt>.</p>
+<p>Example:</p>
+<div class="highlight-python"><pre>clatn -n 10  his_girl_friday_512kb.mp4</pre>
+</div>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-c">
+<tt class="descname">-c</tt><tt class="descclassname"> &lt;nColumns&gt;</tt><tt class="descclassname">, </tt><tt class="descname">--columns</tt><tt class="descclassname"> &lt;nColumns&gt;</tt><a class="headerlink" href="#cmdoption-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the actual number of Overview page columns to
+<em class="xref std std-option">nColumns</em>. Only used when in <a class="reference internal" href="ref-layout.html#actual-layout"><em>Actual Layout</em></a> mode.</p>
+<p>Notice that this option is lowercased to distinguish it from the
+<a class="reference internal" href="#cmdoption-C"><em class="xref std std-option">-C</em></a> option.</p>
+<p>Range: <span class="optionarg">nColumns</span> &gt;= <tt class="docutils literal"><span class="pre">1</span></tt>.</p>
+<p>Default is <tt class="docutils literal"><span class="pre">12</span></tt>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-r">
+<tt class="descname">-r</tt><tt class="descclassname"> &lt;nRows&gt;</tt><tt class="descclassname">, </tt><tt class="descname">--rows</tt><tt class="descclassname"> &lt;nRows&gt;</tt><a class="headerlink" href="#cmdoption-r" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the actual number of Overview page rows to <em class="xref std std-option">nRows</em>. Only
+used when in <a class="reference internal" href="ref-layout.html#actual-layout"><em>Actual Layout</em></a>  mode.</p>
+<p>Notice that this option is lowercased to distinguish it from the
+<a class="reference internal" href="#cmdoption-R"><em class="xref std std-option">-R</em></a> option.</p>
+<p>Range: <span class="optionarg">nRows</span> &gt;= <tt class="docutils literal"><span class="pre">1</span></tt>.</p>
+<p>Default is <tt class="docutils literal"><span class="pre">12</span></tt>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="detail-page-options">
+<h2><a class="toc-backref" href="#id5">Detail Page Options</a><a class="headerlink" href="#detail-page-options" title="Permalink to this headline">¶</a></h2>
+<dl class="option">
+<dt id="cmdoption-i">
+<tt class="descname">-i</tt><tt class="descclassname"> &lt;interval&gt;</tt><tt class="descclassname">, </tt><tt class="descname">--interval</tt><tt class="descclassname"> &lt;interval&gt;</tt><a class="headerlink" href="#cmdoption-i" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the Detail page time between thumbnails to <span class="optionarg">interval</span>
+where <span class="optionarg">interval</span> is <span class="mono">ss.fff</span>. Set
+<span class="optionarg">interval</span> to <tt class="docutils literal"><span class="pre">0</span></tt> to skip Detail page generation
+completely.</p>
+<p>Range: <tt class="docutils literal"><span class="pre">0</span></tt> or <span class="optionarg">interval</span> &gt;= <tt class="docutils literal"><span class="pre">1</span> <span class="pre">/</span> <span class="pre">30</span></tt> (<tt class="docutils literal"><span class="pre">0.0333</span></tt>).</p>
+<p>Default is <tt class="docutils literal"><span class="pre">10</span></tt>.</p>
+<p>Examples:</p>
+<div class="highlight-python"><pre>clatn -i 60 his_girl_friday_512kb.mp4</pre>
+</div>
+<p>will generate a thumbnail every minute, while:</p>
+<div class="highlight-python"><pre>clatn -i 0.20 his_girl_friday_512kb.mp4</pre>
+</div>
+<p>will generate 5 thumbnails per second.</p>
+<div class="highlight-python"><pre>clatn -i 0 his_girl_friday_512kb.mp4</pre>
+</div>
+<p>will only generate an Overview thumbnail page and not generate any
+Detail thumbnail pages.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption--autointerval">
+<tt class="descname">--autointerval</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption--autointerval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Controls setting the interval between thumbnails for Detail pages
+based on the thumbnailing duration.</p>
+<p>Default is <tt class="xref docutils literal"><span class="pre">False</span></tt>.</p>
+<p>Here are the default auto-intervals:</p>
+<table border="1" class="centered centercells docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Thumbnailing Duration</th>
+<th class="head">Interval</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>&lt;15 minutes</td>
+<td>seconds</td>
+</tr>
+<tr><td>&lt;30 minutes</td>
+<td>10 seconds</td>
+</tr>
+<tr><td>&lt;60 minutes</td>
+<td>15 seconds</td>
+</tr>
+<tr><td>&lt;90 minutes</td>
+<td>30 seconds</td>
+</tr>
+<tr><td>&gt;=90 minutes</td>
+<td>60 seconds</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption--autointervals">
+<tt class="descname">--autointervals</tt><tt class="descclassname"> &lt;intervals&gt;</tt><a class="headerlink" href="#cmdoption--autointervals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the automatic intervals to <span class="optionarg">intervals</span> where
+<span class="optionarg">intervals</span> is of the form <tt class="docutils literal"><span class="pre">&lt;minutes1=seconds1,</span>
+<span class="pre">&lt;minutes2=seconds2,</span> <span class="pre">&lt;minutes3=seconds3,</span> <span class="pre">minutes4</span></tt>.</p>
+<p>Example:</p>
+<div class="highlight-python"><pre>clatn --autointervals "&lt;60=30, &lt;120=60, 120" --directory .</pre>
+</div>
+<p>will change to the following auto-intervals while processing the
+current directory:</p>
+<table border="1" class="centered centercells docutils">
+<colgroup>
+<col width="66%" />
+<col width="34%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Thumbnailing Duration</th>
+<th class="head">Interval</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>&lt;60 minutes</td>
+<td>30 seconds</td>
+</tr>
+<tr><td>&lt;120 minutes</td>
+<td>60 seconds</td>
+</tr>
+<tr><td>&gt;=120 minutes</td>
+<td>120 seconds</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><pre>clatn --autointervals "&lt;60=30, &lt;120=60, 120" --save</pre>
+</div>
+<p>will change <strong class="command">CLAutoThumbnailer</strong>’s default settings to those auto-intervals.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-N">
+<tt class="descname">-N</tt><tt class="descclassname"> &lt;nRows or nColumns&gt;</tt><a class="headerlink" href="#cmdoption-N" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the desired number of Detail page rows or columns to
+<span class="optionarg">nRows or nColumns</span>. Ignored when in <a class="reference internal" href="ref-layout.html#actual-layout"><em>Actual Layout</em></a>
+mode.</p>
+<p>The value specified is interpreted as the desired # of rows in
+<a class="reference internal" href="ref-layout.html#row-priority-layout"><em>Row Priority Layout</em></a> mode and the desired # of columns in
+<a class="reference internal" href="ref-layout.html#column-priority-layout"><em>Column Priority Layout</em></a> mode.</p>
+<p>In <a class="reference internal" href="ref-layout.html#auto-layout"><em>Auto Layout</em></a> mode, it is interpreted as the desired # of
+rows when the video&#8217;s aspect ratio is greater than or equal to the
+thumbnail pages, otherwise it is treated as the desired # of columns.</p>
+<p>Notice that this option is Capitalized to distinguish it from the
+<a class="reference internal" href="#cmdoption-n"><em class="xref std std-option">-n</em></a> option.</p>
+<p>Range: <span class="optionarg">nRows or nColumns</span> &gt;= <tt class="docutils literal"><span class="pre">1</span></tt>.</p>
+<p>Default is <tt class="docutils literal"><span class="pre">4</span></tt>.</p>
+<p>Example:</p>
+<div class="highlight-python"><pre>clatn -N 10  his_girl_friday_512kb.mp4</pre>
+</div>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-C">
+<tt class="descname">-C</tt><tt class="descclassname"> &lt;nColumns&gt;</tt><tt class="descclassname">, </tt><tt class="descname">--Columns</tt><tt class="descclassname"> &lt;nColumns&gt;</tt><a class="headerlink" href="#cmdoption-C" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the actual number of Detail page columns to
+<em class="xref std std-option">nColumns</em>. Only used when in <a class="reference internal" href="ref-layout.html#actual-layout"><em>Actual Layout</em></a> mode.</p>
+<p>Notice that this option is Capitalized to distinguish it from the
+<a class="reference internal" href="#cmdoption-c"><em class="xref std std-option">-c</em></a> option.</p>
+<p>Range: <span class="optionarg">nColumns</span> &gt;= <tt class="docutils literal"><span class="pre">1</span></tt>.</p>
+<p>Default is <tt class="docutils literal"><span class="pre">4</span></tt>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-R">
+<tt class="descname">-R</tt><tt class="descclassname"> &lt;nRows&gt;</tt><tt class="descclassname">, </tt><tt class="descname">--Rows</tt><tt class="descclassname"> &lt;nRows&gt;</tt><a class="headerlink" href="#cmdoption-R" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the actual number of Detail page rows to <em class="xref std std-option">nRows</em>. Only
+used when in <a class="reference internal" href="ref-layout.html#actual-layout"><em>Actual Layout</em></a> mode.</p>
+<p>Notice that this option is Capitalized to distinguish it from the
+<a class="reference internal" href="#cmdoption-r"><em class="xref std std-option">-r</em></a> option.</p>
+<p>Range: <span class="optionarg">nRows</span> &gt;= <tt class="docutils literal"><span class="pre">1</span></tt>.</p>
+<p>Default is <tt class="docutils literal"><span class="pre">4</span></tt>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption--dfts">
+<tt class="descname">--dfts</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption--dfts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Controls adding the timestamp of the first thumbnail on a Detail page
+to its filename. Normally the Detail thumbnail page filenames look
+like <span class="filename">displayfilename_pageNNNN_hh_mm_ss.jpg</span>, but specifying
+<tt class="docutils literal"><span class="pre">--dfts-</span></tt> will change it to just <span class="filename">displayfilename_pageNNNN.jpg</span>.</p>
+<p>Default is <tt class="xref docutils literal"><span class="pre">True</span></tt>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="layout-options">
+<h2><a class="toc-backref" href="#id6">Layout Options</a><a class="headerlink" href="#layout-options" title="Permalink to this headline">¶</a></h2>
+<dl class="option">
+<dt id="cmdoption-y">
+<tt class="descname">-y</tt><tt class="descclassname"> &lt;mode&gt;</tt><tt class="descclassname">, </tt><tt class="descname">--layout</tt><tt class="descclassname"> &lt;mode&gt;</tt><a class="headerlink" href="#cmdoption-y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the <a class="reference internal" href="ref-layout.html#page-layout-modes"><em>Page Layout Mode</em></a> to
+<span class="optionarg">mode</span>, where <span class="optionarg">mode</span> is</p>
+<blockquote>
+<div><p><tt class="docutils literal"><span class="pre">0</span></tt> =  <a class="reference internal" href="ref-layout.html#auto-layout"><em>Auto Layout</em></a>.</p>
+<p><tt class="docutils literal"><span class="pre">1</span></tt> = <a class="reference internal" href="ref-layout.html#actual-layout"><em>Actual Layout</em></a>.</p>
+<p><tt class="docutils literal"><span class="pre">2</span></tt> = <a class="reference internal" href="ref-layout.html#row-priority-layout"><em>Row Priority Layout</em></a>.</p>
+<p><tt class="docutils literal"><span class="pre">3</span></tt> = <a class="reference internal" href="ref-layout.html#column-priority-layout"><em>Column Priority Layout</em></a>.</p>
+</div></blockquote>
+<p>Default is <tt class="docutils literal"><span class="pre">0</span></tt>, <a class="reference internal" href="ref-layout.html#auto-layout"><em>Auto Layout</em></a>.</p>
+<p>Example:</p>
+<div class="highlight-python"><pre>clatn -l 1 -c 8 -r 9 -C 3 -R 4 his_girl_friday_512kb.mp4</pre>
+</div>
+<p>will force the Overview page to have 8 columns and 9 rows, and the
+Detail pages to have 3 columns and 4 rows.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption--othres">
+<tt class="descname">--othres</tt><tt class="descclassname"> &lt;aspect ratio&gt;</tt><a class="headerlink" href="#cmdoption--othres" title="Permalink to this definition">¶</a></dt>
+<dd><p>In <a class="reference internal" href="ref-layout.html#auto-layout"><em>Auto Layout</em></a> of an Overview thumbnail page, <span class="optionarg">aspect
+ratio</span> to use when switching between <a class="reference internal" href="ref-layout.html#column-priority-layout"><em>Column Priority Layout</em></a>
+and <a class="reference internal" href="ref-layout.html#row-priority-layout"><em>Row Priority Layout</em></a>. <tt class="docutils literal"><span class="pre">0.0</span></tt> means use thumbnail page
+aspect ratio.</p>
+<p>Range: <tt class="docutils literal"><span class="pre">0.00</span></tt> or <tt class="docutils literal"><span class="pre">0.20</span></tt> &lt;= <span class="optionarg">aspect ratio</span> &lt;= <tt class="docutils literal"><span class="pre">4.0</span></tt>.</p>
+<p>Default is <tt class="docutils literal"><span class="pre">0.0</span></tt>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption--dthres">
+<tt class="descname">--dthres</tt><tt class="descclassname"> &lt;aspect ratio&gt;</tt><a class="headerlink" href="#cmdoption--dthres" title="Permalink to this definition">¶</a></dt>
+<dd><p>In <a class="reference internal" href="ref-layout.html#auto-layout"><em>Auto Layout</em></a> of Detail thumbnail pages, <span class="optionarg">aspect
+ratio</span> to use when switching between <a class="reference internal" href="ref-layout.html#column-priority-layout"><em>Column Priority Layout</em></a>
+and <a class="reference internal" href="ref-layout.html#row-priority-layout"><em>Row Priority Layout</em></a>. <tt class="docutils literal"><span class="pre">0.0</span></tt> means use thumbnail page
+aspect ratio.</p>
+<p>Range: <tt class="docutils literal"><span class="pre">0.00</span></tt> or <tt class="docutils literal"><span class="pre">0.20</span></tt> &lt;= <span class="optionarg">aspect ratio</span> &lt;= <tt class="docutils literal"><span class="pre">4.0</span></tt>.</p>
+<p>Default is <tt class="docutils literal"><span class="pre">0.0</span></tt>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption--rcopt">
+<tt class="descname">--rcopt</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption--rcopt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Controls <a class="reference internal" href="ref-layout.html#rc-optimization"><em>Row/Column Optimization</em></a>.</p>
+<p>Default is <tt class="xref docutils literal"><span class="pre">True</span></tt>.</p>
+<p>Examples:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">clatn</span> <span class="o">--</span><span class="n">rcopt</span><span class="o">-</span> <span class="n">his_girl_friday_512kb</span><span class="o">.</span><span class="n">mp4</span>
+</pre></div>
+</div>
+<p>will disable row/column adjustment optimizations during the
+processing of the current video file.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">clatn</span> <span class="o">--</span><span class="n">rcopt</span><span class="o">-</span> <span class="o">--</span><span class="n">save</span>
+</pre></div>
+</div>
+<p>will change <strong class="command">CLAutoThumbnailer</strong>’s default settings to normally disable row/column
+optimization.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption--maxoptsteps">
+<tt class="descname">--maxoptsteps</tt><tt class="descclassname"> &lt;steps&gt;</tt><a class="headerlink" href="#cmdoption--maxoptsteps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the maximum allowed number of <a class="reference internal" href="ref-layout.html#rc-optimization"><em>row/column optimization</em></a> steps to <span class="optionarg">step</span>. Set <span class="optionarg">step</span>
+to <tt class="docutils literal"><span class="pre">0</span></tt> to allow unlimited optimization steps. Use <a class="reference internal" href="#cmdoption--rcopt"><em class="xref std std-option">--rcopt</em></a>
+to completely disable <a class="reference internal" href="ref-layout.html#rc-optimization"><em>row/column optimization</em></a>.</p>
+<p>Range: <span class="optionarg">steps</span> &gt;= <tt class="docutils literal"><span class="pre">0</span></tt>.</p>
+<p>Default is <tt class="docutils literal"><span class="pre">2</span></tt>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption--wthres">
+<tt class="descname">--wthres</tt><tt class="descclassname"> &lt;threshold&gt;</tt><a class="headerlink" href="#cmdoption--wthres" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the width threshold for adding columns to <span class="optionarg">theshold</span>
+where <span class="optionarg">theshold</span> is between <tt class="docutils literal"><span class="pre">0.1</span></tt> and <tt class="docutils literal"><span class="pre">1.0</span></tt>. This is
+ignored if Row/Column Optimization is turned off via the
+<a class="reference internal" href="#cmdoption--rcopt"><em class="xref std std-option">--rcopt</em></a> option or the <a class="reference internal" href="ref-layout.html#row-priority-layout"><em>Row Priority Layout</em></a> is not
+being used.</p>
+<p>Range: <tt class="docutils literal"><span class="pre">0.1</span></tt> &lt;= <span class="optionarg">threshold</span> &lt;= <tt class="docutils literal"><span class="pre">1.0</span></tt>.</p>
+<p>Default is <tt class="docutils literal"><span class="pre">0.60</span></tt>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption--hthres">
+<tt class="descname">--hthres</tt><tt class="descclassname"> &lt;threshold&gt;</tt><a class="headerlink" href="#cmdoption--hthres" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the height threshold for adding rows to <span class="optionarg">theshold</span>
+where <span class="optionarg">theshold</span> is between <tt class="docutils literal"><span class="pre">0.1</span></tt> and <tt class="docutils literal"><span class="pre">1.0</span></tt>. This is
+ignored if Row/Column Optimization is turned off via the
+<a class="reference internal" href="#cmdoption--rcopt"><em class="xref std std-option">--rcopt</em></a> option or the <a class="reference internal" href="ref-layout.html#column-priority-layout"><em>Column Priority Layout</em></a> is not
+being used.</p>
+<p>Range: <tt class="docutils literal"><span class="pre">0.1</span></tt> &lt;= <span class="optionarg">threshold</span> &lt;= <tt class="docutils literal"><span class="pre">1.0</span></tt>.</p>
+<p>Default is <tt class="docutils literal"><span class="pre">0.60</span></tt>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption--mincols">
+<tt class="descname">--mincols</tt><tt class="descclassname"> &lt;nColumns&gt;</tt><a class="headerlink" href="#cmdoption--mincols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the minimum allowed number of columns to <span class="optionarg">nColumns</span>.</p>
+<p>Range: <span class="optionarg">nColumns</span> &gt;= <tt class="docutils literal"><span class="pre">1</span></tt>.</p>
+<p>Default is <tt class="docutils literal"><span class="pre">3</span></tt>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption--minrows">
+<tt class="descname">--minrows</tt><tt class="descclassname"> &lt;nRows&gt;</tt><a class="headerlink" href="#cmdoption--minrows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the minimum allowed number of rows to <span class="optionarg">nRows</span>.</p>
+<p>Range: <span class="optionarg">nRows</span> &gt;= <tt class="docutils literal"><span class="pre">1</span></tt>.</p>
+<p>Default is <tt class="docutils literal"><span class="pre">3</span></tt>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="aspect-ratio-options">
+<h2><a class="toc-backref" href="#id7">Aspect Ratio Options</a><a class="headerlink" href="#aspect-ratio-options" title="Permalink to this headline">¶</a></h2>
+<dl class="option">
+<dt id="cmdoption-p">
+<tt class="descname">-p</tt><tt class="descclassname"> &lt;aspect ratio&gt;</tt><tt class="descclassname">, </tt><tt class="descname">--crop</tt><tt class="descclassname"> &lt;aspect ratio&gt;</tt><a class="headerlink" href="#cmdoption-p" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manually set the thumbnail cropping to <span class="optionarg">aspect ratio</span>. If
+you set the <a class="reference internal" href="glossary.html#term-aspect-ratio"><em class="xref std std-term">aspect ratio</em></a> smaller than the video frame&#8217;s
+aspect ratio, you end up chopping off the sides of the video. If you
+set the aspect ratio larger, then you chop off the top and bottom.</p>
+<p>Automatically disables the <a class="reference internal" href="#cmdoption--aar"><em class="xref std std-option">--aar</em></a> option.</p>
+<p>Range: <tt class="docutils literal"><span class="pre">0.20</span></tt> &lt;= <span class="optionarg">aspect ratio</span> &lt;= <tt class="docutils literal"><span class="pre">4.0</span></tt>.</p>
+<p id="letterbox-crop-values">In order to crop a letterboxed video you specify an aspect ratio to
+the <a class="reference internal" href="#cmdoption-p"><em class="xref std std-option">-p, --crop</em></a> option that is <em class="bolditalic">larger</em> than the
+video frame&#8217;s actual aspect ratio. Common aspect ratios to specify
+would be the following (where you specify a slightly &#8212; about 2% &#8212;
+<em class="bolditalic">smaller</em> value than the desired aspect ratio to
+leave a little bit of black to avoid overcropping):</p>
+<table border="1" class="centered centercells docutils">
+<caption>Cropping letterboxed videos (black bars on top and bottom)</caption>
+<colgroup>
+<col width="48%" />
+<col width="52%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Desired Aspect Ratio</th>
+<th class="head">&#8211;crop Aspect Ratio</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>1.33</td>
+<td>1.30</td>
+</tr>
+<tr><td>1.78</td>
+<td>1.74</td>
+</tr>
+<tr><td>1.85</td>
+<td>1.81</td>
+</tr>
+<tr><td>2.35</td>
+<td>2.30</td>
+</tr>
+</tbody>
+</table>
+<p id="pillarbox-crop-values">In order to crop a pillarboxed video you specify an aspect ratio to
+the <a class="reference internal" href="#cmdoption-p"><em class="xref std std-option">-p, --crop</em></a> option that is <em class="bolditalic">smaller</em> than the
+video frame&#8217;s actual aspect ratio. Common aspect ratios to specify
+would be the following (where you specify a slightly &#8212; about 2% &#8212;
+<em class="bolditalic">larger</em> value than the desired aspect ratio to leave a little
+bit of black to avoid overcropping):</p>
+<table border="1" class="centered centercells docutils">
+<caption>Cropping pillarboxed videos (black bars on sides)</caption>
+<colgroup>
+<col width="48%" />
+<col width="52%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Desired Aspect Ratio</th>
+<th class="head">&#8211;crop Aspect Ratio</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>1.33</td>
+<td>1.36</td>
+</tr>
+<tr><td>1.78</td>
+<td>1.81</td>
+</tr>
+<tr><td>1.85</td>
+<td>1.89</td>
+</tr>
+<tr><td>2.35</td>
+<td>2.40</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-python"><pre>clatn --crop 1.35 his_girl_friday.mpeg</pre>
+</div>
+<p>to leave a little bit more black border on the sides of the video
+than the automatically determined 1.33 aspect ratio.</p>
+<p>See <a class="reference internal" href="how-blackbars.html"><em>Remove the black bars from the edges of thumbnails</em></a> for a detailed example.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption--rect">
+<tt class="descname">--rect</tt><tt class="descclassname"> &lt;rectangle&gt;</tt><a class="headerlink" href="#cmdoption--rect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the source thumbnailing <span class="optionarg">rectangle</span>, where
+<span class="optionarg">rectangle</span> is of the form <tt class="docutils literal"><span class="pre">X,Y+WIDTHxHEIGHT</span></tt>.</p>
+<p>Automatically disables the <a class="reference internal" href="#cmdoption--aar"><em class="xref std std-option">--aar</em></a> option.</p>
+<p>See <a class="reference internal" href="how-blackbars.html#cropping-windowboxed-videos"><em>Cropping windowboxed videos</em></a> for a detailed example that
+uses the <a class="reference internal" href="#cmdoption--rect"><em class="xref std std-option">--rect</em></a> option.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-t">
+<tt class="descname">-t</tt><tt class="descclassname"> &lt;aspect ratio&gt;</tt><tt class="descclassname">, </tt><tt class="descname">--stretch</tt><tt class="descclassname"> &lt;aspect ratio&gt;</tt><a class="headerlink" href="#cmdoption-t" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manually set the thumbnail stretching to <span class="optionarg">aspect ratio</span>.</p>
+<p>Automatically disables the <a class="reference internal" href="#cmdoption--aar"><em class="xref std std-option">--aar</em></a> option.</p>
+<p>Range: <tt class="docutils literal"><span class="pre">0.20</span></tt> &lt;= <span class="optionarg">aspect ratio</span> &lt;= <tt class="docutils literal"><span class="pre">4.0</span></tt>.</p>
+<p id="common-aspect-ratios">In order to fix squished videos you specify an aspect ratio to the
+<a class="reference internal" href="#cmdoption-t"><em class="xref std std-option">-t, --stretch</em></a> option that is <em class="bolditalic">larger</em> (wider) than
+the video frame&#8217;s actual aspect ratio.</p>
+<p>In order to fix stretched videos you specify an aspect ratio to the
+<a class="reference internal" href="#cmdoption-t"><em class="xref std std-option">-t, --stretch</em></a> option that is <em class="bolditalic">smaller</em> (narrower)
+than the video frame&#8217;s actual aspect ratio.</p>
+<p>Common aspect ratios to try would be the following:</p>
+<table border="1" class="centered centercells docutils">
+<caption>Common aspect ratios</caption>
+<colgroup>
+<col width="100%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Aspect Ratio</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>1.33</td>
+</tr>
+<tr><td>1.78</td>
+</tr>
+<tr><td>1.85</td>
+</tr>
+<tr><td>2.35</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-python"><pre>clatn --stretch 1.35 his_girl_friday_512kb.mp4</pre>
+</div>
+<p>See <a class="reference internal" href="how-distortion.html"><em>Fix distorted thumbnails</em></a> for a detailed example that uses the
+<a class="reference internal" href="#cmdoption-t"><em class="xref std std-option">-t, --stretch</em></a> option.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption--aar">
+<tt class="descname">--aar</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption--aar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Controls automatic aspect ratio adjustment.</p>
+<p>Automatically disabled when the <a class="reference internal" href="#cmdoption-p"><em class="xref std std-option">-p, --crop</em></a>,
+<a class="reference internal" href="#cmdoption-t"><em class="xref std std-option">-t, --stretch</em></a>, or <a class="reference internal" href="#cmdoption--rect"><em class="xref std std-option">--rect</em></a> options are
+specified.</p>
+<p>Default is <tt class="xref docutils literal"><span class="pre">True</span></tt> (enabled).</p>
+<p>See <a class="reference internal" href="ref-aar.html"><em>Auto Aspect Ratio Adjustment</em></a> for more information.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="output-page-options">
+<h2><a class="toc-backref" href="#id8">Output Page Options</a><a class="headerlink" href="#output-page-options" title="Permalink to this headline">¶</a></h2>
+<dl class="option">
+<dt id="cmdoption-o">
+<tt class="descname">-o</tt><tt class="descclassname"> &lt;directory&gt;</tt><tt class="descclassname">, </tt><tt class="descname">--outdir</tt><tt class="descclassname"> &lt;directory&gt;</tt><a class="headerlink" href="#cmdoption-o" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the output directory for thumbnail pages to
+<span class="optionarg">directory</span>. <span class="optionarg">Directory</span> must already exist, it
+will <em class="bolditalic">not</em> be created automatically. Normally you navigate to the
+directory where you want the thumbnails created and use <tt class="docutils literal"><span class="pre">-o</span> <span class="pre">.</span></tt>.</p>
+<p>This option is required when the video file resides in a read-only
+directory (like on a DVD drive).</p>
+<p>In conjunction with the <a class="reference internal" href="#cmdoption-d"><em class="xref std std-option">-d, --directory</em></a> and
+<a class="reference internal" href="#cmdoption-i"><em class="xref std std-option">i, --interval</em></a> options, it can be used to summarize
+entire directories of videos by putting their Overview thumbnails in
+a single directory.</p>
+<p>Overrides the <a class="reference internal" href="#cmdoption--subdir"><em class="xref std std-option">--subdir</em></a> option.</p>
+<p>Default is the original directory (or sub-directory if
+<a class="reference internal" href="#cmdoption--subdir"><em class="xref std std-option">--subdir</em></a> is not an empty string) of each video file.</p>
+<p>Examples:</p>
+<div class="highlight-python"><pre>clatn -o . E:\VIDEO_TS\VTS_01_*.VOB</pre>
+</div>
+<p>will write thumbnails of the first title set of the unencrypted DVD
+in drive <span class="filename">E:</span> to the current working directory .</p>
+<div class="highlight-python"><pre>clatn -i 0 -o "C:\MyThumbnails" -d .</pre>
+</div>
+<p>will write only Overview thumbnails of all the video files in the
+current working directory (and all its sub-directories) to
+<span class="filename">C:\MyThumbnails\</span>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption--subdir">
+<tt class="descname">--subdir</tt><tt class="descclassname"> &lt;name&gt;</tt><a class="headerlink" href="#cmdoption--subdir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the output directory for thumbnail pages to the sub-directory
+<span class="optionarg">name</span> of the original video directory. The
+<span class="optionarg">name</span> sub-directory will be created if it doesn&#8217;t
+exist. <span class="optionarg">Name</span> can only contain alphanumerics, <tt class="docutils literal"><span class="pre">_</span></tt>
+(underline), and <tt class="docutils literal"><span class="pre">-</span></tt> (minus) characters.</p>
+<p>Overridden by the <a class="reference internal" href="#cmdoption-o"><em class="xref std std-option">-o, --outdir</em></a> option.</p>
+<p>Default is the empty string (use original directory of each video
+file for output).</p>
+<p>Example:</p>
+<div class="highlight-python"><pre>clatn --subdir=Thumbs -d .</pre>
+</div>
+<p>will create thumbnails in a <span class="filename">Thumbs</span> subdir for each directory that
+contains videos. This is useful if you don&#8217;t like mixing lots of
+thumbnail pages in with your video files.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption--name">
+<tt class="descname">--name</tt><tt class="descclassname"> &lt;displayname&gt;</tt><a class="headerlink" href="#cmdoption--name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the &#8220;display name&#8221; of the video file or files to
+<span class="optionarg">displayname</span>. The display name is put in the center of
+the thumbnail header and is also used to generate the output
+filenames.</p>
+<p>The default is the video filename, or in the case of multi-VOBs, the
+name of the parent directory + <tt class="docutils literal"><span class="pre">_-_vts_tt.dvd</span></tt>, where <tt class="docutils literal"><span class="pre">tt</span></tt> is the
+DVD title number. Wildcard filenames like <span class="filename">videofilename_cd*.ext</span>
+become <span class="filename">videofilename_MULTI.ext</span>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-l">
+<tt class="descname">-l</tt><tt class="descclassname"> &lt;pos&gt;</tt><tt class="descclassname">, </tt><tt class="descname">--label</tt><tt class="descclassname"> &lt;pos&gt;</tt><a class="headerlink" href="#cmdoption-l" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the position of the timestamp label to <span class="optionarg">pos</span>, where
+<span class="optionarg">pos</span> is:</p>
+<blockquote>
+<div><p><tt class="docutils literal"><span class="pre">0</span></tt> = No timestamp.</p>
+<p><tt class="docutils literal"><span class="pre">1</span></tt> = Timestamp in lower-right corner of thumbnails.</p>
+<p><tt class="docutils literal"><span class="pre">2</span></tt> = Timestamp in lower-left corner of thumbnails.</p>
+<p><tt class="docutils literal"><span class="pre">3</span></tt> = Timestamp in upper-right corner of thumbnails.</p>
+<p><tt class="docutils literal"><span class="pre">4</span></tt> = Timestamp in upper-left corner of thumbnails.</p>
+</div></blockquote>
+<p>Default is <tt class="docutils literal"><span class="pre">1</span></tt>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption--ms">
+<tt class="descname">--ms</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption--ms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Controls whether to always show non-zero milliseconds on timestamps.</p>
+<p>Non-zero milliseconds are always shown on Detail page timestamps of
+<a class="reference internal" href="ref-multipart.html"><em>Multi-Part Video Files</em></a>.</p>
+<p>Default is <tt class="xref docutils literal"><span class="pre">False</span></tt>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-f">
+<tt class="descname">-f</tt><tt class="descclassname"> &lt;factor&gt;</tt><tt class="descclassname">, </tt><tt class="descname">--scalefactor</tt><tt class="descclassname"> &lt;factor&gt;</tt><a class="headerlink" href="#cmdoption-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the scalefactor used to resize the thumbnail page to
+<span class="optionarg">factor</span>.</p>
+<p>Range: <tt class="docutils literal"><span class="pre">0.25</span></tt> &lt;= <span class="optionarg">factor</span> &lt;= <tt class="docutils literal"><span class="pre">3.0</span></tt>.</p>
+<p>Default is <tt class="docutils literal"><span class="pre">1.0</span></tt>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-w">
+<tt class="descname">-w</tt><tt class="descclassname"> &lt;pixels&gt;</tt><tt class="descclassname">, </tt><tt class="descname">--width</tt><tt class="descclassname"> &lt;pixels&gt;</tt><a class="headerlink" href="#cmdoption-w" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the disired width of thumbnail pages to <span class="optionarg">pixels</span>.</p>
+<p>Range: <span class="optionarg">pixels</span> &gt;= <tt class="docutils literal"><span class="pre">100</span></tt>.</p>
+<p>Default is <tt class="docutils literal"><span class="pre">1280</span></tt>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-h">
+<tt class="descname">-h</tt><tt class="descclassname"> &lt;pixels&gt;</tt><tt class="descclassname">, </tt><tt class="descname">--height</tt><tt class="descclassname"> &lt;pixels&gt;</tt><a class="headerlink" href="#cmdoption-h" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the desired height of thumbnail pages to <span class="optionarg">pixels</span>.</p>
+<p>Range: <span class="optionarg">pixels</span> &gt;= <tt class="docutils literal"><span class="pre">100</span></tt>.</p>
+<p>Default is <tt class="docutils literal"><span class="pre">1024</span></tt>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption--margin">
+<tt class="descname">--margin</tt><tt class="descclassname"> &lt;pixels&gt;</tt><a class="headerlink" href="#cmdoption--margin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the width of the black space between thumbnails to
+<span class="optionarg">pixels</span>.</p>
+<p>Range: <span class="optionarg">pixels</span> &gt;= <tt class="docutils literal"><span class="pre">0</span></tt>.</p>
+<p>Default is <tt class="docutils literal"><span class="pre">2</span></tt>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption--border">
+<tt class="descname">--border</tt><tt class="descclassname"> &lt;pixels&gt;</tt><a class="headerlink" href="#cmdoption--border" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the width of the white thumbnail border to <span class="optionarg">pixels</span>.</p>
+<p>Range: <span class="optionarg">pixels</span> &gt;= <tt class="docutils literal"><span class="pre">0</span></tt>.</p>
+<p>Default is <tt class="docutils literal"><span class="pre">1</span></tt>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miscellaneous-options">
+<h2><a class="toc-backref" href="#id9">Miscellaneous Options</a><a class="headerlink" href="#miscellaneous-options" title="Permalink to this headline">¶</a></h2>
+<dl class="option">
+<dt id="cmdoption--save">
+<tt class="descname">--save</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption--save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the current settings as <strong class="command">CLAutoThumbnailer</strong>’s new default settings.</p>
+<p>Any Help messages displayed from the same invocation that specified
+<a class="reference internal" href="#cmdoption--save"><em class="xref std std-option">--save</em></a> will show the <em class="bolditalic">previous</em> default
+settings. Run:</p>
+<div class="highlight-python"><pre>clatn -?</pre>
+</div>
+<p>to see the newly saved defaults.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption--reset">
+<tt class="descname">--reset</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption--reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset <strong class="command">CLAutoThumbnailer</strong>’s default settings back to their initial values.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption--dumpcr">
+<tt class="descname">--dumpcr</tt><tt class="descclassname"> [&lt;filename&gt;]</tt><a class="headerlink" href="#cmdoption--dumpcr" title="Permalink to this definition">¶</a></dt>
+<dd><p>For a range of video aspect ratios from 1.00 to 3.00, calculate the
+number of columns and rows that <strong class="command">CLAutoThumbnailer</strong> would use based on the
+thumbnail page&#8217;s width (<a class="reference internal" href="#cmdoption-w"><em class="xref std std-option">-w</em></a>) and height (<a class="reference internal" href="#cmdoption-h"><em class="xref std std-option">-h</em></a>). It
+writes a plot of these results to <span class="optionarg">filename</span> or
+<span class="filename">colrowsplot.png</span> if <span class="optionarg">filename</span> is not specified.</p>
+<p>Other current settings that affect the calculation are: the desired
+number of rows or columns (<a class="reference internal" href="#cmdoption-n"><em class="xref std std-option">-n</em></a> or <a class="reference internal" href="#cmdoption-N"><em class="xref std std-option">-N</em></a>), layout mode
+(<a class="reference internal" href="#cmdoption-y"><em class="xref std std-option">-y</em></a>), row/column optimization (<a class="reference internal" href="#cmdoption--rcopt"><em class="xref std std-option">--rcopt</em></a>), max
+optimization steps (<a class="reference internal" href="#cmdoption--maxoptsteps"><em class="xref std std-option">--maxoptsteps</em></a>), width
+threshold (<a class="reference internal" href="#cmdoption--wthres"><em class="xref std std-option">--wthres</em></a>), height threshold
+(<a class="reference internal" href="#cmdoption--hthres"><em class="xref std std-option">--hthres</em></a>), minimum columns (<a class="reference internal" href="#cmdoption--mincols"><em class="xref std std-option">--mincols</em></a>), and
+minimum rows (<a class="reference internal" href="#cmdoption--minrows"><em class="xref std std-option">--minrows</em></a>).</p>
+<p>By default it uses the Detail desired number of columns or rows
+(<a class="reference internal" href="#cmdoption-N"><em class="xref std std-option">-N</em></a>). You can force it to use the Overview desired number
+of columns or rows (<a class="reference internal" href="#cmdoption-n"><em class="xref std std-option">-n</em></a>) by specifying an interval
+(<a class="reference internal" href="#cmdoption-i"><em class="xref std std-option">-i</em></a>) of <tt class="docutils literal"><span class="pre">0</span></tt>.</p>
+<p>Prefixing the <span class="optionarg">filename</span> with <tt class="docutils literal"><span class="pre">nothreshold|</span></tt> will turn
+off the wasted width and height thresholding lines.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption--debug">
+<tt class="descname">--debug</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption--debug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display more verbose progress messages during operation.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption--help">
+<tt class="descname">--help</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption--help" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print a short description of all command line options.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption--version">
+<tt class="descname">--version</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption--version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print the <strong class="command">CLAutoThumbnailer</strong> version number and exit.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">How To</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trouble.html">Troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="reference.html"><strong class="command">CLAutoThumbnailer</strong> Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ref-overview.html">Overview Thumbnail Page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref-detail.html">Detail Thumbnail Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref-commandfile.html">Command Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref-multipart.html">Multi-Part Video Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref-mpeg2.html">MPEG2 Encoded Videos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref-aar.html">Auto Aspect Ratio Adjustment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref-layout.html">Thumbnail Page Layout Modes</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Command-line Options Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="samplefile.html">Sample Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">To Do List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="samplefile.html" title="Sample Files"
+             >next</a></li>
+        <li class="right" >
+          <a href="ref-layout.html" title="Thumbnail Page Layout Modes"
+             >previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li>
+          <li><a href="reference.html" ><strong class="command">CLAutoThumbnailer</strong> Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

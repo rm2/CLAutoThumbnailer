@@ -1,0 +1,189 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Skip the video credits &mdash; CLAutoThumbnailer v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/mydefault.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="top" title="CLAutoThumbnailer v1.0 documentation" href="index.html" />
+    <link rel="up" title="How To" href="howto.html" />
+    <link rel="next" title="Change the thumbnail page layout" href="how-changelayout.html" />
+    <link rel="prev" title="How To" href="howto.html" />
+ 
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23896923-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="how-changelayout.html" title="Change the thumbnail page layout"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="howto.html" title="How To"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li>
+          <li><a href="howto.html" accesskey="U">How To</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="skip-the-video-credits">
+<h1>Skip the video credits<a class="headerlink" href="#skip-the-video-credits" title="Permalink to this headline">¶</a></h1>
+<p>By default <strong class="command">CLAutoThumbnailer</strong> will skip the first and last 5 seconds of a
+video. Opening and closing credits usually last longer than this
+however. We really don&#8217;t want to see the credits in the Overview
+thumbnail page so let&#8217;s get rid of them. By looking at &#8220;His Girl
+Friday&#8221;s Detail thumbnail pages generated in the <a class="reference internal" href="quickstart.html"><em>Quick Start</em></a> and
+using <a class="reference external" href="http://www.bsplayer.org">BS.Player</a>’s <em class="guilabel">Jump to time</em> dialog box, we can determine
+that we want to start thumbnailing at <span class="mono">0:0:59</span> and stop at
+<span class="mono">1:31:07</span>.</p>
+<p>So the credits can be skipped by running the following command:</p>
+<div class="highlight-python"><pre>clatn -i 0 -s 0:0:59 -e 1:31:07 "his_girl_friday_512kb.mp4"</pre>
+</div>
+<p>where the <a class="reference internal" href="ref-options.html#cmdoption-s"><em class="xref std std-option">-s</em></a> option is used to specify the starting time and
+the <a class="reference internal" href="ref-options.html#cmdoption-e"><em class="xref std std-option">-e</em></a> option the ending time. We also specify <tt class="docutils literal"><span class="pre">-i</span> <span class="pre">0</span></tt> to
+avoid regenerating the 35 multi-page thumbnail pages (see <a class="reference internal" href="ref-options.html#cmdoption-i"><em class="xref std std-option">-i</em></a>
+for more details). The command prints the following output to the
+Command Prompt window:</p>
+<div class="highlight-python"><pre>Processing C:\His Girl Friday (1940)\mp4\his_girl_friday_512kb.mp4 ...
+0:00:12 Total time to create AVFileSet.
+Thumbnails Range   0:00:59.000 -&gt; 1:31:07.000
+Thumbnail Duration 1:30:08.000 (Total 1:31:44.521)
+Generating 144 104x78 thumbnails on a 12x12 Overview page.
+0:00:12 to create Overview thumbnails.
+144 thumbnails created. 0.09 seconds / thumbnail.
+Detail page thumbnails skipped.
+0:00:25 overall time to process his_girl_friday_512kb.mp4.
+0:00:25 Total time.</pre>
+</div>
+<p>and generates the following thumbnail page:</p>
+<div class="figure align-center">
+<a class="reference external image-reference" href="_images/his_girl_friday_512kb_nocredits_overview.jpg"><img alt="his_girl_friday_512kb_.mpeg &quot;No Credits&quot; Overview Thumbnail Page" src="_images/his_girl_friday_512kb_nocredits_overview.jpg" style="width: 649.0px; height: 506.5px;" /></a>
+<p class="caption">&#8220;No Credits&#8221; Overview Thumbnail Page for &#8220;His Girl Friday&#8221;</p>
+</div>
+<p>To skip the credits in &#8220;McLintock!&#8221;, run the following command:</p>
+<div class="highlight-python"><pre>clatn -i 0 -s 0:1:59 -e 2:06:39 McLintock_512kb.mp4</pre>
+</div>
+<p>to see:</p>
+<div class="highlight-python"><pre>Processing C:\McLintock (1963)\mp4 512kb\McLintock_512kb.mp4 ...
+0:00:10 Total time to create AVFileSet.
+Thumbnails Range   0:01:59.000 -&gt; 2:06:39.000
+Thumbnail Duration 2:04:40.000 (Total 2:06:47.214)
+Generating 84 181x78 thumbnails on a 7x12 Overview page.
+0:00:10 to create Overview thumbnails.
+84 thumbnails created. 0.13 seconds / thumbnail.
+Detail page thumbnails skipped.
+0:00:21 overall time to process McLintock_512kb.mp4.
+0:00:21 Total time.</pre>
+</div>
+<p>which results in:</p>
+<div class="figure align-center">
+<a class="reference external image-reference" href="_images/McLintock_512kb_overview_nocredits.jpg"><img alt="McLintock_512kb.mp4 &quot;No Credits&quot; Overview Thumbnail Page" src="_images/McLintock_512kb_overview_nocredits.jpg" style="width: 648.5px; height: 506.5px;" /></a>
+<p class="caption">&#8220;No Credits&#8221; Overview Thumbnail Page for &#8220;McLintock!&#8221;</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="howto.html">How To</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">Skip the video credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-changelayout.html">Change the thumbnail page layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-resizepage.html">Resize the thumbnail page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-thumbnaildir.html">Thumbnail an entire directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-skipcreditscf.html">Skip thumbnailing the credits in lots of movies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-blackbars.html">Remove the black bars from the edges of thumbnails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-distortion.html">Fix distorted thumbnails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-multipart.html">Thumbnail a multi-part video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-dvd.html">Thumbnail an unencrypted DVD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-createscreenshots.html">Create screenshots</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trouble.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html"><strong class="command">CLAutoThumbnailer</strong> Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samplefile.html">Sample Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">To Do List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="how-changelayout.html" title="Change the thumbnail page layout"
+             >next</a></li>
+        <li class="right" >
+          <a href="howto.html" title="How To"
+             >previous</a> |</li>
+        <li><a href="index.html">CLAutoThumbnailer v1.0 documentation</a> &raquo;</li>
+          <li><a href="howto.html" >How To</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>
