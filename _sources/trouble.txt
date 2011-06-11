@@ -251,7 +251,8 @@ Why is |CLATN| crashing?
 ------------------------
 
 If |CLATN| crashes with a lengthy "Unhandled Exception" message, then
-there is probably some error in the program and you should report a bug.
+there is probably some error in the program and you should report a bug
+`here <https://github.com/rm2/CLAutoThumbnailer/issues>`__.
 
 However, if it just crashes silently and mysteriously bounces you back
 to the Command Prompt the problem is more likely with the video codec

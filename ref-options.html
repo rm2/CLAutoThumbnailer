@@ -201,6 +201,8 @@ option you can specify either <tt class="docutils literal"><span class="pre">-v-
 <p>To set a boolean option to <tt class="xref docutils literal"><span class="pre">True</span></tt> just specify the option or add a
 <tt class="docutils literal"><span class="pre">+</span></tt> to the end. For example, to turn on the <a class="reference internal" href="#cmdoption--ms"><em class="xref std std-option">--ms</em></a> option
 specify either <tt class="docutils literal"><span class="pre">--ms</span></tt> or <tt class="docutils literal"><span class="pre">--ms+</span></tt>.</p>
+<p><strong class="command">CLAutoThumbnailer</strong> option processing is done using the <a class="reference external" href="http://www.ndesk.org/Options">NDesk.Options</a> &#8220;callback-based program option parser
+for C#&#8221;.</p>
 </div>
 <div class="section" id="input-options">
 <h2><a class="toc-backref" href="#id2">Input Options</a><a class="headerlink" href="#input-options" title="Permalink to this headline">¶</a></h2>
@@ -521,6 +523,14 @@ mode.</p>
 <p>In <a class="reference internal" href="ref-layout.html#auto-layout"><em>Auto Layout</em></a> mode, it is interpreted as the desired # of
 rows when the video&#8217;s aspect ratio is greater than or equal to the
 thumbnail pages, otherwise it is treated as the desired # of columns.</p>
+<p>Setting <span class="optionarg">nRows or nColumns</span> to less than <tt class="docutils literal"><span class="pre">3</span></tt> is not
+generally recommended because <a class="reference internal" href="ref-layout.html#rc-optimization"><em>Row/Column Optimization</em></a> can lead to
+results far from the desired number of rows or columns. In those
+situations either turn off Row/Column Optimization using
+<a class="reference internal" href="#cmdoption--rcopt"><em class="xref std std-option">--rcopt-</em></a> or use the <a class="reference internal" href="#cmdoption-y"><em class="xref std std-option">-y, --layout</em></a>
+option to use <a class="reference internal" href="ref-layout.html#actual-layout"><em>Actual Layout</em></a>. Also remember that you might need
+to change the minimum number of rows and columns using
+<a class="reference internal" href="#cmdoption--mincols"><em class="xref std std-option">--mincols</em></a> and <a class="reference internal" href="#cmdoption--minrows"><em class="xref std std-option">--minrows</em></a>.</p>
 <p>Notice that this option is Capitalized to distinguish it from the
 <a class="reference internal" href="#cmdoption-n"><em class="xref std std-option">-n</em></a> option.</p>
 <p>Range: <span class="optionarg">nRows or nColumns</span> &gt;= <tt class="docutils literal"><span class="pre">1</span></tt>.</p>
@@ -576,6 +586,10 @@ like <span class="filename">displayfilename_pageNNNN_hh_mm_ss.jpg</span>, but sp
 <p><tt class="docutils literal"><span class="pre">2</span></tt> = <a class="reference internal" href="ref-layout.html#row-priority-layout"><em>Row Priority Layout</em></a>.</p>
 <p><tt class="docutils literal"><span class="pre">3</span></tt> = <a class="reference internal" href="ref-layout.html#column-priority-layout"><em>Column Priority Layout</em></a>.</p>
 </div></blockquote>
+<p><a class="reference internal" href="ref-layout.html#actual-layout"><em>Actual Layout</em></a> also uses <a class="reference internal" href="#cmdoption-c"><em class="xref std std-option">-c, --columns</em></a> and
+<a class="reference internal" href="#cmdoption-r"><em class="xref std std-option">-r, --rows</em></a> or <a class="reference internal" href="#cmdoption-C"><em class="xref std std-option">-C, --Columns</em></a> and
+<a class="reference internal" href="#cmdoption-r"><em class="xref std std-option">-R, --Rows</em></a> to determine the desired number of columns
+and rows.</p>
 <p>Default is <tt class="docutils literal"><span class="pre">0</span></tt>, <a class="reference internal" href="ref-layout.html#auto-layout"><em>Auto Layout</em></a>.</p>
 <p>Example:</p>
 <div class="highlight-python"><pre>clatn -l 1 -c 8 -r 9 -C 3 -R 4 his_girl_friday_512kb.mp4</pre>
@@ -980,7 +994,8 @@ writes a plot of these results to <span class="optionarg">filename</span> or
 <p>Other current settings that affect the calculation are: the desired
 number of rows or columns (<a class="reference internal" href="#cmdoption-n"><em class="xref std std-option">-n</em></a> or <a class="reference internal" href="#cmdoption-N"><em class="xref std std-option">-N</em></a>), layout mode
 (<a class="reference internal" href="#cmdoption-y"><em class="xref std std-option">-y</em></a>), row/column optimization (<a class="reference internal" href="#cmdoption--rcopt"><em class="xref std std-option">--rcopt</em></a>), max
-optimization steps (<a class="reference internal" href="#cmdoption--maxoptsteps"><em class="xref std std-option">--maxoptsteps</em></a>), width
+optimization steps (<a class="reference internal" href="#cmdoption--maxoptsteps"><em class="xref std std-option">--maxoptsteps</em></a>), Overview threshold
+(<a class="reference internal" href="#cmdoption--othres"><em class="xref std std-option">--othres</em></a>), Detail threshold (<a class="reference internal" href="#cmdoption--dthres"><em class="xref std std-option">--dthres</em></a>), width
 threshold (<a class="reference internal" href="#cmdoption--wthres"><em class="xref std std-option">--wthres</em></a>), height threshold
 (<a class="reference internal" href="#cmdoption--hthres"><em class="xref std std-option">--hthres</em></a>), minimum columns (<a class="reference internal" href="#cmdoption--mincols"><em class="xref std std-option">--mincols</em></a>), and
 minimum rows (<a class="reference internal" href="#cmdoption--minrows"><em class="xref std std-option">--minrows</em></a>).</p>

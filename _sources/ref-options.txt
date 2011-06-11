@@ -138,6 +138,10 @@ To set a boolean option to ``True`` just specify the option or add a
 ``+`` to the end. For example, to turn on the :option:`--ms` option
 specify either ``--ms`` or ``--ms+``.
 
+|CLATN| option processing is done using the `NDesk.Options
+<http://www.ndesk.org/Options>`_ "callback-based program option parser
+for C#".
+
 
 Input Options
 =============
@@ -494,6 +498,15 @@ Detail Page Options
    rows when the video's aspect ratio is greater than or equal to the
    thumbnail pages, otherwise it is treated as the desired # of columns.
    
+   Setting :optionarg:`nRows or nColumns` to less than ``3`` is not
+   generally recommended because :ref:`rc-optimization` can lead to
+   results far from the desired number of rows or columns. In those
+   situations either turn off Row/Column Optimization using
+   :option:`--rcopt- <--rcopt>` or use the :option:`-y, --layout <-y>`
+   option to use :ref:`actual-layout`. Also remember that you might need
+   to change the minimum number of rows and columns using
+   :option:`--mincols` and :option:`--minrows`.
+
    Notice that this option is Capitalized to distinguish it from the
    :option:`-n` option.
 
@@ -557,6 +570,12 @@ Layout Options
       ``2`` = :ref:`row-priority-layout`.
 
       ``3`` = :ref:`column-priority-layout`.
+
+
+   :ref:`actual-layout` also uses :option:`-c, --columns <-c>` and
+   :option:`-r, --rows <-r>` or :option:`-C, --Columns <-C>` and
+   :option:`-R, --Rows <-r>` to determine the desired number of columns
+   and rows.
 
    Default is ``0``, :ref:`auto-layout`.
 
@@ -988,7 +1007,8 @@ Miscellaneous Options
    Other current settings that affect the calculation are: the desired
    number of rows or columns (:option:`-n` or :option:`-N`), layout mode
    (:option:`-y`), row/column optimization (:option:`--rcopt`), max
-   optimization steps (:option:`--maxoptsteps`), width
+   optimization steps (:option:`--maxoptsteps`), Overview threshold
+   (:option:`--othres`), Detail threshold (:option:`--dthres`), width
    threshold (:option:`--wthres`), height threshold
    (:option:`--hthres`), minimum columns (:option:`--mincols`), and
    minimum rows (:option:`--minrows`).

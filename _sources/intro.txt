@@ -111,6 +111,9 @@ Prerequisites
   you probably already have all the codecs you need. Otherwise, I
   recommend the |KLITE|_.
 
++ While |CLATN| should run on Windows Vista or Windows 7, it has only
+  been tested on Windows XP Pro SP3.
+
 
 Downloads
 =========

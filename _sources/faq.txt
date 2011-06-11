@@ -216,9 +216,8 @@ Performance
 
    |CLATN| is a **Command Line** program. However, it's been written to
    make it possible to bolt on a user interface at a later time since
-   the command-line option processing is done separately from the
-   actually thumbnail generation stuff. (Don't hold your breathe
-   though).
+   the command-line option processing is done separately from the actual
+   thumbnail generation stuff. (Don't hold your breathe though).
 
 #. Why doesn't |CLATN| use my fancy NVIDIA GPU to speed up thumbnail
    generation?

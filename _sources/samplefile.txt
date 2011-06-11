@@ -4,6 +4,9 @@
  Sample Files
 ==============
 
+.. contents::
+   :local:
+
 His Girl Friday (1940)
 ======================
 
