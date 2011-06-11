@@ -66,14 +66,46 @@
             
   <div class="section" id="overview-thumbnail-page">
 <h1>Overview Thumbnail Page<a class="headerlink" href="#overview-thumbnail-page" title="Permalink to this headline">¶</a></h1>
-<p>A single thumbnail page for an entire video file, typically with a
-larger number of rows and columns (in the range of 9-12) than
-<a class="reference internal" href="ref-detail.html"><em>Detail Thumbnail Pages</em></a> . The Overview page can be turned off with the
-<a class="reference internal" href="ref-options.html#cmdoption-v"><em class="xref std std-option">-v-</em></a> option.</p>
+<p>An Overview thumbnail page is a single <span class="mono">JPEG</span> image for an entire
+video file, typically with a larger number of rows and columns (in the
+range of 9-12) than <a class="reference internal" href="ref-detail.html"><em>Detail Thumbnail Pages</em></a> . The Overview page can be turned
+off with the <a class="reference internal" href="ref-options.html#cmdoption-v"><em class="xref std std-option">-v-</em></a> option.</p>
+<p>An Overview thumbnail page has a filename that looks like
+<span class="filename">originalfilename_overview.jpg</span>.</p>
 <div class="figure align-center">
 <a class="reference external image-reference" href="_images/his_girl_friday_512kb_nocredits_overview.jpg"><img alt="Example Overview Thumbnail Page" src="_images/his_girl_friday_512kb_nocredits_overview.jpg" style="width: 649.0px; height: 506.5px;" /></a>
 <p class="caption">Example Overview Thumbnail Page</p>
 </div>
+<p>The header line of an Overview page contains on the left side the total
+duration of the video (<em class="bolditalic">not</em> the thumbnailing duration specified
+with the <a class="reference internal" href="ref-options.html#cmdoption-s"><em class="xref std std-option">-s, --start</em></a> and <a class="reference internal" href="ref-options.html#cmdoption-s"><em class="xref std std-option">-e, --end</em></a>
+options); the video filename in the middle; and the video frame
+dimensions (and aspect ratio), video file size, and the file modified
+date &amp; time on the right side.</p>
+<p>If you have two values for the frame size and aspect ratio &#8212; one
+inside square brackets &#8212; it means the thumbnails are created from
+something other than the original video frames. The dimensions inside
+the square brackets are the original dimensions and aspect ratio, while
+the other numbers are the actual frame and aspect ratio used to create
+the thumbnails. This can occur when <a class="reference internal" href="ref-aar.html"><em>Auto Aspect Ratio Adjustment</em></a> is enabled, or the
+<a class="reference internal" href="ref-options.html#cmdoption-p"><em class="xref std std-option">-p, --crop</em></a>, <a class="reference internal" href="ref-options.html#cmdoption-t"><em class="xref std std-option">-t, --stretch</em></a>, or
+<a class="reference internal" href="ref-options.html#cmdoption--rect"><em class="xref std std-option">--rect</em></a> options have been used.</p>
+<div class="figure align-center">
+<a class="reference external image-reference" href="_images/McLintock_MULTI_overview.jpg"><img alt="Overview Page for Multi-Part Video" src="_images/McLintock_MULTI_overview.jpg" style="width: 648.5px; height: 506.5px;" /></a>
+<p class="caption">Example Overview Page for Multi-Part Videos</p>
+</div>
+<p>The Overview page for <a class="reference internal" href="ref-multipart.html"><em>Multi-Part Video Files</em></a> supplies additional helpful
+information. The filename now looks like
+<span class="filename">originalfilename_MULTI_overview.jpg</span>.</p>
+<p>The upper-left corner of the Overview page displays the number of files
+in the video in addition to its total duration. The name of the video
+has <tt class="docutils literal"><span class="pre">_MULTI</span></tt> added to it to further indicate that this page was made
+from a composite of individual video files.</p>
+<p>The first thumbnail from each part has the file number added to its
+timestamp and is highlighted with a different colored border to make it
+slightly easier to notice the location of the file splits. This makes it
+possible to determine which file a thumbnail actually came from in case
+you want to view the file in your media player.</p>
 </div>
 
 

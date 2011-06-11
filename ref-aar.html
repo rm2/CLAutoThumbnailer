@@ -66,10 +66,13 @@
             
   <div class="section" id="auto-aspect-ratio-adjustment">
 <h1>Auto Aspect Ratio Adjustment<a class="headerlink" href="#auto-aspect-ratio-adjustment" title="Permalink to this headline">¶</a></h1>
-<p>The <a class="reference internal" href="ref-options.html#cmdoption--aar"><em class="xref std std-option">--aar</em></a> Auto Aspect Ratio adjustment option might already be
-removing the bars on a video for you. Some video files (usually
-<a class="reference internal" href="ref-mpeg2.html"><em>MPEG2 Encoded Videos</em></a>) have their “Display aspect ratio” property set to
-something different than the aspect ratio of their video frames.</p>
+<p>The <a class="reference internal" href="ref-options.html#cmdoption--aar"><em class="xref std std-option">--aar</em></a> Auto Aspect Ratio adjustment option can
+automatically remove the blacks bars from video thumbnails. Some video
+files (usually <a class="reference internal" href="ref-mpeg2.html"><em>MPEG2 Encoded Videos</em></a>) have their “Display aspect ratio”
+property set to something different than the aspect ratio of their video
+frames. The <a class="reference internal" href="ref-options.html#cmdoption--aar"><em class="xref std std-option">--aar</em></a> option works by automatically calling the
+<a class="reference internal" href="ref-options.html#cmdoption-p"><em class="xref std std-option">-p, --crop</em></a> option for you with the video&#8217;s display aspect
+ratio.</p>
 <p>You can see this, for example, in the <a class="reference external" href="http://mediainfo.sourceforge.net/en">MediaInfo</a> report for the <span class="mono">MPEG2</span>
 version of <a class="reference internal" href="samplefile.html#mediainfo-his-girl-friday-mpeg"><em>His Girl Friday</em></a>:</p>
 <div class="highlight-python"><pre>Width                            : 720 pixels
@@ -118,9 +121,6 @@ other than the full original video frames. The dimensions inside the
 square brackets are the original dimensions, while the other numbers are
 the actual frame and aspect ratio used to create the thumbnails. Notice
 that the black bars have been removed.</p>
-<p>Basically the way the <a class="reference internal" href="ref-options.html#cmdoption--aar"><em class="xref std std-option">--aar</em></a> option works is by automatically
-calling the <a class="reference internal" href="ref-options.html#cmdoption-p"><em class="xref std std-option">-p, --crop</em></a> option for you with the video&#8217;s
-display aspect ratio.</p>
 <p>Letterboxing or pillarboxing usually occurs when the display aspect
 ratio isn&#8217;t set or is set incorrectly. Luckily, as <a class="reference internal" href="how-blackbars.html"><em>Remove the black bars from the edges of thumbnails</em></a>
 shows, it&#8217;s a (mostly) simple matter to fix this problem by using the

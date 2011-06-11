@@ -4,10 +4,14 @@
  Auto Aspect Ratio Adjustment
 ==============================
 
-The :option:`--aar` Auto Aspect Ratio adjustment option might already be
-removing the bars on a video for you. Some video files (usually
-:doc:`ref-mpeg2`) have their “Display aspect ratio” property set to
-something different than the aspect ratio of their video frames.
+The :option:`--aar` Auto Aspect Ratio adjustment option can
+automatically remove the blacks bars from video thumbnails. Some video
+files (usually :doc:`ref-mpeg2`) have their “Display aspect ratio”
+property set to something different than the aspect ratio of their video
+frames. The :option:`--aar` option works by automatically calling the
+:option:`-p, --crop <-p>` option for you with the video's display aspect
+ratio.
+
 
 You can see this, for example, in the |MI|_ report for the :mono:`MPEG2`
 version of :ref:`His Girl Friday <mediainfo-his_girl_friday-mpeg>`::
@@ -68,10 +72,6 @@ other than the full original video frames. The dimensions inside the
 square brackets are the original dimensions, while the other numbers are
 the actual frame and aspect ratio used to create the thumbnails. Notice
 that the black bars have been removed.
-
-Basically the way the :option:`--aar` option works is by automatically
-calling the :option:`-p, --crop <-p>` option for you with the video's
-display aspect ratio.
 
 Letterboxing or pillarboxing usually occurs when the display aspect
 ratio isn't set or is set incorrectly. Luckily, as :doc:`how-blackbars`
