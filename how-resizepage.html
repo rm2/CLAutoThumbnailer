@@ -91,16 +91,14 @@ Generating 63 182x137 thumbnails on a 9x7 Overview page.
 63 thumbnails created. 0.11 seconds / thumbnail.</pre>
 </div>
 <p><strong class="command">CLAutoThumbnailer</strong> decides that since the video aspect ratio is now smaller than
-the desired thumbnail pages aspect ratio, Column Priority layout should
-be used. When <tt class="docutils literal"><span class="pre">9</span></tt> columns are wanted on a page that has to fit nicely
-within 1680×1050 pixels, <tt class="docutils literal"><span class="pre">7</span></tt> rows is the best it can do for this
-video. Here is the result:</p>
+the desired thumbnail pages aspect ratio, <a class="reference internal" href="ref-layout.html#column-priority-layout"><em>Column Priority layout</em></a> should be used. When <tt class="docutils literal"><span class="pre">9</span></tt> columns are wanted
+on a page that has to fit nicely within 1680×1050 pixels, <tt class="docutils literal"><span class="pre">7</span></tt> rows is
+the best it can do for this video. Here is the result:</p>
 <div class="figure align-center">
 <a class="reference external image-reference" href="_images/his_girl_friday_512kb_1680x1050_overview.jpg"><img alt="his_girl_friday_512kb_.mpeg Overview Thumbnail Page formatted for a 1680x1050 screen" src="_images/his_girl_friday_512kb_1680x1050_overview.jpg" style="width: 838.0px; height: 508.0px;" /></a>
 <p class="caption">&#8220;His Girl Friday&#8221; Overview Page formatted for a 1680x1050 screen</p>
 </div>
-<p>You can force <strong class="command">CLAutoThumbnailer</strong> to use Row Priority Layout Mode by using the
-<a class="reference internal" href="ref-options.html#cmdoption-y"><em class="xref std std-option">-y, --layout</em></a> option:</p>
+<p>You can force <strong class="command">CLAutoThumbnailer</strong> to use <a class="reference internal" href="ref-layout.html#row-priority-layout"><em>Row Priority Layout Mode</em></a> by using the <a class="reference internal" href="ref-options.html#cmdoption-y"><em class="xref std std-option">-y, --layout</em></a> option:</p>
 <div class="highlight-python"><pre>clatn -i 0 -s 0:0:59 -e 1:31:07 -n 9 -w 1680 -h 1050 -y 2 "his_girl_friday_512kb.mp4"</pre>
 </div>
 <p>which causes:</p>
@@ -122,10 +120,10 @@ Generating 99 145x109 thumbnails on a 11x9 Overview page.
 using RowPriority Mode</p>
 </div>
 <p>Instead of 9 columns by 7 rows, we now get 11 columns by 9 rows. This is
-the typical result of using Row Priority Layout instead of Auto Layout
-for &#8220;squarish&#8221; videos. You&#8217;ll get more rows and columns (and the
-resulting thumbnails may or may not be too small depending on your
-taste).</p>
+the typical result of using Row Priority Layout instead of <a class="reference internal" href="ref-layout.html#auto-layout"><em>Auto
+Layout</em></a> for &#8220;squarish&#8221; videos. You&#8217;ll get more rows and
+columns (and the resulting thumbnails may or may not be too small
+depending on your taste).</p>
 <p>Make an Overview page for &#8220;McLintock!&#8221; with these new thumbnail page
 dimensions by doing:</p>
 <div class="highlight-python"><pre>clatn -i 0 -s 0:1:59 -e 2:06:39 -n 9 -w 1680 -h 1050 McLintock_512kb.mp4</pre>
@@ -234,8 +232,7 @@ might want to change the defaults as follows:</p>
 </div>
 <p>(Or maybe even use <tt class="docutils literal"><span class="pre">-n</span> <span class="pre">18</span></tt> or <tt class="docutils literal"><span class="pre">-n</span> <span class="pre">16</span></tt> depending on your tolerance
 for tiny thumbnails.)</p>
-<p>Alternatively, you might want to use Column Priority Layout Mode along
-with <tt class="docutils literal"><span class="pre">-n</span> <span class="pre">5</span></tt>:</p>
+<p>Alternatively, you might want to use <a class="reference internal" href="ref-layout.html#column-priority-layout"><em>Column Priority Layout Mode</em></a> along with <tt class="docutils literal"><span class="pre">-n</span> <span class="pre">5</span></tt>:</p>
 <div class="highlight-python"><pre>clatn -w 1050 -h 1680 -n 5 -y 3 --save</pre>
 </div>
 </div>

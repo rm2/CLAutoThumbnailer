@@ -100,9 +100,8 @@ Operation
 
 #. How do I see what |CLATN|’s default settings are?
 
-   Just enter :command:`clatn` without any arguments or use the the
-   :option:`-?, --help <--help>` option. The default settings are shown
-   within square brackets (``[]``).
+   Just use the :option:`-?, --help <--help>` option. The default
+   settings are shown within square brackets (``[]``).
 
 #. How do I generate just a standard Overview thumbnail page?
 

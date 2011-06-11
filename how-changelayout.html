@@ -69,12 +69,13 @@
 <p>What if you don&#8217;t like the number of rows and columns that <strong class="command">CLAutoThumbnailer</strong>
 automatically decides to create? For example, the thumbnails are a bit
 too tiny for your tastes &#8212; though personally, I like to see
-<em class="bolditalic">lot&#8217;s</em> of overview thumbs.</p>
+<em class="bolditalic">lot&#8217;s</em> of Overview thumbnails.</p>
 <p><strong class="command">CLAutoThumbnailer</strong> uses the video aspect ratio to determine whether to give
 priority to the number of rows or number of columns on a page. Normally
-Row Priority is used to specify the number of rows desired. Squarish
-videos (whose aspect ratio is less than the aspect ratio of the desired
-thumbnail page) will instead use Column Priority.</p>
+<a class="reference internal" href="ref-layout.html#row-priority-layout"><em>Row Priority</em></a> is used to specify the number
+of rows desired. Squarish videos (whose aspect ratio is less than the
+aspect ratio of the desired thumbnail page) will instead use
+<a class="reference internal" href="ref-layout.html#column-priority-layout"><em>Column Priority</em></a>.</p>
 <p>Run the following command to say we want either <tt class="docutils literal"><span class="pre">9</span></tt> columns or <tt class="docutils literal"><span class="pre">9</span></tt>
 rows instead of the default <tt class="docutils literal"><span class="pre">12</span></tt>:</p>
 <div class="highlight-python"><pre>clatn -i 0 -s 0:0:59 -e 1:31:07 -n 9 "his_girl_friday_512kb.mp4"</pre>

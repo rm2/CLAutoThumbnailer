@@ -7,13 +7,14 @@
 What if you don't like the number of rows and columns that |CLATN|
 automatically decides to create? For example, the thumbnails are a bit
 too tiny for your tastes --- though personally, I like to see
-:bi:`lot's` of overview thumbs.
+:bi:`lot's` of Overview thumbnails.
 
 |CLATN| uses the video aspect ratio to determine whether to give
 priority to the number of rows or number of columns on a page. Normally
-Row Priority is used to specify the number of rows desired. Squarish
-videos (whose aspect ratio is less than the aspect ratio of the desired
-thumbnail page) will instead use Column Priority.
+:ref:`Row Priority <row-priority-layout>` is used to specify the number
+of rows desired. Squarish videos (whose aspect ratio is less than the
+aspect ratio of the desired thumbnail page) will instead use
+:ref:`Column Priority <column-priority-layout>`.
 
 Run the following command to say we want either ``9`` columns or ``9``
 rows instead of the default ``12``::

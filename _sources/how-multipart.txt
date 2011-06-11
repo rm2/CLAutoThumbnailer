@@ -87,8 +87,8 @@ information when looking at thumbnail pages for multi-part videos.
 
 The upper-left corner of the Overview page displays the number of files
 in the video in addition to its total duration. The name of the video
-has _MULTI_ added to it to further indicate that this page was made from
-a composite of individual video files.
+has ``_MULTI`` added to it to further indicate that this page was made
+from a composite of individual video files.
 
 The first thumbnail from each part has the file number added to its
 timestamp and is highlighted with a different colored border to make it

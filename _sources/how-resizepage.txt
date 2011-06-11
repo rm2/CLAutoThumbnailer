@@ -33,10 +33,10 @@ option) we see::
    63 thumbnails created. 0.11 seconds / thumbnail.
 
 |CLATN| decides that since the video aspect ratio is now smaller than
-the desired thumbnail pages aspect ratio, Column Priority layout should
-be used. When ``9`` columns are wanted on a page that has to fit nicely
-within 1680×1050 pixels, ``7`` rows is the best it can do for this
-video. Here is the result:
+the desired thumbnail pages aspect ratio, :ref:`Column Priority layout
+<column-priority-layout>` should be used. When ``9`` columns are wanted
+on a page that has to fit nicely within 1680×1050 pixels, ``7`` rows is
+the best it can do for this video. Here is the result:
 
 .. figure:: images/his_girl_friday_512kb_1680x1050_overview.jpg
    :scale: 50%
@@ -47,8 +47,8 @@ video. Here is the result:
 
    "His Girl Friday" Overview Page formatted for a 1680x1050 screen
 
-You can force |CLATN| to use Row Priority Layout Mode by using the
-:option:`-y, --layout <-y>` option::
+You can force |CLATN| to use :ref:`Row Priority Layout Mode
+<row-priority-layout>` by using the :option:`-y, --layout <-y>` option::
 
    clatn -i 0 -s 0:0:59 -e 1:31:07 -n 9 -w 1680 -h 1050 -y 2 "his_girl_friday_512kb.mp4"
 
@@ -78,10 +78,10 @@ and creates:
    using RowPriority Mode
 
 Instead of 9 columns by 7 rows, we now get 11 columns by 9 rows. This is
-the typical result of using Row Priority Layout instead of Auto Layout
-for "squarish" videos. You'll get more rows and columns (and the
-resulting thumbnails may or may not be too small depending on your
-taste).
+the typical result of using Row Priority Layout instead of :ref:`Auto
+Layout <auto-layout>` for "squarish" videos. You'll get more rows and
+columns (and the resulting thumbnails may or may not be too small
+depending on your taste).
 
 Make an Overview page for "McLintock!" with these new thumbnail page
 dimensions by doing::
@@ -228,8 +228,8 @@ might want to change the defaults as follows::
 (Or maybe even use ``-n 18`` or ``-n 16`` depending on your tolerance
 for tiny thumbnails.)
 
-Alternatively, you might want to use Column Priority Layout Mode along
-with ``-n 5``::
+Alternatively, you might want to use :ref:`Column Priority Layout Mode
+<column-priority-layout>` along with ``-n 5``::
 
    clatn -w 1050 -h 1680 -n 5 -y 3 --save
 
