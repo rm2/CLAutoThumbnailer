@@ -507,7 +507,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:CLAutoThumbnailer"
         "ProductCode" = "8:{AECA1FBC-BDFD-4FE3-92A3-47E0C8800CAE}"
-        "PackageCode" = "8:{D1691CCF-0AAF-463A-9C60-8156E3F526A0}"
+        "PackageCode" = "8:{FBE41E69-05C0-4459-9F2A-0EB71D3E9B86}"
         "UpgradeCode" = "8:{560D76BD-E407-40EC-A19E-BACF35532B4E}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

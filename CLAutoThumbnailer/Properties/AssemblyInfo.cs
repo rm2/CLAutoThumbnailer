@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle ("CLAutoThumbnailer")]
-[assembly: AssemblyDescription ("")]
+[assembly: AssemblyDescription ("http://rm2.github.com/CLAutoThumbnailer/")]
 [assembly: AssemblyConfiguration ("")]
 [assembly: AssemblyCompany ("")]
 [assembly: AssemblyProduct ("CLAutoThumbnailer")]

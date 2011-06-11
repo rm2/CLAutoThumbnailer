@@ -4,7 +4,7 @@ _eric4project/
 bin/
 obj/
 Sphinx/_build/
-sphinx/githtml/
+Sphinx/githtml/
 Sandcastle/Help/
 doxygen/
 Setup/Release/

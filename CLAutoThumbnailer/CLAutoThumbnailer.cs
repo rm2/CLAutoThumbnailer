@@ -37,6 +37,7 @@ namespace CLAutoThumbnailer
             Console.WriteLine ("                                   -d directory      |");
             Console.WriteLine ("                                   commandfile.txt");
             Console.WriteLine ("Generates thumbnail pages for videos.");
+            Console.WriteLine ("See http://rm2.github.com/CLAutoThumbnailer/ for detailed documentation.");
             Console.WriteLine ();
             Console.WriteLine ("Options:");
             oset.WriteOptionDescriptions (Console.Out);
