@@ -32,7 +32,9 @@ the splitter that comes with |EE| or the `Haali Media Splitter
 
 For the video and audio codecs, I recommend either the codecs
 specifically shipped with |EE| and whose names start with "Expression
-Encoder" or the :ref:`ffdshow codec <ffdshow-codec>`.
+Encoder" or the :ref:`ffdshow codec <ffdshow-codec>`. I personally use
+the |KLITE|_ which includes the ffdshow codec, Haali and Gabest
+splitters along with many other useful tools.
 
 Unfortunately, just because you can play a video doesn't mean that you
 can generate thumbnails for it. This is because |EE| maintains a
@@ -106,10 +108,10 @@ The ffdshow codec
 -----------------
 
 If you are using the highly recommended `ffdshow
-<http://sourceforge.net/projects/ffdshow/>`_ codecs then you might have
-to configure them. In particular they have a codec pane that lists all
-the supported codecs, whether they are enabled or not, and which decoder
-is being used.
+<http://ffdshow-tryout.sourceforge.net/>`_ codecs then you might have to
+configure them. In particular they have a codec pane that lists all the
+supported codecs, whether they are enabled or not, and which decoder is
+being used.
 
 .. figure:: images/ffdshow-video-config-codecs.png
    :align: center
@@ -157,6 +159,26 @@ batch file.*
 You didn't follow the instructions for editing `clatn.bat` so that it
 points to the correct location of `CLAutoThumbnailer.exe`. See
 :ref:`this <editing-clatn>` for more information.
+
+
+Why do I see a "Could not load file or assembly Microsoft.Expression.Encoder" message?
+--------------------------------------------------------------------------------------
+
+If you see the following when you try to run |CLATN|::
+
+   Unhandled Exception: System.IO.FileLoadException: Could not load file or assembly 'Microsoft.Expression.Encoder, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. Invalid pointer (Exception from HRESULT: 0x80004003 (E_POINTER)) ---> System.ArgumentNullException: Value cannot be null.
+   Parameter name: input
+      at System.IO.BinaryReader..ctor(Stream input, Encoding encoding)
+      at CLAutoThumbnailer.Loader.FindAssembly(Object sender, ResolveEventArgs args)
+      at System.AppDomain.OnAssemblyResolveEvent(RuntimeAssembly assembly, String assemblyFullName)
+      --- End of inner exception stack trace ---
+      at CLAutoThumbnailer.CLAutoThumbnailer.ProcessFiles(List`1 filenames, StringdisplayFilename, String outputDirectory)
+      at CLAutoThumbnailer.CLAutoThumbnailer.Main(String[] args)
+      at CLAutoThumbnailer.Loader.Main(String[] args)
+
+it means you forgot to install the free Microsoft Expression Encoder 4
+which is a prerequisite for running |CLATN|. Please see the
+:ref:`Installation Instructions <installation-instructions>`.
 
 
 .. _not-a-video:
