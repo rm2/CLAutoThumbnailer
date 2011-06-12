@@ -29,7 +29,7 @@ to open up a 382.6MB file) you'll see::
    Thumbnail Duration 1:31:34.521 (Total 1:31:44.521)
    Generating 144 104x78 thumbnails on a 12x12 Overview page.
 
-and then an "animation" that changes every time a new overview thumbnail
+and then an "animation" that changes every time a new Overview thumbnail
 is created followed by a percent complete indicator. When this is done
 you'll see::
 

@@ -203,6 +203,25 @@ Just use the Control Panel's "Add or Remove Programs" dialog box and
 remove ``CLAutoThumbnailer``.
 
 
+Feedback
+========
+
+   Report bugs or suggestions for improvements at
+   https://github.com/rm2/CLAutoThumbnailer/issues\ .
+
+   Messages can also be sent to me via `GitHub.com
+   <https://github.com/inbox/new/rm2>`_.
+
+   If you are having problems with :ref:`codecs <dealing-with-codecs>`,
+   particularly if |EE| is :ref:`unable to import a video
+   <not-a-video>`, then you can try asking about your problem on the
+   `Microsoft Expression Encoder Forum
+   <http://social.expression.microsoft.com/Forums/en-US/encoder/threads>`_.
+   They won't be able to answer any questions about |CLATN|, but getting
+   |EE| to correctly import a video will almost always also solve the
+   problem for |CLATN|.
+
+
 ..
    Local Variables:
    coding: utf-8

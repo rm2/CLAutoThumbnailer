@@ -204,6 +204,13 @@ video files:
    to the |EE| filter set and vice versa. See :ref:`here
    <ee-video-filters>` for more information.
 
+   You can try asking about your problem on the `Microsoft Expression
+   Encoder Forum
+   <http://social.expression.microsoft.com/Forums/en-US/encoder/threads>`_. They
+   won't be able to answer any questions about |CLATN|, but getting |EE|
+   to correctly import a video will almost always also solve the problem
+   for |CLATN|.
+
 #. Use :ref:`MediaInfo <MediaInfo>` to figure out exactly what codec the
    offending video is using. Then try enabling some filters that
    appear to support that codec in |EE|. You also use the information
@@ -223,6 +230,7 @@ video files:
    successful, then you "just" have to narrow down the list until
    only a few filters are enabled (google "binary search" for a
    "quick" way of doing this).
+
 
 
 .. _file-type-not-supported:

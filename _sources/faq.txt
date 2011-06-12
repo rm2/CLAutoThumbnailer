@@ -55,6 +55,18 @@ General
    Report bugs or suggestions for improvements at
    https://github.com/rm2/CLAutoThumbnailer/issues\ .
 
+#. Where can I get more help?
+
+   You can `send a message <https://github.com/inbox/new/rm2>`_ to me
+   via GitHub.com. Of course, to do that you first have to `create a
+   free account <https://github.com/signup/free>`_ (if you don't already
+   have one) and then `login <https://github.com/login>`_.
+
+   If you are having problems with codecs, particularly if |EE| is
+   :ref:`unable to import a video <not-a-video>`, then you can also try
+   asking your question on the `Microsoft Expression Encoder Forum
+   <http://social.expression.microsoft.com/Forums/en-US/encoder/threads>`_.
+
 
 Downloading & Installation
 ==========================
